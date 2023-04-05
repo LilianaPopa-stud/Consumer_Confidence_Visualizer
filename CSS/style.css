@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: black;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav li {
+    margin-right: 20px;
+}
+nav li:hover > ul {
+    display: block;
+}
+
+nav ul ul {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    padding: 10px;
+    min-width: 100px;
+}
+
+nav ul ul li {
+    display: block;
+    margin: 10px 0;
+}
+
+nav ul ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.hero {
+    background-color: #f7f7f7;
+    padding: 80px;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 24px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+}
+
+.cta {
+    background-color: #333;
+    color: #fff;
+    display: inline-block;
+    padding: 20px;
+    font-size: 24px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.cta:hover {
+    background-color: #5b5451;
+}
+
+.features {
+    padding: 80px;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.features ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style: none;
+}
+
+.features li {
+    width: 30%;
+    margin-bottom: 0;
+}
+
+.features li span {
+    display: block;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.features li p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #666;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    position: fixed; /* set position of footer to fixed */
+    bottom: 0; /* set bottom property of footer to 0 */
+    width: 100%; /* set width of footer to 100% of viewport width */
+}
+
+footer p {
+    font-size: 14px;
+}
