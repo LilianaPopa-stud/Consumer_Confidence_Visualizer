@@ -16,7 +16,7 @@ function drawChart() {
   ]);
 
   var options = {
-    title: 'CCI between 2018 - 2020',
+    title: 'CCI between 2020 - 2022',
     titleTextStyle: {
         color: 'black',
         fontName: 'Oxygen',
