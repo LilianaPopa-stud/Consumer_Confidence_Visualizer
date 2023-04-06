@@ -184,3 +184,20 @@ footer p {
 .emails li a:hover {
     background-color: #5b5451;
 }
+#cci-description {
+    background-color: transparent;
+    padding: 40px;
+    margin-bottom: 40px;
+}
+
+#cci-description h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#cci-description p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666;
+}
