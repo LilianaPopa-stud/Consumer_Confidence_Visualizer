@@ -32,7 +32,7 @@ function drawBarChart() {
         hAxis: {
             title: 'Year',
             textStyle: {
-                color: "#631A86"
+                color: "#4c2a85"
             },
             titleTextStyle: {
                 color: 'black',
@@ -41,7 +41,7 @@ function drawBarChart() {
         vAxis: {
             title: 'Index: Long-term Average = 100',
             textStyle: {
-                color: "#631A86"
+                color: "#4c2a85"
             },
             titleTextStyle: {
                 color: 'black',
