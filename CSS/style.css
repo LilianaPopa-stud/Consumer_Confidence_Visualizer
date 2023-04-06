@@ -56,6 +56,10 @@ nav a:hover {
     text-decoration: underline;
 }
 
+.active {
+    text-decoration: underline;
+}
+
 .hero {
     background-color: #f7f7f7;
     padding: 80px;
@@ -134,4 +138,48 @@ footer {
 
 footer p {
     font-size: 14px;
+}
+
+/* contact page */
+.emails {
+    background-color: #f7f7f7;
+    padding: 80px;
+    text-align: center;
+}
+
+.emails h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.emails p {
+    font-size: 24px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+}
+
+.emails ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.emails li {
+    width: 30%;
+    margin-bottom: 20px;
+}
+
+.emails li a {
+    background-color: #333;
+    color: #fff;
+    display: inline-block;
+    padding: 20px;
+    font-size: 24px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.emails li a:hover {
+    background-color: #5b5451;
 }
