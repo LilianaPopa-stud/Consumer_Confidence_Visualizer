@@ -49,7 +49,8 @@ function drawRegionsMap() {
         chartArea: {
             width: '100%',
             height: '100%'
-        }
+        },
+        colorAxis: {colors: ['#e5c6ef', '#54053b']},
     };
 
     var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
