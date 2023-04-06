@@ -3,10 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>CoCo - Consumer Confidence Visualizer - Charts</title>
   <link rel="stylesheet" href="../CSS/style.css">
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load('visualization', '1', {packages: ['corechart'], callback : drawChart});
+  </script>
+
 </head>
 <body>
+<div class="wrapper">
 <header>
   <h1>CoCo - Consumer Confidence Visualizer</h1>
   <nav>
@@ -25,11 +32,12 @@
     </ul>
   </nav>
 </header>
-<main>
-  <section class="charts">
-    <!-- Adaugam chart-urile aici -->
+
+  <section id="chartdiv-charts">
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
   </section>
-</main>
+</div>
+<script type="text/javascript" src="../SCRIPTS/CoreChart.js"></script>
 <footer>
   <p>&copy; 2023 CoCo - Consumer Confidence Visualizer</p>
 </footer>
