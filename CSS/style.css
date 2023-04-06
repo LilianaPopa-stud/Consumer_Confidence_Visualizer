@@ -186,8 +186,10 @@ footer p {
 }
 #cci-description {
     background-color: transparent;
-    padding: 40px;
+    padding: 20px;
     margin-bottom: 40px;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 #cci-description h2 {
