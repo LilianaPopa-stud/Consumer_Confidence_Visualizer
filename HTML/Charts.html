@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>CoCo - Consumer Confidence Visualizer - Charts</title>
+  <link rel="stylesheet" href="../CSS/map.css">
   <link rel="stylesheet" href="../CSS/style.css">
   <link rel="stylesheet" href="../CSS/charts.css">
   <link rel="stylesheet" href="../CSS/table.css">
@@ -19,24 +20,24 @@
 </head>
 <body>
 <div class="wrapper">
-<header>
-  <h1>CoCo - Consumer Confidence Visualizer</h1>
-  <nav>
-    <ul>
-      <li><a href="INDEX.html">Home</a></li>
-      <li class="active"><a href="Charts.html">Charts</a></li>
-      <li><a href="#">Export</a>
-        <ul>
-          <li><a href="#">CSV</a></li>
-          <li><a href="#">WebP</a></li>
-          <li><a href="#">SVG</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Report</a></li>
-      <li><a href="Contact.html">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+  <header>
+    <h1>CoCo - Consumer Confidence Visualizer</h1>
+    <nav>
+      <ul>
+        <li><a href="INDEX.html">Home</a></li>
+        <li class="active"><a href="Charts.html">Charts</a></li>
+        <li><a href="#">Export</a>
+          <ul>
+            <li><a href="#">CSV</a></li>
+            <li><a href="#">WebP</a></li>
+            <li><a href="#">SVG</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Report</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
   <div id="cci-description">
     <h2>Consumer Confidence Index (CCI)</h2>
     <p>This consumer confidence indicator provides an indication of future developments of households’ consumption and saving, based upon answers
@@ -44,19 +45,23 @@
       consumers’ confidence towards the future economic situation, as a consequence of which they are less prone to save, and more inclined to spend money on major purchases in the next 12 months.
       Values below 100 indicate a pessimistic attitude towards future developments in the economy, possibly resulting in a tendency to save more and consume less.</p>
   </div>
+  <section id="chartdiv-geochart">
+    <div id="regions_div" style="width:900px;height:500px;"></div>
+  </section>
   <section id="chartdiv-charts">
-    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+    <div id="chart_div" style="width: 900px; height: 500px; margin-left: 100px;"></div>
   </section>
   <section id="bar-charts">
-    <div id="barchart-div" style="width : 700px; height: 500px; "></div>
+    <div id="barchart-div" style="width : 700px; height: 500px; margin-right: 150px;"></div>
   </section>
   <section id="line-charts">
-    <div id="linechart-div" style="width : 700px; height: 500px; "></div>
+    <div id="linechart-div" style="width : 700px; height: 500px; margin-right: 150px;"></div>
   </section>
   <section id="table-charts">
-    <table id="table_div" style="width : 2000px; height: 500px; margin-top: 120px; margin-left: 400px;"></table>
+    <table id="table_div" style="width : 2000px; height: 500px; margin-top: 120px; margin-left: 320px;"></table>
   </section>
 </div>
+<script type="text/javascript" src="../SCRIPTS/GeoChart.js"></script>
 <script type="text/javascript" src="../SCRIPTS/CoreChart.js"></script>
 <script type="text/javascript" src="../SCRIPTS/BarChart.js"></script>
 <script type="text/javascript" src="../SCRIPTS/LineChart.js"></script>
