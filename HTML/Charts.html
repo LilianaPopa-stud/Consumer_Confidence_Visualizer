@@ -7,6 +7,7 @@
   <title>CoCo - Consumer Confidence Visualizer - Charts</title>
   <link rel="stylesheet" href="../CSS/style.css">
   <link rel="stylesheet" href="../CSS/charts.css">
+  <link rel="stylesheet" href="../CSS/table.css">
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <script type="text/javascript">
     google.load('visualization', '1', {packages: ['corechart'], callback : drawChart});
@@ -49,9 +50,17 @@
   <section id="bar-charts">
     <div id="barchart-div" style="width : 700px; height: 500px; "></div>
   </section>
+  <section id="line-charts">
+    <div id="linechart-div" style="width : 700px; height: 500px; "></div>
+  </section>
+  <section id="table-charts">
+    <table id="table_div" style="width : 2000px; height: 500px; margin-top: 120px; margin-left: 400px;"></table>
+  </section>
 </div>
 <script type="text/javascript" src="../SCRIPTS/CoreChart.js"></script>
 <script type="text/javascript" src="../SCRIPTS/BarChart.js"></script>
+<script type="text/javascript" src="../SCRIPTS/LineChart.js"></script>
+<script type="text/javascript" src="../SCRIPTS/Table.js"></script>
 <footer>
   <p>&copy; 2023 CoCo - Consumer Confidence Visualizer</p>
 </footer>

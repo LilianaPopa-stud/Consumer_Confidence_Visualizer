@@ -29,3 +29,17 @@
     position: relative;
 }
 
+#line-charts {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#linechart-div{
+    width: 50% !important;
+    height: 400px !important;
+    position: relative;
+    margin-top: 100px;
+}

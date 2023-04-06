@@ -1,0 +1,37 @@
+.cssHeaderRow {
+    background-color: #210321;
+    margin-top: 1000px;
+  }
+  
+  .cssTableRow:nth-child(1) {
+    color: #a80874;
+  }
+  .cssTableRow:nth-child(2) {
+    color: #C490D1; 
+  }
+  .cssTableRow:nth-child(3) {
+    color: #631A86; 
+  }
+  .cssTableRow:nth-child(4) {
+    color: #a3c3d9; 
+  }
+  .cssSelectedTableRow {
+    font-size: 20px;
+    font-weight:bold;
+  }
+  .cssHoverTableRow {
+    background: #c3cbd2;
+  }
+  .cssHeaderCell {
+    color: #FFFFFF;
+    font-size: 16px;
+    padding: 10px !important;
+    border: solid 1px #464749;
+  }
+  .cssTableCell {
+    font-size: 16px;
+    padding: 10px !important;
+    border: solid 1px #464749;
+  }
+
+
