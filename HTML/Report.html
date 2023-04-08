@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ro" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="utf-8">
+  <title>(CoCo) Consumer Confidence Visualizer</title>
+  <link rel="stylesheet" type="text/css" href="../CSS/report.css">
+
+</head>
+<body prefix="schema: https://schema.org">
+<header>
+  <div class="banner">
+    <img src="../img/scholarly-html.svg" alt="Scholarly logo" style="width:227px;height:50px;">
+    <div class="status">CoCo project</div>
+  </div>
+  <h1>Consumer Confidence Visualizer</h1>
+</header>
+
+<div role="contentinfo"><ol role="directory">
+  <li><a href="#abstract"><span>1. </span>Descrierea proiectului</a></li>
+  <li><a href="#introduction"><span>2. </span>Introducere</a></li>
+  <li><a href="#structure"><span>3. </span>Structura</a><ol role="directory">
+    <li><a href="#TehnologiiUtilizate"><span>3.1 </span>Tehnologii utilizate</a></li>
+    <li><a href="#Pagini"><span>3.2 </span>Pagini</a>
+  </ol></li><li><a href="#functionalitate"><span>4. </span>Funcționalități</a></li>
+  <li><a href="#backend"><span>5. </span>Noțiuni speciale</a></li>
+  <li><a href="#user"><span>6. </span>Experiența utilizatorului</a></li>
+  <li><a href="#diagrame"><span>7. </span>Diagrame</a></li>
+  <li><a href="#autori"><span>8. </span>Autori</a></li>
+  <li><a href="#github"><span>9. </span>Link GitHub</a></li>
+  <li><a href="#resurse"><span>10. </span>Resurse</a></li>
+</ol>
+</div>
+<section id="abstract">
+  <h2><span>1. </span>Descrierea proiectului</h2>
+  <p>
+    CoCo (Consumer Confidence Visualizer) este o aplicație web care permite utilizatorilor să vizualizeze date privitoare la Consumer Confidence Index (CCI). Aplicația oferă posibilitatea de a vizualiza datele în 5 moduri diferite (harta, core chart, bar chart, line chart, tabel) și de a le exporta în formatele CSV, WebP si SVG.
+  </p>
+</section>
+<section id="introduction" role="doc-introduction">
+  <h2><span>2. </span>Introducere</h2>
+  <p>
+    Proiectul este un instrument Web de vizualizare flexibilă a datelor vizând Consumer Confidence în perioada 1960-2023. Statisticile și vizualizările generate – în 5 maniere (harta, core chart, bar chart, line chart, tabel) – pot fi exportate în formatele CSV, WebP si SVG.
+    Datele utilizate se pot găsi la adresa <a href="https://www.oecd-ilibrary.org/economics/consumer-confidence-index-cci/indicator/english_46434d78-en#:~:text=This%20consumer%20confidence%20indicator%20provides,unemployment%20and%20capability%20of%20savings.%22">https://www.oecd-ilibrary.org/economics/consumer-confidence-index-cci/indicator/english_46434d78-en#:~:text=This%20consumer%20confidence%20indicator%20provides,unemployment%20and%20capability%20of%20savings.%22</a>.
+  </p>
+</section>
+<section id="structure">
+  <h2><span>3. </span>Structură</h2>
+  <section id="Tehnologii utilizate">
+    <h3><span>3.1 </span>Tehnologii utilizate</h3>
+    <section id="html_css">
+      <h4><span>3.1.1 </span>HTML & CSS</h4>
+      <p>
+        Pentru a crea interfața aplicației am folosit HTML și CSS.
+      </p>
+    </section>
+    <section id="javascript">
+      <h4><span>3.1.2 </span>Javascript</h4>
+      <p>
+        JavaScript este utilizat pentru a crea diagrame (folosind Google Charts) și pentru a stabili conexiunea
+        și comunicarea între aplicație și baza de date.
+      </p>
+    </section>
+    <section id="sqlite">
+      <h4><span>3.1.3 </span>Sqlite</h4>
+      <p>
+        Pentru stocarea și extragerea datelor va fi utilizată o bază de date Sqlite.
+      </p>
+    </section>
+    <section id="HTTP">
+      <h4><span>3.1.3 </span>HTTP</h4>
+      <p>
+        Pentru crearea serverului
+      </p>
+    </section>
+  </section>
+</section>
+<section id="Pagini">
+  <h3><span>3.2 </span>Pagini</h3>
+  <section id="home">
+    <h4>Site-ul este compus din 4 pagini, iar navigarea între ele se poate face folosind bara de navigare.</h4>
+    <ul>
+      <li><a href="INDEX.html">Home (pagina principala a aplicatiei)</a></li>
+        <li><a href="Charts.html"> Charts (pagina ce permite vizualizarea datelor)</a></li>
+      <li><a href="Report.html">Report (raportul)</a></li>
+      <li><a href="Contact.html">Contact (pagină ce permite vizualizarea datelor de contact ale autorilor)</a></li>
+    </ul>
+  </section>
+</section>
+</section>
+<section id="functionalitate">
+  <h2><span>4. </span>Funcționalitate</h2>
+  <ol>
+    //TODO
+    <li>Maniere de vizualizare a datelor:</li>
+    <ul>
+      <li>Piechart: afișează numărul de accidente după anumite criterii, pentru minimum 2 state</li>
+      <li>Barchart: afișează numărul de accidente după anumite criterii, pentru un singur stat</li>
+      <li>Columnchart: afișează numărul de accidente după maxim 2-3 criterii</li>
+      <li>Donutchart: afișează numărul de accidente după anumite criterii, pentru minimum 2 state</li>
+      <li>Tabel: afișează orice fel de date, pentru oricâte state</li>
+      <li>Hartă: afișează numărul de accidente pentru fiecare stat</li>
+    </ul>
+  </ol>
+</section>
+
+<section id="backend">
+  <h2><span>5. </span>Arhitectura si procesul de construire al aplicatiei</h2>
+//TODO
+  <h3><span> 5.1 </span> Backend - API & Admin Panel</h3>
+  //TODO
+
+  <h3><span> 5.2 </span> Charts</h3>
+  Aplicatia permite vizualizarea a 5 tipuri de reprezentari grafice (realizate prin intermediul Google Charts):
+  <ol>
+    <li>Map</li>
+    <li>Table</li>
+    <li>Bar Chart</li>
+    <li>Core Chart</li>
+    <li>Line Chart</li>
+  </ol>
+  Utilizatorul va primi o lista adaptata inputului sau (luna, an, tara). In functie de input, se va afisa o lista de reprezentari grafice disponibile.
+  Reprezentarile grafice se randeaza si afiseaza in timp real (prin requesturi la API si parsarea datelor corespunzatoare). Orice modificari vor fi afisate fara a fi necesara
+  reincarcarea paginii.
+  In aceeasi maniera adaptiva, fiecare reprezentare grafica poate fi exportata. (i.e. un tabel va putea fi exportat doar in format csv). Formatele disponibile sunt:
+  <ol>
+    <li>CSV : se realizeaza prin manipularea informatiilor din tabel si inserarea de virgula</li>
+    <li>WEBP: se realizeaza prin capturarea canvas-ului pe care a fost "desenata" reprezentarea</li>
+    <li>SVG : se realizeaza prin serializarea si transformarea in xml a reprezentarii (vectorizare)</li>
+  </ol>
+  <h3><span> 5.3 </span> Manipularea inputului de la user</h3>
+  In cadrul aplicatiei, utilizatorul se poate decide asupra 3 campuri:
+  <ol>
+    <li> Tarile pentru care doreste sa vizualizeze informatiile</li>
+    <li> Anul si luna pentru care doreste sa vizualizeze informatiile</li>
+    <li> Modul de vizualizare (sugerat)</li>
+  </ol>
+
+  <h3><span> 5.4 </span> Frontend and design</h3>
+  Pentru realizarea designului aplicatiei, am folosit HTML5, CSS si Javascript. Designul este simplu si potrivit pentru functionalitatea aplicatiei.
+
+
+</section>
+<section id="user">
+  <h2><span>6. </span>Experiența utilizatorului</h2>
+  <ol>
+    <li>Site-ul are un design minimalist, ceea ce îl face ușor de folosit de catre un utilizator. </li>
+    <li>Structura site-ului este una simplă și intuitivă. Pe pagina de landing, utilizatorul are acces la toate funcționalitățile site-ului. </li>
+    <li>Utilizatorul poate naviga între paginile site-ului foarte ușor, folosind bara de navigare. </li>
+    <li>Pentru a vizualiza diagramele, tabelele și harta nu este nevoie de crearea unui cont. De asemenea, acestea pot fi salvate în diferite formate pentru ca utilizatorul să le poată distribui mai departe sau pentru a putea fi vizualizate mai târziu.</li>
+  </ol>
+</section>
+<section id="diagrame">
+  <h2><span>7. </span>Diagrame</h2>
+//TODO
+</section>
+<section id="autori">
+  <h2><span>8. </span>Autori</h2>
+  <ul>
+    <li>Olaru Ana</li>
+    <li>Olaru Andreea</li>
+    <li>Popa Liliana</li>
+  </ul>
+</section>
+<section id="github">
+  <h2><span>9. </span>GitHub Repository</h2>
+  <a href="https://github.com/LilianaPopa-stud/Proiect_TW">Click</a>
+</section>
+<section id="resurse">
+  <h2><span>10. </span>Resurse</h2>
+  <p class="issue">
+    <a href=https://developers.google.com/chart>Google Charts documentation</a>
+  </p>
+  <p class="issue">
+    <a href="https://profs.info.uaic.ro/~busaco/teach/courses/web/web-film.html">Cursuri Tehnologii Web</a>
+  </p>
+  <p class="issue">
+    <a href=https://w3c.github.io/scholarly-html/#semantics>Template Scholarly</a>
+  </p>
+</section>
+
+
+</body>
+</html>
