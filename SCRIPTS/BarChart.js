@@ -30,7 +30,7 @@ function drawBarChart() {
             fontSize: '25',
         },
         hAxis: {
-            title: 'Year',
+            title: 'Index: Long-term Average = 100',
             textStyle: {
                 color: "#4c2a85"
             },
@@ -39,7 +39,7 @@ function drawBarChart() {
             }
         },
         vAxis: {
-            title: 'Index: Long-term Average = 100',
+            title: 'Year',
             textStyle: {
                 color: "#4c2a85"
             },
