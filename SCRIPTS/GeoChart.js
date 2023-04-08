@@ -2,9 +2,17 @@
         'packages': ['geochart'],
     })
 ;
-google.charts.setOnLoadCallback(drawRegionsMap);
 
-function drawRegionsMap() {
+
+function drawGeoChart() {
+    var chartContainer = document.querySelector('.chart-container');
+
+
+    // Distrugeți harta existentă dacă există deja
+    if (chartElement) {
+        chartElement.parentNode.removeChild(chartElement);
+    }
+
     var data = google.visualization.arrayToDataTable([
         ['Country', 'Index'],
         ['Australia', 97.6],
@@ -52,7 +60,12 @@ function drawRegionsMap() {
         colorAxis: {colors: ['#e5c6ef', '#54053b']},
     };
 
-    var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+    var chartElement = document.createElement('div');
+    chartElement.classList.add('geo-chart');
+    chartContainer.appendChild(chartElement);
+
+    var chart = new google.visualization.GeoChart(chartElement);
 
     chart.draw(data, options);
 }

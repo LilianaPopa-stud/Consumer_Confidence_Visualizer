@@ -1,9 +1,9 @@
 google.charts.load('current', {
     'packages': ['corechart']
 });
-google.charts.setOnLoadCallback(drawVisualization);
 
-function drawVisualization() {
+function drawCoreChart() {
+    var chartContainer = document.querySelector('.chart-container');
     var data = google.visualization.arrayToDataTable([
         ['Month', 'Brazil', 'United States', 'Germany', 'Austria', 'Belgium','Greece','Average'],
         ['December', 102.02, 96.97, 97.27, 96.38, 98.22, 97.82,98.11],
@@ -73,7 +73,13 @@ function drawVisualization() {
             },
         }
     };
+    var chartElement = document.createElement('div');
+    chartElement.classList.add('chart-div');
+    chartContainer.appendChild(chartElement);
 
-    var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+    var chart = new google.visualization.ComboChart(chartElement);
+
     chart.draw(data, options);
+
+
 }

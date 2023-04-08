@@ -1,7 +1,7 @@
 google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
 
-function drawChart() {
+function drawLineChart() {
+    var chartContainer = document.querySelector('.chart-container');
   var data = google.visualization.arrayToDataTable([
     ['Month', 'Italy', 'Germany', 'France', 'Spain'],
     ['Apr-2020', 100.5, 95, 98.4, 97],
@@ -72,7 +72,12 @@ function drawChart() {
         curveType: 'function',
         legend: { position: 'bottom' }
   };
+    var chartElement = document.createElement('div');
+    chartElement.classList.add('linechart-div');
+    chartContainer.appendChild(chartElement);
 
-  var chart = new google.visualization.LineChart(document.getElementById('linechart-div'));
-  chart.draw(data, options);
+    var chart = new google.visualization.LineChart(chartElement);
+
+    chart.draw(data, options);
+
 }

@@ -1,7 +1,7 @@
 google.charts.load('current', {'packages':['table']});
-google.charts.setOnLoadCallback(drawTable);
 
 function drawTable() {
+    var chartContainer = document.querySelector('.chart-container');
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'Location');
     data.addColumn('number', 'Apr-2020');
@@ -43,7 +43,12 @@ function drawTable() {
         cssClassNames: cssClassNames
 
     };
-    var table = new google.visualization.Table(document.getElementById('table_div'));
+    var chartElement = document.createElement('div');
+    chartElement.classList.add('table-div');
+    chartContainer.appendChild(chartElement);
 
-    table.draw(data, options);
+    var chart = new google.visualization.Table(chartElement);
+
+    chart.draw(data, options);
+
 }

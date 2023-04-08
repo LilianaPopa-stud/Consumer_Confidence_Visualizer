@@ -1,9 +1,9 @@
 google.charts.load('current', {
     'packages': ['corechart'],
 });
-google.charts.setOnLoadCallback(drawBarChart);
 
 function drawBarChart() {
+    var chartContainer = document.querySelector('.chart-container');
     var data = google.visualization.arrayToDataTable([
         ['Year', 'OECD-Total'],
         ["Jan-2018", 101.1],
@@ -59,7 +59,12 @@ function drawBarChart() {
         width: 1000,
         height: 500
     };
+    var chartElement = document.createElement('div');
+    chartElement.classList.add('barchart-div');
+    chartContainer.appendChild(chartElement);
 
-    var chart = new google.visualization.LineChart(document.getElementById('barchart-div'));
+    var chart = new google.visualization.BarChart(chartElement);
+
     chart.draw(data, options);
+
 }

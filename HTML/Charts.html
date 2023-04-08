@@ -10,9 +10,6 @@
   <link rel="stylesheet" href="../CSS/charts.css">
   <link rel="stylesheet" href="../CSS/table.css">
   <script src="https://www.google.com/jsapi"></script>
-  <script >
-    google.load('visualization', '1', {packages: ['corechart'], callback : drawChart});
-  </script>
   <link rel="apple-touch-icon" sizes="180x180" href="../Favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../Favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../Favicon/favicon-16x16.png">
@@ -45,27 +42,25 @@
       consumers’ confidence towards the future economic situation, as a consequence of which they are less prone to save, and more inclined to spend money on major purchases in the next 12 months.
       Values below 100 indicate a pessimistic attitude towards future developments in the economy, possibly resulting in a tendency to save more and consume less.</p>
   </div>
-  <div id="chartdiv-geochart">
-    <div id="regions_div" style="width:900px;height:500px;"></div>
-  </div>
-  <div id="chartdiv-charts">
-    <div id="chart_div" style="width: 900px; height: 500px; "></div>
-  </div>
-  <div id="bar-charts">
-    <div id="barchart-div" style="width : 900px; height: 500px; "></div>
-  </div>
-  <div id="line-charts">
-    <div id="linechart-div" style="width : 900px; height: 500px; "></div>
-  </div>
-  <div id="table-charts">
-    <table id="table_div" style="width : 900px; height: 500px; "></table>
-  </div>
+    <div id="chart-select">
+        <label for="chart-type">Select chart type:</label>
+        <select name="chart-type" id="chart-type">
+        <option value="geochart">Geochart</option>
+        <option value="corechart">Corechart</option>
+        <option value="barchart">Bar chart</option>
+        <option value="linechart">Line chart</option>
+        <option value="table">Table</option>
+        </select>
+        <button onclick="drawChart()">Draw Chart</button>
+</div>
+    <div class="chart-container"></div>
 </div>
 <script  src="../SCRIPTS/GeoChart.js"></script>
 <script  src="../SCRIPTS/CoreChart.js"></script>
 <script  src="../SCRIPTS/BarChart.js"></script>
 <script  src="../SCRIPTS/LineChart.js"></script>
 <script  src="../SCRIPTS/Table.js"></script>
+<script  src="../SCRIPTS/ChartSelect.js"></script>
 <footer>
   <p>&copy; 2023 CoCo - Consumer Confidence Visualizer</p>
 </footer>
