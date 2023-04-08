@@ -108,9 +108,22 @@
 
 <section id="backend">
   <h2><span>5. </span>Arhitectura si procesul de construire al aplicatiei</h2>
-//TODO
+    <p>
+      Aplicația CoCo este dezvoltată pe baza unei arhitecturi tipice client-server, unde clientul reprezintă partea de frontend a aplicației,
+      iar serverul reprezintă partea de backend. Frontend-ul este responsabil pentru afișarea interfeței utilizatorului și interacțiunea cu utilizatorii,
+      în timp ce backend-ul gestionează logica de afișare a datelor, procesarea datelor și comunicarea cu baza de date.
   <h3><span> 5.1 </span> Backend - API & Admin Panel</h3>
-  //TODO
+  Backend-ul aplicației CoCo va fi dezvoltat folosind PHP, un limbaj de scripting popular pentru dezvoltarea aplicațiilor web.
+  PHP oferă funcții și librării potrivite pentru a comunica cu baza de date și pentru a procesa datele primite de la frontend. Backend-u este responsabil pentru următoarele funcționalități:
+    <ol>
+        <li>Interacțiunea cu baza de date: Backend-ul trebuie să comunice cu baza de date pentru a obține datele privind Consumer Confidence Index și pentru a efectua operațiile de inserare, actualizare sau ștergere a datelor în baza de date</li>
+        <li>Gestionarea cererilor de la frontend: Backend-ul trebuie să primească și să răspundă la cererile primite de la frontend,
+          fie că este vorba de cereri pentru afișarea datelor, filtrarea sau sortarea datelor, sau cereri pentru exportul datelor în formatele CSV, WebP sau SVG.</li>
+        <li>Generarea datelor necesare pentru afișarea paginilor:  Backend-ul trebuie să proceseze datele primite de la baza de date și să le pregătească pentru a fi afișate în frontend. Acest lucru poate include transformarea datelor în formatul potrivit pentru diverse tipuri de grafice sau pentru a fi afișate într-un tabel, precum și aplicarea de filtre sau sortări asupra datelor.</li>
+        <li>Autentificarea administratorilor</li>
+        <li>Validarea datelor: Backend-ul trebuie să valideze datele primite de la frontend pentru a se asigura că acestea sunt corecte și complete,
+          înainte de a le procesa sau de a le stoca în baza de date. Validarea datelor poate include verificarea formatului datelor,
+          a limitelor de valori acceptate sau a oricăror reguli specifice legate de Consumer Confidence Index.</li>
 
   <h3><span> 5.2 </span> Charts</h3>
   Aplicatia permite vizualizarea a 5 tipuri de reprezentari grafice (realizate prin intermediul Google Charts):
