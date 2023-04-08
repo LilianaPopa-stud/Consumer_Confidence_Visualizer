@@ -44,7 +44,7 @@ function drawTable() {
 
     };
     var chartElement = document.createElement('div');
-    chartElement.classList.add('table-div');
+    chartElement.classList.add('table_div');
     chartContainer.appendChild(chartElement);
 
     var chart = new google.visualization.Table(chartElement);
