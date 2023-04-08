@@ -1,47 +1,74 @@
 .cssHeaderRow {
-    background-color: #210321;
-    margin-top: 1000px;
-  }
-  
-  .cssTableRow:nth-child(1) {
-    color: #a80874;
-  }
-  .cssTableRow:nth-child(2) {
-    color: #C490D1; 
-  }
-  .cssTableRow:nth-child(3) {
-    color: #631A86; 
-  }
-  .cssTableRow:nth-child(4) {
-    color: #a3c3d9; 
-  }
-  .cssSelectedTableRow {
-    font-size: 20px;
-    font-weight:bold;
-  }
-  .cssHoverTableRow {
-    background: #c3cbd2;
-  }
-  .cssHeaderCell {
-    color: #FFFFFF;
-    font-size: 16px;
-    padding: 10px !important;
-    border: solid 1px #464749;
-  }
-  .cssTableCell {
-    font-size: 16px;
-    padding: 10px !important;
-    border: solid 1px #464749;
-  }
+  background-color: #210321;
+  margin-top: 1000px;
+}
+
+.cssHoverTableRow:nth-child(1) {
+  color: #d1008c;
+  font-weight: bold;
+}
+.cssHoverTableRow:nth-child(2) {
+  color: #de59ff; 
+  font-weight: bold;
+}
+.cssHoverTableRow:nth-child(3) {
+  color: #631A86; 
+  font-weight: bold;
+}
+.cssHoverTableRow:nth-child(4) {
+  color: #5688a9; 
+  font-weight: bold;
+}
+.cssHoverTableRow:nth-child(5) {
+  color: #f06c6f; 
+  font-weight: bold;
+}
+.cssHoverTableRow:nth-child(6) {
+  color: #ef0054; 
+  font-weight: bold;
+}
+.cssHoverTableRow:nth-child(7) {
+  color: #ac0540; 
+  font-weight: bold;
+}
+.cssHoverTableRow:nth-child(8) {
+  color: #7f348e; 
+  font-weight: bold;
+}
+.cssHoverTableRow:nth-child(9) {
+  color: #4100c3; 
+  font-weight: bold;
+}
+.cssHoverTableRow:nth-child(10) {
+  color: #ff1bec; 
+  font-weight: bold;
+}
+.cssSelectedTableRow {
+  font-size: 20px;
+  font-weight:bold;
+}
+.cssHoverTableRow {
+  background: #e7e7e7;
+}
+.cssHeaderCell {
+  color: #FFFFFF;
+  font-size: 16px;
+  padding: 10px !important;
+  border: solid 1px #464749;
+}
+.cssTableCell {
+  font-size: 16px;
+  padding: 10px !important;
+  border: solid 1px #464749;
+}
 #table-charts {
-  width: 900px;
-  margin: 0 auto;
+width: 900px;
+margin: 0 auto;
 }
 
 #table_div {
-  width: 100%;
-  height: 500px;
-  margin : 150px 0 auto;
+width: 100%;
+height: 500px;
+margin : 150px 0 auto;
 }
-
 
