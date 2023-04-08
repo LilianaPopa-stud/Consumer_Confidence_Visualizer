@@ -44,7 +44,6 @@ function drawRegionsMap() {
     ]);
 
     var options = {
-        title: 'CCI March 2023',
         backgroundColor: 'transparent',
         chartArea: {
             width: '100%',
