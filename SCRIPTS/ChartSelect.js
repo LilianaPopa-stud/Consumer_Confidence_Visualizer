@@ -2,6 +2,8 @@ function drawChart() {
     var chartContainer = document.querySelector('.chart-container');
     chartContainer.innerHTML = "";
     var chartType = document.getElementById("chart-type").value;
+    document.getElementById("myChart").scrollIntoView({ behavior: "smooth" });
+
     switch(chartType) {
         case "geochart":
             drawGeoChart();
