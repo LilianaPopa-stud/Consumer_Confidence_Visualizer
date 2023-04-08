@@ -2,18 +2,19 @@ google.charts.load('current', {'packages':['corechart']});
 
 function drawLineChart() {
     var chartContainer = document.querySelector('.chart-container');
-  var data = google.visualization.arrayToDataTable([
-    ['Month', 'Italy', 'Germany', 'France', 'Spain'],
-    ['Apr-2020', 100.5, 95, 98.4, 97],
-    ['May-2020', 99, 103, 97, 101.6],
-    ['Jun-2020', 98.4, 96, 93, 101.4],
-    ['Apr-2021', 100.5, 95.3, 97.8, 100],
-    ['May-2021', 97, 96, 94, 102],
-    ['Jun-2021', 98.1, 95, 95.9, 102],
-    ['Apr-2022', 98.5, 96.8, 96.5, 101],
-    ['May-2022', 95, 98, 97, 100],
-    ['Jun-2022', 96.5, 96.5, 96.5, 99.5]
-  ]);
+    var data = google.visualization.arrayToDataTable([
+        ['Month', 'Italy', 'Ireland', 'France', 'Spain', 'Finland', 'Belgium'],
+        ['Apr-2020', 100.5, 95, 98.4, 97, 94, 102.8],
+        ['May-2020', 99, 103, 97, 101.6, 98.4, 101],
+        ['Jun-2020', 98.4, 96, 93, 101.4, 99.3, 102],
+        ['Apr-2021', 100.5, 95.3, 97.8, 100, 95, 102],
+        ['May-2021', 97, 96, 94, 102, 96, 100.4],
+        ['Jun-2021', 98.1, 95, 95.9, 102, 102.8, 99.9],
+        ['Apr-2022', 98.5, 96.8, 96.5, 101, 101.2, 99.5],
+        ['May-2022', 95, 98, 97, 100, 102.6 , 97],
+        ['Jun-2022', 96.8, 95.5, 97.9, 99.5, 100.5, 96.5]
+      ]);
+    
 
   var options = {
     title: 'CCI between 2020 - 2022',
@@ -62,6 +63,13 @@ function drawLineChart() {
             3: {
                 color: "#a3c3d9"
             },
+            4: {
+                color: "#f06c6f"
+            },
+            5: {
+                color: "#ef0054"
+            }
+
            
         },
         color: "#C490D1",
@@ -69,7 +77,7 @@ function drawLineChart() {
         legendTextStyle: {color: 'black', fontSize: 12, fontName: 'Oxygen'},
         width: 1000,
         height: 500,
-        curveType: 'function'
+        curveType: 'function',
   };
     var chartElement = document.createElement('div');
     chartElement.classList.add('linechart-div');
@@ -80,3 +88,4 @@ function drawLineChart() {
     chart.draw(data, options);
 
 }
+
