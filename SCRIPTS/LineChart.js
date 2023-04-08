@@ -69,8 +69,7 @@ function drawLineChart() {
         legendTextStyle: {color: 'black', fontSize: 12, fontName: 'Oxygen'},
         width: 1000,
         height: 500,
-        curveType: 'function',
-        legend: { position: 'bottom' }
+        curveType: 'function'
   };
     var chartElement = document.createElement('div');
     chartElement.classList.add('linechart-div');
