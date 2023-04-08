@@ -50,6 +50,7 @@
     background-color: #fff;
     color: #555;
 }
+
 #chart-select {
     display: flex;
     flex-direction: row;
@@ -57,9 +58,11 @@
     align-items: center;
     margin: 0 auto;
     max-width: 600px;
+    padding: 20px 0;
 }
 
-#chart-select label {
+#chart-select label, #chart-select select {
+    display: inline-block;
     margin-right: 10px;
 }
 
