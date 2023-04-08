@@ -1,14 +1,10 @@
 #chartdiv-geochart {
-    width:100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    width: 900px;
+    margin: 0 auto;
 }
+
 #regions_div {
-    width:900px;
-    height:800px;
-    padding-top:75px;
-    padding-bottom:75px;
-    margin:0 auto;
+    width: 100%;
+    height: 500px;
+    margin : 0 auto;
 }
