@@ -1,0 +1,51 @@
+body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* Stilizare pentru container */
+.container {
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+/* Stilizare pentru formular */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Stilizare pentru eticheta formularului */
+label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Stilizare pentru inputul formularului */
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+/* Stilizare pentru butonul de submit */
+input[type="button"] {
+    background-color: #4c2a85;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.container {
+    justify-content: center;
+}
