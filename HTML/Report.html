@@ -77,12 +77,13 @@
 <section id="Pagini">
   <h3><span>3.2 </span>Pagini</h3>
   <section id="home">
-    <h4>Site-ul este compus din 4 pagini, iar navigarea între ele se poate face folosind bara de navigare.</h4>
+    <h4>Site-ul este compus din 5 pagini, iar navigarea între ele se poate face folosind bara de navigare.</h4>
     <ul>
       <li><a href="INDEX.html">Home (pagina principala a aplicatiei)</a></li>
         <li><a href="Charts.html"> Charts (pagina ce permite vizualizarea datelor)</a></li>
       <li><a href="Report.html">Report (raportul)</a></li>
       <li><a href="Contact.html">Contact (pagină ce permite vizualizarea datelor de contact ale autorilor)</a></li>
+      <li><a href="AdminLogIn.html">Admin Panel (permite administratorilor sa se autentifice pentru a face modificari in baza de date)</a></li>
     </ul>
   </section>
 </section>
@@ -93,12 +94,11 @@
     //TODO
     <li>Maniere de vizualizare a datelor:</li>
     <ul>
-      <li>Piechart: afișează numărul de accidente după anumite criterii, pentru minimum 2 state</li>
-      <li>Barchart: afișează numărul de accidente după anumite criterii, pentru un singur stat</li>
-      <li>Columnchart: afișează numărul de accidente după maxim 2-3 criterii</li>
-      <li>Donutchart: afișează numărul de accidente după anumite criterii, pentru minimum 2 state</li>
-      <li>Tabel: afișează orice fel de date, pentru oricâte state</li>
-      <li>Hartă: afișează numărul de accidente pentru fiecare stat</li>
+        <li>Combo chart: afiseaza CCI-ul pentru o selecție de țări și un interval de timp dat (prin comparație)</li>
+      <li>Bar chart: Afisează CCI-ul pentru o singură țară, în intervalul de timp cerut </li>
+      <li>Line chart: afiseaza CCI-ul pentru o selecție de țări in intervalul de timp dorit (luni, ani) </li>
+      <li>Tabel: afiseaza CCI-ul pentru oricate țări pentru intervalul de timp dorit </li>
+      <li>Hartă: afișează CCI-ul pentru fiecare țară pentru o anumită dată (an,luna) </li>
     </ul>
   </ol>
 </section>
@@ -115,7 +115,7 @@
     <li>Map</li>
     <li>Table</li>
     <li>Bar Chart</li>
-    <li>Core Chart</li>
+    <li>Combo Chart</li>
     <li>Line Chart</li>
   </ol>
   Utilizatorul va primi o lista adaptata inputului sau (luna, an, tara). In functie de input, se va afisa o lista de reprezentari grafice disponibile.
