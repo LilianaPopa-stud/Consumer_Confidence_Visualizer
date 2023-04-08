@@ -14,7 +14,7 @@ function drawTable() {
     data.addColumn('number', 'May-2022');
     data.addColumn('number', 'Jun-2022');
 
-    data.addRows([
+       data.addRows([
         ['Italy',	100.5, 99, 98.4,
         100.5, 97, 98.1,
         98.5, 95, 96.5,],
@@ -27,6 +27,24 @@ function drawTable() {
         ['Spain',97, 101.6, 101.4, 
         100, 102, 102,
         101, 100, 99.5],
+        ['Netherlands',	95, 103, 96,
+        95.3, 96, 95,
+        96.8, 98, 96.5],
+        ['Belgium',	98.4, 97, 93,
+        97.8, 94, 95.9,
+        96.5, 97, 96.5],
+        ['Austria',97, 101.6, 101.4,
+        100, 102, 102,
+        101, 100, 99.5],
+        ['Portugal',	100.5, 99, 98.4,
+        100.5, 97, 98.1,
+        98.5, 95, 96.5,],
+        ['Sweden',	95, 103, 96,
+        95.3, 96, 95,
+        96.8, 98, 96.5],
+        ['Norway',	98.4, 97, 93,
+        97.8, 94, 95.9,
+        96.5, 97, 96.5]      
     ]);
     var cssClassNames = {
         'headerRow': 'cssHeaderRow',
