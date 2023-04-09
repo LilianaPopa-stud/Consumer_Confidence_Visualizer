@@ -71,11 +71,15 @@ function drawCoreChart() {
             5: {
                 color: "#e5ae7d"
             },
-        }
+        },
+        legend: { position: 'bottom'},
+        height : 400,
+
     };
     var chartElement = document.createElement('div');
     chartElement.classList.add('chart-div');
     chartContainer.appendChild(chartElement);
+
 
     var chart = new google.visualization.ComboChart(chartElement);
 

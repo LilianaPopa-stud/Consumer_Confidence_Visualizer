@@ -75,9 +75,10 @@ function drawLineChart() {
         color: "#C490D1",
         backgroundColor: 'transparent',
         legendTextStyle: {color: 'black', fontSize: 12, fontName: 'Oxygen'},
-        width: 1000,
-        height: 500,
+        legend : {position: 'bottom'},
         curveType: 'function',
+        height: 500,
+        
   };
     var chartElement = document.createElement('div');
     chartElement.classList.add('linechart-div');

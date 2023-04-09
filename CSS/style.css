@@ -132,7 +132,7 @@ footer {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 20px;
+    padding: 15px;
     position: fixed;
     /* set position of footer to fixed */
     bottom: 0;
@@ -215,7 +215,7 @@ footer p {
 
 
 
-/* home + contact */
+/* responsive home + contact */
 
 @media all and (max-width: 400px) {
     .emails li {
@@ -241,7 +241,14 @@ footer p {
         font-size: 8px;
     }
 
- 
+    #cci-description {
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+    
+    footer {
+        padding: 10px;
+    }
 }
 
 
@@ -286,7 +293,6 @@ footer p {
     header h1 {
         font-size: 10px;
     }
-
 }
 
 
@@ -385,5 +391,13 @@ footer p {
     .features li span {
         font-size: 20px;
     }
+   
+    #cci-description {
+        margin-left: 0%;
+        margin-right: 0%;
+    }
 
+    footer {
+        padding: 10px;
+    }
 }

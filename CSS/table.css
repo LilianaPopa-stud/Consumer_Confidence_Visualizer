@@ -72,3 +72,40 @@ height: 500px;
 margin : 150px 0 auto;
 }
 
+
+
+
+/* responsive table */
+@media all and (max-width: 400px) {
+  .cssHeaderCell {
+    font-size: 5px;
+  }
+  .cssTableCell {
+    font-size: 5px;
+  }
+  #table-charts {
+    width: 50%;
+  }
+  #table_div {
+    width: 50%;
+    height:100px;
+    margin : 150px 0 auto;
+  }
+}
+
+@media all and (max-width: 900px) {
+  .cssHeaderCell {
+    font-size: 5px;
+  }
+  .cssTableCell {
+    font-size: 5px;
+  }
+  #table-charts {
+    width: 50%;
+  }
+  #table_div {
+    width: 50%;
+    height:100px;
+    margin : 150px 0 auto;
+  }
+}

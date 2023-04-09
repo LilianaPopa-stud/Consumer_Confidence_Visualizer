@@ -56,8 +56,8 @@ function drawBarChart() {
         color: "#C490D1",
         backgroundColor: 'transparent',
         legendTextStyle: {color: 'black', fontSize: 12, fontName: 'Oxygen'},
-        width: 1000,
-        height: 500
+        legend : {position: 'bottom'},
+        height: 400,
     };
     var chartElement = document.createElement('div');
     chartElement.classList.add('barchart-div');
