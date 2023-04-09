@@ -2,8 +2,6 @@
 <html lang="ro" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="utf-8">
-  <title>(CoCo) Consumer Confidence Visualizer</title>
-  <link rel="stylesheet" type="text/css" href="../CSS/report.css">
 
 </head>
 <body prefix="schema: https://schema.org">
