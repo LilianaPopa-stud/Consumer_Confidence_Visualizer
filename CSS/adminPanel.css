@@ -121,6 +121,7 @@ label {
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-direction: column;
     }
 
     form {
@@ -137,12 +138,12 @@ label {
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 4px;
-        font-size: 16px;
+        font-size: 20px;
     }
 
     select {
         padding: 10px;
-        font-size: 20px;
+        font-size: 15px;
         border: 1px solid #ccc;
         border-radius: 4px;
         background-color: white;
@@ -159,10 +160,13 @@ label {
 
     label {
         margin-bottom: 10px;
-        font-size: 20px;
+        font-size: 18px;
     }
-    
 
+    .content select {
+        display: block;
+        margin-bottom: 10px;
+    }
 
 
 }
