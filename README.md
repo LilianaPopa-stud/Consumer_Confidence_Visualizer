@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ro" xml:lang="ro">
+<html lang="ro" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="utf-8">
 
@@ -121,7 +121,7 @@
         <li>Gestionarea cererilor de la frontend: Backend-ul trebuie să primească și să răspundă la cererile primite de la frontend,
           fie că este vorba de cereri pentru afișarea datelor, filtrarea sau sortarea datelor, sau cereri pentru exportul datelor în formatele CSV, WebP sau SVG.</li>
         <li>Generarea datelor necesare pentru afișarea paginilor:  Backend-ul trebuie să proceseze datele primite de la baza de date și să le pregătească pentru a fi afișate în frontend. Acest lucru poate include transformarea datelor în formatul potrivit pentru diverse tipuri de grafice sau pentru a fi afișate într-un tabel, precum și aplicarea de filtre sau sortări asupra datelor.</li>
-        <li>Autentificarea administratorilor
+         <li>Autentificarea administratorilor
           <ul>
             <li>Administratorul apasa pe campurile unde trebuie introduse datele – Sistemul permite administratorului introducerea de text in campurile respective.</li>
             <li>Administratorul apasa pe butonul de logare, dar nu a completat toate campurile necesare – Sistemul nu permite autentificarea si atentioneaza administratorul.</li> 
@@ -130,10 +130,8 @@
             <li>Administratorul apasa pe butonul de logare, iar toate campurile sunt completate corect – Sistemul permite logarea cu succes a utilizatorului pe site.
           </ul>
         </li>
-
-        <li>Validarea datelor: Backend-ul trebuie să valideze datele primite de la frontend pentru a se asigura că acestea sunt corecte și complete,
-          înainte de a le procesa sau de a le stoca în baza de date. Validarea datelor poate include verificarea formatului datelor,
-          a limitelor de valori acceptate sau a oricăror reguli specifice legate de Consumer Confidence Index.</li>
+        <li>Validarea datelor: Backend-ul trebuie să valideze datele primite de la frontend pentru a se asigura că acestea sunt corecte și complete,înainte de a le procesa sau de a le stoca în baza de date. Validarea datelor poate include verificarea formatului datelor,
+        a limitelor de valori acceptate sau a oricăror reguli specifice legate de Consumer Confidence Index.</li>
   </ol>
   </section>
   <section id="Charts">
