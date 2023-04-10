@@ -24,9 +24,14 @@
   <li><a href="#introduction"><span>2. </span>Introducere</a></li>
   <li><a href="#structure"><span>3. </span>Structura</a><ol role="directory">
     <li><a href="#TehnologiiUtilizate"><span>3.1 </span>Tehnologii utilizate</a></li>
-    <li><a href="#Pagini"><span>3.2 </span>Pagini</a>
-  </ol></li><li><a href="#functionalitate"><span>4. </span>Funcționalități</a></li>
-  <li><a href="#backend"><span>5. </span>Noțiuni speciale</a></li>
+    <li><a href="#Pagini"><span>3.2 </span>Pagini</a></li>
+  </ol></li><li><a href="#functionalitate"><span>4. </span>Funcționalitate</a></li>
+  <li><a href="#arhitectura"><span>5. </span>Arhitectura și procesul de construire al aplicației</a><ol role="directory">
+    <li><a href="#Backend"><span>5.1 </span> Backend - API & Admin Panel</a></li>
+    <li><a href="#Charts"><span>5.2 </span>Charts</a></li>
+    <li><a href="#Manipularea"><span>5.2 </span>Manipularea inputului de la user</a></li>
+    <li><a href="#Frontend"><span>5.2 </span>Frontend și design</a></li>
+  </ol>
   <li><a href="#user"><span>6. </span>Experiența utilizatorului</a></li>
   <li><a href="#diagrame"><span>7. </span>Diagrame</a></li>
   <li><a href="#autori"><span>8. </span>Autori</a></li>
@@ -108,12 +113,13 @@
   </ol>
 </section>
 
-<section id="backend">
+<section id="arhitectura">
   <h2><span>5. </span>Arhitectura si procesul de construire al aplicatiei</h2>
     <p>
       Aplicația CoCo este dezvoltată pe baza unei arhitecturi tipice client-server, unde clientul reprezintă partea de frontend a aplicației,
       iar serverul reprezintă partea de backend. Frontend-ul este responsabil pentru afișarea interfeței utilizatorului și interacțiunea cu utilizatorii,
       în timp ce backend-ul gestionează logica de afișare a datelor, procesarea datelor și comunicarea cu baza de date.
+  <section id="Backend">    
   <h3><span> 5.1 </span> Backend - API & Admin Panel</h3>
   Backend-ul aplicației CoCo va fi dezvoltat folosind PHP, un limbaj de scripting popular pentru dezvoltarea aplicațiilor web.
   PHP oferă funcții și librării potrivite pentru a comunica cu baza de date și pentru a procesa datele primite de la frontend. Backend-u este responsabil pentru următoarele funcționalități:
@@ -136,6 +142,8 @@
           înainte de a le procesa sau de a le stoca în baza de date. Validarea datelor poate include verificarea formatului datelor,
           a limitelor de valori acceptate sau a oricăror reguli specifice legate de Consumer Confidence Index.</li>
   </ol>
+  </section>
+  <section id="Charts">
   <h3><span> 5.2 </span> Charts</h3>
   Aplicatia permite vizualizarea a 5 tipuri de reprezentari grafice (realizate prin intermediul Google Charts):
   <ol>
@@ -154,6 +162,8 @@
     <li>WEBP: se realizeaza prin capturarea canvas-ului pe care a fost "desenata" reprezentarea</li>
     <li>SVG : se realizeaza prin serializarea si transformarea in xml a reprezentarii (vectorizare)</li>
   </ol>
+  </section>
+  <section id="Manipularea">
   <h3><span> 5.3 </span> Manipularea inputului de la user</h3>
   In cadrul aplicatiei, utilizatorul se poate decide asupra 3 campuri:
   <ol>
@@ -161,11 +171,13 @@
     <li> Anul si luna pentru care doreste sa vizualizeze informatiile</li>
     <li> Modul de vizualizare (sugerat)</li>
   </ol>
+  </section>
 
-  <h3><span> 5.4 </span> Frontend and design</h3>
+  <section id="Frontend">
+  <h3><span> 5.4 </span> Frontend si design</h3>
   Pentru realizarea designului aplicatiei, am folosit HTML5, CSS si Javascript. S-a recurs la un design ce faciliteaza utilizarea cu usurinta de catre toate persoanele interesate de site. 
   Este de datoria dezvoltatorilor sa respecte niste specificatii stabilite de comun acord cu privire la paleta de culori, dimensiune font, dimensiuni imagini, spatiere etc. 
-
+  </section>
 
 </section>
 <section id="user">
