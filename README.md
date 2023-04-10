@@ -2,12 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ro" xml:lang="ro">
 <head>
   <meta charset="utf-8">
-  <title>(CoCo) Consumer Confidence Visualizer</title>
-  <link rel="stylesheet" type="text/css" href="../CSS/report.css">
-  <link rel="apple-touch-icon" sizes="180x180" href="../Favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../Favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../Favicon/favicon-16x16.png">
-  <link rel="manifest" href="../Favicon/site.webmanifest">
 
 </head>
 <body prefix="schema: https://schema.org">
