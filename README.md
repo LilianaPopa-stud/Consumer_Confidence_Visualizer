@@ -7,7 +7,6 @@
 <body prefix="schema: https://schema.org">
 <header>
   <div class="banner">
-    <img src="../img/scholarly-html.svg" alt="Scholarly logo" style="width:227px;height:50px;">
     <div class="status">CoCo project</div>
   </div>
   <h1>Consumer Confidence Visualizer</h1>
