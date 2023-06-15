@@ -6,6 +6,12 @@ const Sequelize = require('sequelize')
 const db = require('../connectionDatabase.config')
 const {STRING} = require("sequelize");
 const cciSchema = {
+    id: {
+        type: STRING,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false
+    },
     location: {
         type: STRING,
         allowNull: true

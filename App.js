@@ -4,6 +4,8 @@ const hostname = '127.0.0.1';
 const port = process.env.PORT || 3000;
 const url = require('url');
 const fs = require('fs');
+const CciService = require('./server/services/cciService');
+
 
 
 const server = http.createServer((req, res) => {
@@ -91,6 +93,16 @@ const server = http.createServer((req, res) => {
         });
     }
     else{
+        async function displayAllData() {
+            try {
+                const cciData = await CciService.getAll();
+                console.log(cciData);
+            } catch (error) {
+                console.error('Error retrieving data:', error);
+            }
+        }
+
+        displayAllData().then(r => console.log(r));
         res.statusCode = 404;
         res.end('Not found');
     }
