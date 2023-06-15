@@ -32,7 +32,7 @@ const server = http.createServer(async (req, res) => {
     } else if(path === 'report.css'){
         directCSS('./CSS/report.css')
     }  else if(path === 'style.css'){
-        directCSS('./CSS/style.css')
+        directCSS('../CSS/style.css')
     }  else if(path === 'table.css'){
         directCSS('./CSS/table.css')
     } else if(path == 'BarChart.js') {
@@ -76,7 +76,7 @@ function directCSS(path, res) {
 }
 
 function directJS(path, res) {
-    fs.readFile(path, function (err, data)) {
+    fs.readFile(path, function (err, data) {
         if(err){
             res.statusCode = 404;
             res.end('Not found');
