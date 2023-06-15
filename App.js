@@ -1,11 +1,13 @@
 const http = require('http');
 const hostname = '127.0.0.1';
-const port = 3000;
+const port = 6789;
 const url = require('url');
 const fs = require('fs');
 
+
 const server = http.createServer(async (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
+
     res.statusCode = 200;
     const reqUrl = url.parse(req.url);
     const path = reqUrl.pathname;
@@ -49,6 +51,7 @@ const server = http.createServer(async (req, res) => {
         directJS('.SCRIPTS/Table.js')
     }
 
+
 });
 function directHTML(path, res){
     fs.readFile(path, function (err, data) {
@@ -76,7 +79,7 @@ function directCSS(path, res) {
 }
 
 function directJS(path, res) {
-    fs.readFile(path, function (err, data)) {
+    fs.readFile(path, function (err, data) {
         if(err){
             res.statusCode = 404;
             res.end('Not found');
