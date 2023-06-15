@@ -9,6 +9,12 @@ const CCI = CciModel(db, Sequelizer);
 
 module.exports = class cciService{
     static async getAll(){
-        return await CCI.findAll();
+        try{
+            return await CCI.findAll();
+        }
+        catch (e) {
+            console.log(e);
+        }
     }
+
 }
