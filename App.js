@@ -7,8 +7,8 @@ const fs = require('fs');
 
 const server = http.createServer((req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-
     res.statusCode = 200;
+
     const reqUrl = url.parse(req.url);
     const path = reqUrl.pathname;
     if(path === '/' || path === '/INDEX.html'){
