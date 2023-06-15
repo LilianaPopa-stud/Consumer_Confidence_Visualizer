@@ -92,7 +92,7 @@ const server = http.createServer((req, res) => {
             }
         });
     }
-    else{
+    else if (path === '/test') {
         async function displayAllData() {
             try {
                 const cciData = await CciService.getAll();
@@ -103,6 +103,10 @@ const server = http.createServer((req, res) => {
         }
 
         displayAllData().then(r => console.log(r));
+        res.statusCode = 404;
+        res.end('Data displayed in console');
+    }
+    else{
         res.statusCode = 404;
         res.end('Not found');
     }
