@@ -1,18 +1,20 @@
 const http = require('http');
 const hostname = '127.0.0.1';
-const port = 6789;
+const port = process.env.PORT || 3000;
 const url = require('url');
 const fs = require('fs');
 
 
-const server = http.createServer(async (req, res) => {
+const server = http.createServer((req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
 
     res.statusCode = 200;
     const reqUrl = url.parse(req.url);
     const path = reqUrl.pathname;
-    if(path === '/'){
-        directHTML('./HTML/INDEX.html', res);
+    if(path === '/' || path === '/INDEX.html'){
+        directHTML('./HTML/INDEX.html', res);}
+    else if(path === '/Favicon/site.webmanifest'){
+        directManifest('./Favicon/site.webmanifest', res);
     } else if (path === '/Report.html'){
         directHTML('./HTML/Report.html', res)
     } else if (path === '/Charts.html') {
@@ -23,42 +25,94 @@ const server = http.createServer(async (req, res) => {
         directHTML('./HTML/AdminLogIn.html', res)
     } else if (path === '/AdminPanel.html') {
         directHTML('./HTML/AdminPanel.html', res)
-    } else if(path === '/admin.css'){
-       directCSS('./CSS/admin.css')
-    } else if(path === 'adminPanel.css'){
-        directCSS('./CSS/adminPanel.css')
-    }  else if(path === 'charts.css'){
-        directCSS('./CSS/charts.css')
-    }  else if(path === 'map.css'){
-        directCSS('./CSS/map.css')
-    } else if(path === 'report.css'){
-        directCSS('./CSS/report.css')
-    }  else if(path === 'style.css'){
-        directCSS('./CSS/style.css')
-    }  else if(path === 'table.css'){
-        directCSS('./CSS/table.css')
-    } else if(path == 'BarChart.js') {
-        directJS('.SCRIPTS/BarChart.js')
-    } else if(path == 'ChartSelect.js') {
-        directJS('.SCRIPTS/ChartSelect.js')
-    } else if(path == 'CoreChart.js') {
-        directJS('.SCRIPTS/CoreChart.js')
-    } else if(path == 'GeoChart.js') {
-        directJS('.SCRIPTS/GeoChart.js')
-    } else if(path == 'LineChart.js') {
-        directJS('.SCRIPTS/LineChart.js')
-    } else if(path == 'Table.js') {
-        directJS('.SCRIPTS/Table.js')
+    } else if(path === '/CSS/admin.css'){
+       directCSS('./CSS/admin.css',res)
+    } else if(path === '/CSS/adminPanel.css'){
+        directCSS('./CSS/adminPanel.css',res)
+    }  else if(path === '/CSS/charts.css'){
+        directCSS('./CSS/charts.css',res)
+    }  else if(path === '/CSS/map.css'){
+        directCSS('./CSS/map.css',res)
+    } else if(path === '/CSS/report.css'){
+        directCSS('./CSS/report.css',res)
+    }  else if(path === '/CSS/style.css'){
+        directCSS('./CSS/style.css',res)
+    }  else if(path === '/CSS/table.css'){
+        directCSS('./CSS/table.css',res)
+    } else if(path === '/SCRIPTS/BarChart.js') {
+        directJS('./SCRIPTS/BarChart.js',res)
+    } else if(path === '/SCRIPTS/ChartSelect.js') {
+        directJS('./SCRIPTS/ChartSelect.js',res)
+    } else if(path === '/SCRIPTS/CoreChart.js') {
+        directJS('./SCRIPTS/CoreChart.js',res)
+    } else if(path === '/SCRIPTS/GeoChart.js') {
+        directJS('./SCRIPTS/GeoChart.js',res)
+    } else if(path === '/SCRIPTS/LineChart.js') {
+        directJS('./SCRIPTS/LineChart.js',res)
+    } else if(path === '/SCRIPTS/Table.js') {
+        directJS('./SCRIPTS/Table.js',res)
+    }
+    else if(path === '/Favicon/favicon-16x16.png'){
+        directImage('./Favicon/favicon-16x16.png', res);
+    }
+    else if (path === '/Favicon/favicon-32x32.png') {
+        directImage('./Favicon/favicon-32x32.png', res);
+    }
+    else if (path === '/Favicon/android-chrome-192x192.png') {
+        directImage('./Favicon/android-chrome-192x192.png', res);
+    }
+    else if(path === '/Favicon/android-chrome-512x512.png'){
+        directImage('./Favicon/android-chrome-512x512.png', res);
+    }
+    else if(path === '/Favicon/apple-touch-icon.png'){
+        directImage('./Favicon/apple-touch-icon.png', res);
+    }
+    else if(path === '/Favicon/favicon.ico'){
+        fs.readFile('./Favicon/favicon.ico', function (err, data) {
+            if(err){
+                throw err;
+            } else{
+                res.writeHead(200, {'Content-Type': 'image/x-icon'});
+                res.write(data);
+                res.end();
+            }
+        });
+    }
+    else if (path === '/img/scholarly-html.svg') {
+        fs.readFile('./img/scholarly-html.svg', function (err, data) {
+            if(err){
+                throw err;
+            } else{
+                res.writeHead(200, {'Content-Type': 'image/svg+xml'});
+                res.write(data);
+                res.end();
+            }
+        });
+    }
+    else{
+        res.statusCode = 404;
+        res.end('Not found');
     }
 
 
 });
+function directImage(path, res) {
+    fs.readFile(path, function (err, data) {
+        if(err){
+            throw err;
+        } else{
+            res.writeHead(200, {'Content-Type': 'image/png'});
+            res.write(data);
+            res.end();
+        }
+    });
+}
 function directHTML(path, res){
     fs.readFile(path, function (err, data) {
         if(err){
-            res.statusCode = 404;
-            res.end('Not found');
+            throw err;
         }else{
+            res.writeHead(200, {'Content-Type': 'text/html'});
             res.write(data);
             res.end();
         }
@@ -68,8 +122,7 @@ function directHTML(path, res){
 function directCSS(path, res) {
     fs.readFile(path, function (err, data) {
         if(err){
-            res.statusCode = 404;
-            res.end('Not found');
+            throw err;
         } else{
             res.writeHead(200, {'Content-Type': 'text/css'});
             res.write(data);
@@ -81,10 +134,20 @@ function directCSS(path, res) {
 function directJS(path, res) {
     fs.readFile(path, function (err, data) {
         if(err){
-            res.statusCode = 404;
-            res.end('Not found');
+            throw err;
         } else{
             res.writeHead(200, {'Content-Type': 'application/javascript'});
+            res.write(data);
+            res.end();
+        }
+    });
+}
+function directManifest(path, res) {
+    fs.readFile(path, function (err, data) {
+        if (err) {
+            throw err;
+        } else {
+            res.writeHead(200, {'Content-Type': 'application/json'});
             res.write(data);
             res.end();
         }
