@@ -17,9 +17,14 @@
   <li><a href="#introduction"><span>2. </span>Introducere</a></li>
   <li><a href="#structure"><span>3. </span>Structura</a><ol role="directory">
     <li><a href="#TehnologiiUtilizate"><span>3.1 </span>Tehnologii utilizate</a></li>
-    <li><a href="#Pagini"><span>3.2 </span>Pagini</a>
-  </ol></li><li><a href="#functionalitate"><span>4. </span>Funcționalități</a></li>
-  <li><a href="#backend"><span>5. </span>Noțiuni speciale</a></li>
+    <li><a href="#Pagini"><span>3.2 </span>Pagini</a></li>
+  </ol></li><li><a href="#functionalitate"><span>4. </span>Funcționalitate</a></li>
+  <li><a href="#arhitectura"><span>5. </span>Arhitectura și procesul de construire al aplicației</a><ol role="directory">
+    <li><a href="#Backend"><span>5.1 </span> Backend - API & Admin Panel</a></li>
+    <li><a href="#Charts"><span>5.2 </span>Charts</a></li>
+    <li><a href="#Manipularea"><span>5.2 </span>Manipularea inputului de la user</a></li>
+    <li><a href="#Frontend"><span>5.2 </span>Frontend și design</a></li>
+  </ol>
   <li><a href="#user"><span>6. </span>Experiența utilizatorului</a></li>
   <li><a href="#diagrame"><span>7. </span>Diagrame</a></li>
   <li><a href="#autori"><span>8. </span>Autori</a></li>
@@ -37,7 +42,7 @@
   <h2><span>2. </span>Introducere</h2>
   <p>
     Proiectul este un instrument Web de vizualizare flexibilă a datelor vizând Consumer Confidence în perioada 1960-2023. Statisticile și vizualizările generate – în 5 maniere (harta, core chart, bar chart, line chart, tabel) – pot fi exportate în formatele CSV, WebP si SVG.
-    Datele utilizate se pot găsi la adresa <a href="https://www.oecd-ilibrary.org/economics/consumer-confidence-index-cci/indicator/english_46434d78-en#:~:text=This%20consumer%20confidence%20indicator%20provides,unemployment%20and%20capability%20of%20savings.%22">https://www.oecd-ilibrary.org/economics/consumer-confidence-index-cci/indicator/english_46434d78-en#:~:text=This%20consumer%20confidence%20indicator%20provides,unemployment%20and%20capability%20of%20savings.%22</a>.
+    Datele utilizate se pot găsi la adresa <a href="https://www.oecd-ilibrary.org/economics/consumer-confidence-index-cci/indicator/english_46434d78-en#:~:text=This%20consumer%20confidence%20indicator%20provides,unemployment%20and%20capability%20of%20savings.%22" style="font-size: 13px;">https://www.oecd-ilibrary.org/economics/consumer-confidence-index-cci/indicator/english_46434d78-en#:~:text=This%20consumer%20confidence%20indicator%20provides,unemployment%20and%20capability%20of%20savings.%22</a>.
   </p>
 </section>
 <section id="structure">
@@ -47,7 +52,7 @@
     <section id="html_css">
       <h4><span>3.1.1 </span>HTML & CSS</h4>
       <p>
-        Pentru a crea interfața aplicației am folosit HTML și CSS.
+        Pentru a crea interfața aplicației am folosit HTML și CSS (stilizare la nivel de pagina web : culori, dimensiuni,sapatiere,font,spatiere dintre elemente).
       </p>
     </section>
     <section id="javascript">
@@ -66,7 +71,7 @@
     <section id="HTTP">
       <h4><span>3.1.3 </span>HTTP</h4>
       <p>
-        Pentru crearea serverului
+        Folosit pentru crearea serverului. In vederea structurarii intregului schelet se foloseste o lista ordonata in HTML, cat si bookmark-uri cu link-uri care te trimit prin click la un id de pe pagina.
       </p>
     </section>
   </section>
@@ -87,7 +92,7 @@
 <section id="functionalitate">
   <h2><span>4. </span>Funcționalitate</h2>
   <ol>
-    <li>Maniere de vizualizare a datelor:</li>
+    <li>Maniere de vizualizare a datelor:
     <ul>
       <li>Combo chart: afiseaza CCI-ul pentru o selecție de țări și un interval de timp dat (prin comparație)</li>
       <li>Bar chart: Afisează CCI-ul pentru o singură țară, în intervalul de timp cerut </li>
@@ -95,17 +100,19 @@
       <li>Tabel: afiseaza CCI-ul pentru oricate țări pentru intervalul de timp dorit </li>
       <li>Hartă: afișează CCI-ul pentru fiecare țară pentru o anumită dată (an,luna) </li>
     </ul>
+   </li> 
     <li>Exportarea datelor: Utilizatorii pot exporta datele privind Consumer Confidence Index în diferite formate, cum ar fi CSV, WebP și SVG. Această funcționalitate permite utilizatorilor să descarce datele și să le utilizeze în alte aplicații sau să le partajeze cu alți utilizatori.
    </li>
   </ol>
 </section>
 
-<section id="backend">
+<section id="arhitectura">
   <h2><span>5. </span>Arhitectura si procesul de construire al aplicatiei</h2>
     <p>
       Aplicația CoCo este dezvoltată pe baza unei arhitecturi tipice client-server, unde clientul reprezintă partea de frontend a aplicației,
       iar serverul reprezintă partea de backend. Frontend-ul este responsabil pentru afișarea interfeței utilizatorului și interacțiunea cu utilizatorii,
       în timp ce backend-ul gestionează logica de afișare a datelor, procesarea datelor și comunicarea cu baza de date.
+  <section id="Backend">    
   <h3><span> 5.1 </span> Backend - API & Admin Panel</h3>
   Backend-ul aplicației CoCo va fi dezvoltat folosind PHP, un limbaj de scripting popular pentru dezvoltarea aplicațiilor web.
   PHP oferă funcții și librării potrivite pentru a comunica cu baza de date și pentru a procesa datele primite de la frontend. Backend-u este responsabil pentru următoarele funcționalități:
@@ -114,11 +121,20 @@
         <li>Gestionarea cererilor de la frontend: Backend-ul trebuie să primească și să răspundă la cererile primite de la frontend,
           fie că este vorba de cereri pentru afișarea datelor, filtrarea sau sortarea datelor, sau cereri pentru exportul datelor în formatele CSV, WebP sau SVG.</li>
         <li>Generarea datelor necesare pentru afișarea paginilor:  Backend-ul trebuie să proceseze datele primite de la baza de date și să le pregătească pentru a fi afișate în frontend. Acest lucru poate include transformarea datelor în formatul potrivit pentru diverse tipuri de grafice sau pentru a fi afișate într-un tabel, precum și aplicarea de filtre sau sortări asupra datelor.</li>
-        <li>Autentificarea administratorilor</li>
-        <li>Validarea datelor: Backend-ul trebuie să valideze datele primite de la frontend pentru a se asigura că acestea sunt corecte și complete,
-          înainte de a le procesa sau de a le stoca în baza de date. Validarea datelor poate include verificarea formatului datelor,
-          a limitelor de valori acceptate sau a oricăror reguli specifice legate de Consumer Confidence Index.</li>
+         <li>Autentificarea administratorilor
+          <ul>
+            <li>Administratorul apasa pe campurile unde trebuie introduse datele – Sistemul permite administratorului introducerea de text in campurile respective.</li>
+            <li>Administratorul apasa pe butonul de logare, dar nu a completat toate campurile necesare – Sistemul nu permite autentificarea si atentioneaza administratorul.</li> 
+            <li>Administratorul apasa pe butonul de logare, dar introduce un username inexistent in baza de date –  Sistemul nu permite logarea si atentioneaza administratorul faptul ca a introdus un username inexistent.</li> 
+            <li>Administratorul  apasa pe butonul de logare, dar introduce o parola gresita – Sistemul nu permite logarea si atentioneaza utilizatorul faptul ca a introdus o parola gresita. 
+            <li>Administratorul apasa pe butonul de logare, iar toate campurile sunt completate corect – Sistemul permite logarea cu succes a utilizatorului pe site.
+          </ul>
+        </li>
+        <li>Validarea datelor: Backend-ul trebuie să valideze datele primite de la frontend pentru a se asigura că acestea sunt corecte și complete,înainte de a le procesa sau de a le stoca în baza de date. Validarea datelor poate include verificarea formatului datelor,
+        a limitelor de valori acceptate sau a oricăror reguli specifice legate de Consumer Confidence Index.</li>
   </ol>
+  </section>
+  <section id="Charts">
   <h3><span> 5.2 </span> Charts</h3>
   Aplicatia permite vizualizarea a 5 tipuri de reprezentari grafice (realizate prin intermediul Google Charts):
   <ol>
@@ -137,6 +153,8 @@
     <li>WEBP: se realizeaza prin capturarea canvas-ului pe care a fost "desenata" reprezentarea</li>
     <li>SVG : se realizeaza prin serializarea si transformarea in xml a reprezentarii (vectorizare)</li>
   </ol>
+  </section>
+  <section id="Manipularea">
   <h3><span> 5.3 </span> Manipularea inputului de la user</h3>
   In cadrul aplicatiei, utilizatorul se poate decide asupra 3 campuri:
   <ol>
@@ -144,10 +162,13 @@
     <li> Anul si luna pentru care doreste sa vizualizeze informatiile</li>
     <li> Modul de vizualizare (sugerat)</li>
   </ol>
+  </section>
 
-  <h3><span> 5.4 </span> Frontend and design</h3>
-  Pentru realizarea designului aplicatiei, am folosit HTML5, CSS si Javascript. Designul este simplu si potrivit pentru functionalitatea aplicatiei.
-
+  <section id="Frontend">
+  <h3><span> 5.4 </span> Frontend si design</h3>
+  Pentru realizarea designului aplicatiei, am folosit HTML5, CSS si Javascript. S-a recurs la un design ce faciliteaza utilizarea cu usurinta de catre toate persoanele interesate de site. 
+  Este de datoria dezvoltatorilor sa respecte niste specificatii stabilite de comun acord cu privire la paleta de culori, dimensiune font, dimensiuni imagini, spatiere etc. 
+  </section>
 
 </section>
 <section id="user">
