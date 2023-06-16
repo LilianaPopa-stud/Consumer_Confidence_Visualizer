@@ -2,6 +2,7 @@ const sqlite3= require('sqlite3').verbose();
 const http = require('http');
 const hostname = '127.0.0.1';
 const port = process.env.PORT || 3000;
+const AdminController = require("./controllers/adminController");
 const url = require('url');
 const fs = require('fs');
 const CciService = require('./server/services/cciService');
@@ -170,6 +171,17 @@ function directManifest(path, res) {
         }
     });
 }
+
+/**
+ * Routes for API
+ */
+/*
+function routing(path, res, req) {
+    switch (path) {
+        case '/api/login':
+            return AdminController.apiLoginAdmin(res, req);
+    }
+} */
 server.listen(port, hostname, () => {
     console.log(`Serverul rulează la adresa http://${hostname}:${port}/`);
 });
