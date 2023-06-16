@@ -1,9 +1,9 @@
 /**
  * Admin Service -> interacts directly with the database via Sequelize methods
  * */
- const AdminModel = require("../model/admin");
+const AdminModel = require("../models/adminModel");
 const Sequelizer = require('sequelize');
-const db = require('../config/database.config');
+const db = require('../connectionDatabase.config');
 const Admin = AdminModel(db, Sequelizer);
 
 module.exports = class AdminService {
