@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CoCo - Consumer Confidence Visualizer - Charts</title>
+    <link rel="stylesheet" href="../CSS/map.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/charts.css">
+    <link rel="stylesheet" href="../CSS/table.css">
+    <script src="https://www.google.com/jsapi"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="../Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../Favicon/favicon-16x16.png">
+    <link rel="manifest" href="../Favicon/site.webmanifest">
+    <script src="../SCRIPTS/functions.js"></script>
+    <script src="../SCRIPTS/ChartSelect.js"></script>
+    <script src="../SCRIPTS/BarChart.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <h1>CoCo - Consumer Confidence Visualizer</h1>
+        <nav>
+            <ul>
+                <li><a href="INDEX.html">Home</a></li>
+                <li><a href="SelectChart.html">Charts</a></li>
+                <li><a href="#">Export</a>
+                    <ul>
+                        <li><a href="#">CSV</a></li>
+                        <li><a href="#">WebP</a></li>
+                        <li><a href="#">SVG</a></li>
+                    </ul>
+                </li>
+                <li><a href="Report.html">Report</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="AdminLogIn.html">Admin Panel</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="chart-info">
+        <h2>Selected Chart Type: Bar Chart</h2>
+        <p>Data: OECD-total, long-term average=100</p>
+        <p>OECD (Organisation for Economic Co-operation and Development) is an international organisation that aims to promote economic growth, improve living standards, and foster financial stability among its member countries. It provides a platform for governments to collaborate on various economic and social issues.</p>
+        </select>
+    </div>
+
+    <div id="chart-select">
+        <label for="start-year">Start Year: </label>
+        <select name="start-year" id="start-year">
+            <script>
+                generateYearOptions();
+            </script>
+        </select>
+        <label for="end-year">End Year: </label>
+        <select name="end-year" id="end-year">
+            <script>
+                generateEndYearOptions();
+            </script>
+        </select>
+        <button onclick="drawBarChart()">Display Chart</button>
+    </div>
+    <div class="chart-container" id="myChart"></div>
+
+</div>
+
+<footer>
+    <p>&copy; 2023 CoCo - Consumer Confidence Visualizer</p>
+</footer>
+</body>
+</html>

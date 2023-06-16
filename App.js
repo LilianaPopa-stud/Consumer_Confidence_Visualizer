@@ -3,10 +3,10 @@ const http = require('http');
 const hostname = '127.0.0.1';
 const port = process.env.PORT || 3000;
 const AdminController = require("./controllers/adminController");
+const CCIController = require("./controllers/cciController");
 const url = require('url');
 const fs = require('fs');
-const CciService = require('./server/services/cciService');
-const {findByYearRange} = require("./server/services/cciService");
+const {findByCountryAndYearRange} = require("./server/services/cciService");
 
 
 
@@ -22,8 +22,10 @@ const server = http.createServer(async (req, res) => {
         directManifest('./Favicon/site.webmanifest', res);
     } else if (path === '/Report.html') {
         directHTML('./HTML/Report.html', res)
-    } else if (path === '/Charts.html') {
-        directHTML('./HTML/Charts.html', res)
+    } else if (path === '/SelectChart.html') {
+        directHTML('./HTML/SelectChart.html', res)}
+    else if(path === '/BarChart.html'){
+        directHTML('./HTML/BarChart.html', res)
     } else if (path === '/Contact.html') {
         directHTML('./HTML/Contact.html', res)
     } else if (path === '/AdminLogIn.html') {
@@ -56,6 +58,8 @@ const server = http.createServer(async (req, res) => {
         directJS('./SCRIPTS/LineChart.js', res)
     } else if (path === '/SCRIPTS/Table.js') {
         directJS('./SCRIPTS/Table.js', res)
+    } else if (path === '/SCRIPTS/functions.js') {
+        directJS('./SCRIPTS/functions.js', res)
     } else if (path === '/Favicon/favicon-16x16.png') {
         directImage('./Favicon/favicon-16x16.png', res);
     } else if (path === '/Favicon/favicon-32x32.png') {
@@ -90,13 +94,14 @@ const server = http.createServer(async (req, res) => {
         const startYear = 2018;
         const endYear = 2021;
 
-        const data = await findByYearRange(startYear, endYear);
+        const data = await findByCountryAndYearRange('US', startYear, endYear);
         console.log(data);
         res.statusCode = 404;
         res.end('Data displayed in console');
     } else {
-        res.statusCode = 404;
-        res.end('Not found');
+        await routing(path, res, req)
+        res.statusCode = 200;
+        res.end();
     }
 
 
@@ -162,13 +167,16 @@ function directManifest(path, res) {
 /**
  * Routes for API
  */
-/*
+
 function routing(path, res, req) {
     switch (path) {
         case '/api/login':
             return AdminController.apiLoginAdmin(res, req);
+        case '/api/getByCountryYearRangeAndMonth':
+            return CCIController.apiGetCCIByCountryYearRangeAndMonth(res, req);
+
     }
-} */
+}
 server.listen(port, hostname, () => {
     console.log(`Serverul rulează la adresa http://${hostname}:${port}/`);
 });

@@ -2,10 +2,10 @@
  * CCI SERVICE -> interacts directly with the database, via the Sequelize operations (findAll, count, create, etc...)
  * */
 const  CciModel = require("../models/cciModel");
-const Sequelizer = require('sequelize');
-const Op = Sequelizer.Op;
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 const db = require('../connectionDatabase.config');
-const CCI = CciModel(db, Sequelizer);
+const CCI = CciModel(db, Sequelize);
 
 
 module.exports = class cciService{
@@ -128,6 +128,30 @@ module.exports = class cciService{
             console.error("findByCountryYearMonthRange error: ", error);
             throw new Error("Error querying database");
         }
+    }
+    static async findByCountryYearRangeAndMonth(country, startYear, endYear, month) {
+        try {
+            return await CCI.findAll({
+                where: {
+                    location: {
+                        [Op.like]: `${country}`,
+                    },
+                    time: {
+                        [Op.between]: [`${startYear}-01`, `${endYear}-12`],
+                        [Op.like]: `%${month}`,
+                    },
+                },
+                attributes: {
+                    exclude: ['id', 'location', 'measure', 'indicator','frequency', 'subject','flag_codes']
+                }
+            }).then((function (list){
+                console.log(list);
+                return list;}));
+        } catch (error) {
+            console.error("findByCountryYearRangeAndMonth error: ", error);
+            throw new Error("Error querying database");
+        }
+
     }
 
 }
