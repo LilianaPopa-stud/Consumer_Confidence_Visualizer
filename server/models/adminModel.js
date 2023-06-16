@@ -4,7 +4,7 @@
 
 const sqlite3 = require('sqlite3');
 const Sequelize = require('sequelize');
-const db = require('../config/connectionDatabase');
+const db = require('../../config/connectionDatabase');
 const {INTEGER} = require("sequelize");
 
 const adminSchema = {
