@@ -4,7 +4,8 @@
 
 const sqlite3 = require('sqlite3');
 const Sequelize = require('sequelize');
-const db = require('../../config/connectionDatabase');
+const db = require('../connectionDatabase.config');
+
 const {INTEGER} = require("sequelize");
 
 const adminSchema = {
@@ -23,7 +24,7 @@ const adminSchema = {
 /**
  * OBS -> excluding auto-generated fields.
  * */
-/*
+
 const AdminModel = db.define('admin',adminSchema,{
     timestamps : false,
     createdAt: false,
