@@ -5,20 +5,21 @@ const port = process.env.PORT || 3000;
 const url = require('url');
 const fs = require('fs');
 const CciService = require('./server/services/cciService');
+const {findByYearRange} = require("./server/services/cciService");
 
 
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.statusCode = 200;
 
     const reqUrl = url.parse(req.url);
     const path = reqUrl.pathname;
-    if(path === '/' || path === '/INDEX.html'){
-        directHTML('./HTML/INDEX.html', res);}
-    else if(path === '/Favicon/site.webmanifest'){
+    if (path === '/' || path === '/INDEX.html') {
+        directHTML('./HTML/INDEX.html', res);
+    } else if (path === '/Favicon/site.webmanifest') {
         directManifest('./Favicon/site.webmanifest', res);
-    } else if (path === '/Report.html'){
+    } else if (path === '/Report.html') {
         directHTML('./HTML/Report.html', res)
     } else if (path === '/Charts.html') {
         directHTML('./HTML/Charts.html', res)
@@ -28,85 +29,71 @@ const server = http.createServer((req, res) => {
         directHTML('./HTML/AdminLogIn.html', res)
     } else if (path === '/AdminPanel.html') {
         directHTML('./HTML/AdminPanel.html', res)
-    } else if(path === '/CSS/admin.css'){
-        directCSS('./CSS/admin.css',res)
-    } else if(path === '/CSS/adminPanel.css'){
-        directCSS('./CSS/adminPanel.css',res)
-    }  else if(path === '/CSS/charts.css'){
-        directCSS('./CSS/charts.css',res)
-    }  else if(path === '/CSS/map.css'){
-        directCSS('./CSS/map.css',res)
-    } else if(path === '/CSS/report.css'){
-        directCSS('./CSS/report.css',res)
-    }  else if(path === '/CSS/style.css'){
-        directCSS('./CSS/style.css',res)
-    }  else if(path === '/CSS/table.css'){
-        directCSS('./CSS/table.css',res)
-    } else if(path === '/SCRIPTS/BarChart.js') {
-        directJS('./SCRIPTS/BarChart.js',res)
-    } else if(path === '/SCRIPTS/ChartSelect.js') {
-        directJS('./SCRIPTS/ChartSelect.js',res)
-    } else if(path === '/SCRIPTS/CoreChart.js') {
-        directJS('./SCRIPTS/CoreChart.js',res)
-    } else if(path === '/SCRIPTS/GeoChart.js') {
-        directJS('./SCRIPTS/GeoChart.js',res)
-    } else if(path === '/SCRIPTS/LineChart.js') {
-        directJS('./SCRIPTS/LineChart.js',res)
-    } else if(path === '/SCRIPTS/Table.js') {
-        directJS('./SCRIPTS/Table.js',res)
-    }
-    else if(path === '/Favicon/favicon-16x16.png'){
+    } else if (path === '/CSS/admin.css') {
+        directCSS('./CSS/admin.css', res)
+    } else if (path === '/CSS/adminPanel.css') {
+        directCSS('./CSS/adminPanel.css', res)
+    } else if (path === '/CSS/charts.css') {
+        directCSS('./CSS/charts.css', res)
+    } else if (path === '/CSS/map.css') {
+        directCSS('./CSS/map.css', res)
+    } else if (path === '/CSS/report.css') {
+        directCSS('./CSS/report.css', res)
+    } else if (path === '/CSS/style.css') {
+        directCSS('./CSS/style.css', res)
+    } else if (path === '/CSS/table.css') {
+        directCSS('./CSS/table.css', res)
+    } else if (path === '/SCRIPTS/BarChart.js') {
+        directJS('./SCRIPTS/BarChart.js', res)
+    } else if (path === '/SCRIPTS/ChartSelect.js') {
+        directJS('./SCRIPTS/ChartSelect.js', res)
+    } else if (path === '/SCRIPTS/CoreChart.js') {
+        directJS('./SCRIPTS/CoreChart.js', res)
+    } else if (path === '/SCRIPTS/GeoChart.js') {
+        directJS('./SCRIPTS/GeoChart.js', res)
+    } else if (path === '/SCRIPTS/LineChart.js') {
+        directJS('./SCRIPTS/LineChart.js', res)
+    } else if (path === '/SCRIPTS/Table.js') {
+        directJS('./SCRIPTS/Table.js', res)
+    } else if (path === '/Favicon/favicon-16x16.png') {
         directImage('./Favicon/favicon-16x16.png', res);
-    }
-    else if (path === '/Favicon/favicon-32x32.png') {
+    } else if (path === '/Favicon/favicon-32x32.png') {
         directImage('./Favicon/favicon-32x32.png', res);
-    }
-    else if (path === '/Favicon/android-chrome-192x192.png') {
+    } else if (path === '/Favicon/android-chrome-192x192.png') {
         directImage('./Favicon/android-chrome-192x192.png', res);
-    }
-    else if(path === '/Favicon/android-chrome-512x512.png'){
+    } else if (path === '/Favicon/android-chrome-512x512.png') {
         directImage('./Favicon/android-chrome-512x512.png', res);
-    }
-    else if(path === '/Favicon/apple-touch-icon.png'){
+    } else if (path === '/Favicon/apple-touch-icon.png') {
         directImage('./Favicon/apple-touch-icon.png', res);
-    }
-    else if(path === '/Favicon/favicon.ico'){
+    } else if (path === '/Favicon/favicon.ico') {
         fs.readFile('./Favicon/favicon.ico', function (err, data) {
-            if(err){
+            if (err) {
                 throw err;
-            } else{
+            } else {
                 res.writeHead(200, {'Content-Type': 'image/x-icon'});
                 res.write(data);
                 res.end();
             }
         });
-    }
-    else if (path === '/img/scholarly-html.svg') {
+    } else if (path === '/img/scholarly-html.svg') {
         fs.readFile('./img/scholarly-html.svg', function (err, data) {
-            if(err){
+            if (err) {
                 throw err;
-            } else{
+            } else {
                 res.writeHead(200, {'Content-Type': 'image/svg+xml'});
                 res.write(data);
                 res.end();
             }
         });
-    }
-    else if (path === '/test') {
-        async function displayAllData() {
-            try {
-                const cciData = await CciService.getAll();
-                console.log(cciData);
-            } catch (error) {
-                console.error('Error retrieving data:', error);
-            }
-        }
+    } else if (path === '/test') {
+        const startYear = 2018;
+        const endYear = 2021;
 
-        displayAllData().then(r => console.log(r));
+        const data = await findByYearRange(startYear, endYear);
+        console.log(data);
         res.statusCode = 404;
         res.end('Data displayed in console');
-    }
-    else{
+    } else {
         res.statusCode = 404;
         res.end('Not found');
     }
