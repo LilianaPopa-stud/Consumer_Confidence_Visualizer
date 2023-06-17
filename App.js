@@ -26,6 +26,8 @@ const server = http.createServer(async (req, res) => {
         directHTML('./HTML/SelectChart.html', res)}
     else if(path === '/BarChart.html'){
         directHTML('./HTML/BarChart.html', res)
+    } else if (path === '/LineChart.html') {
+        directHTML('./HTML/LineChart.html', res)
     } else if (path === '/Table.html') {
         directHTML('./HTML/Table.html', res)
     } else if (path === '/Contact.html') {
