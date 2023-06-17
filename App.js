@@ -34,6 +34,8 @@ const server = http.createServer(async (req, res) => {
         directHTML('./HTML/AdminLogIn.html', res)
     } else if (path === '/AdminPanel.html') {
         directHTML('./HTML/AdminPanel.html', res)
+    } else if (path === '/GeoChart.html') {
+        directHTML('./HTML/GeoChart.html', res)
     } else if (path === '/CSS/admin.css') {
         directCSS('./CSS/admin.css', res)
     } else if (path === '/CSS/adminPanel.css') {
@@ -58,6 +60,8 @@ const server = http.createServer(async (req, res) => {
         directJS('./SCRIPTS/GeoChart.js', res)
     } else if (path === '/SCRIPTS/LineChart.js') {
         directJS('./SCRIPTS/LineChart.js', res)
+    } else if (path === '/SCRIPTS/GeoChart.js') {
+        directJS('./SCRIPTS/GeoChart.js', res)
     } else if (path === '/SCRIPTS/Table.js') {
         directJS('./SCRIPTS/Table.js', res)
     } else if (path === '/SCRIPTS/functions.js') {
@@ -184,6 +188,8 @@ function routing(path, res, req) {
             return CCIController.apiGetCCIByCountryYearRangeAndMonth(res, req);
         case '/api/getByCountryAndYearRange':
             return CCIController.apiGetCCIByCountryAndYearRange(res, req);
+        case '/api/getCCIForAllCountriesByYearAndMonth':
+            return CCIController.apiGetCCIForAllCountriesByYearAndMonth(res, req);
         case '/api/add':
             return CCIController.apiCreateCCI(res, req);
         case '/api/delete':

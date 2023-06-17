@@ -61,6 +61,21 @@ module.exports = class cciService{
         }
 
     }
+    static async findAllCountriesByYearAndMonth(year, month) {
+        try {
+            return await CCI.findAll({
+                where: {
+                    time: {
+                        [Op.like]: `${year}-${month}`,
+                    },
+                },
+                attributes: ['location','value'],
+            });
+        } catch (error) {
+            console.error("findAllCountriesByYearAndMonth error: ", error);
+            throw new Error("Error querying database");
+        }
+    }
     static async findByCountryAndYear(country, year) {
         try {
             return await CCI.findAll({

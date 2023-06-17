@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CoCo - Consumer Confidence Visualizer - Charts</title>
+    <link rel="stylesheet" href="../CSS/map.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/charts.css">
+    <link rel="stylesheet" href="../CSS/table.css">
+    <script src="https://www.google.com/jsapi"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="../Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../Favicon/favicon-16x16.png">
+    <link rel="manifest" href="../Favicon/site.webmanifest">
+    <script src="../SCRIPTS/functions.js"></script>
+    <script src="../SCRIPTS/ChartSelect.js"></script>
+    <script  src="../SCRIPTS/GeoChart.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <h1>CoCo - Consumer Confidence Visualizer</h1>
+        <nav>
+            <ul>
+                <li><a href="INDEX.html">Home</a></li>
+                <li><a href="SelectChart.html">Charts</a></li>
+                <li><a href="#">Export</a>
+                    <ul>
+                        <li><a href="#">CSV</a></li>
+                        <li><a href="#">WebP</a></li>
+                        <li><a href="#">SVG</a></li>
+                    </ul>
+                </li>
+                <li><a href="Report.html">Report</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="AdminLogIn.html">Admin Panel</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="chart-info">
+        <h2>Selected Chart Type: Geochart</h2>
+        <p>A Geochart is a type of chart that displays data on a map, representing different regions or countries. In this specific case, the Geochart shows the Consumer Confidence Index for a specific year across all countries.</p>
+        <p>By visualizing the Consumer Confidence Index on a Geochart, you can easily identify countries with high or low consumer confidence levels, allowing for comparisons and analysis of consumer sentiment worldwide.</p>
+    </div>
+
+    </div>
+
+    <div id="chart-select">
+
+        <label for="start-year">Year: </label>
+        <select name="start-year" id="start-year">
+            <script>
+                generateYearOptions();
+            </script>
+        </select>
+        <label for="month">Month: </label>
+        <select name="month" id="month">
+            <script>
+                generateMonthOptions();
+            </script>
+        </select>
+        <button onclick="fetchApiAndDrawGeoChart()">Display Chart</button>
+    </div>
+    <div class="chart-container" id="myChart"></div>
+
+</div>
+
+<footer>
+    <p>&copy; 2023 CoCo - Consumer Confidence Visualizer</p>
+</footer>
+</body>
+</html>
