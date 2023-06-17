@@ -1,6 +1,5 @@
 function generateYearOptions() {
     const startYear = 1963;
-    const currentYear = new Date().getFullYear()-1;
     const select = document.getElementById("start-year");
     for (let year = currentYear; year >= startYear; year--) {
         const option = document.createElement("option");
@@ -22,8 +21,10 @@ function generateEndYearOptions() {
 
     }
 }
+
 function generateMonthOptions() {
     const select = document.getElementById("month");
+
     const monthMapping = {
         "01": "January",
         "02": "February",
@@ -37,8 +38,9 @@ function generateMonthOptions() {
         "10": "October",
         "11": "November",
         "12": "December"
-
     };
+
+    const select = document.getElementById("start-month");
     const monthCodes = Object.keys(monthMapping).sort();
     console.log(monthCodes);
     monthCodes.forEach(monthCode => {
@@ -49,6 +51,36 @@ function generateMonthOptions() {
         select.appendChild(option);
     });
 }
+
+function generateEndMonthOptions() {
+    const monthMapping = {
+
+        "01": "January",
+        "02": "February",
+        "03": "March",
+        "04": "April",
+        "05": "May",
+        "06": "June",
+        "07": "July",
+        "08": "August",
+        "09": "September",
+        "10": "October",
+        "11": "November",
+        "12": "December"
+
+    }
+    const select = document.getElementById("end-month");
+    const monthCodes = Object.keys(monthMapping).sort();
+    console.log(monthCodes);
+    monthCodes.forEach(monthCode => {
+        const monthName = monthMapping[monthCode];
+        const option = document.createElement("option");
+        option.value = monthCode;
+        option.textContent = monthName;
+        select.appendChild(option);
+    });
+}
+
 function generateCountryOptions() {
     const countryMapping = {
         USA: 'United States',

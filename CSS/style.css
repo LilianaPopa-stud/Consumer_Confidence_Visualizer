@@ -232,8 +232,6 @@ footer p {
 
 
 
-
-
 /* responsive home + contact */
 
 @media all and (max-width: 400px) {
@@ -419,4 +417,5 @@ footer p {
     footer {
         padding: 10px;
     }
+
 }

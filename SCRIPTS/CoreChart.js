@@ -3,17 +3,79 @@ google.charts.load('current', {
 });
 
 function drawCoreChart() {
-    var chartContainer = document.querySelector('.chart-container');
-    var data = google.visualization.arrayToDataTable([
-        ['Month', 'Brazil', 'United States', 'Germany', 'Austria', 'Belgium','Greece','Average'],
-        ['December', 102.02, 96.97, 97.27, 96.38, 98.22, 97.82,98.11],
-        ['January', 99.90, 97.26, 97.82, 96.74, 98.76, 98.23,98.11],
-        ['February', 99.84, 97.40, 98.24, 97.00, 99.14,98.40,98.33],
-        ['March', 99.91, 97.31, 98.47, 97.17, 99.33,98.68,98.47],
-    ]);
+    console.log("drawComboChart");
+    const endpoint = 'http://127.0.0.1:3000/api/getByCountryYearAndMonthRange';
 
+    const country = 'OECD';
+    const startMonth = parseInt(document.getElementById("start-month").value);
+    const endMonth = parseInt(document.getElementById("end-month").value);
+    const year = parseInt(document.getElementById("start-year").value);
+    const url = `${endpoint}?data&country=${country}&startMonth=${startMonth}&endMonth=${endMonth}&year=${year}`;
+    console.log(url);
+    const title = `CCI between ${startMonth} and ${endMonth} ${year}`;
+    fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+            drawComboChart(data, title);
+        });
+}
+function drawComboChart(input_data, title) {
+    var chartContainer = document.querySelector('.chart-container');
+    chartContainer.innerHTML = "";
+
+
+    const year = parseInt(document.getElementById("start-year").value);
+    const startMonth = document.getElementById("start-month").value;
+    const endMonth = document.getElementById("end-month").value;
+    var selectElement=document.getElementById("countries");
+    const dataPromises = [];
+    const selectedCountries = Array.from(selectElement.selectedOptions).map(option => option.value);
+    for (let country of selectedCountries) {
+        const url = `${endpoint}?data&country=${country}&startMonth=${startMonth}&endMonth=${endMonth}&year=${year}`;
+        const promise = fetch(url)
+            .then(response => response.json());
+
+        dataPromises.push(promise);
+    }
+    Promise.all(dataPromises)
+        .then(results => {
+
+            const combinedData = results.reduce((acc, data) => {
+                return acc.concat(data);
+            }, []);
+            
+            drawComboChart(combinedData, title);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
+
+
+
+function drawComboChart(input_data, title) {
+    var chartContainer = document.querySelector('.chart-container');
+    chartContainer.innerHTML = "";
+
+
+    document.getElementById("myChart").scrollIntoView({ behavior: "smooth" });
+
+    const newData = input_data.map(obj => {
+        const date = new Date(obj.time); // Convertim stringul timp în obiect de tip Date
+        const year = date.getFullYear(); // Obținem anul
+        const month = date.toLocaleString('default', { month: 'short' }); // Obținem scurtă reprezentare textuală a lunii
+        const formattedDate = `${month}-${year}`; // Formatăm data în formatul dorit
+        const value = parseFloat(obj.value); // Convertim valoarea într-un număr cu zecimale
+        return [formattedDate, value];
+    });
+
+    console.log(newData);
+// Adăugarea unui rând pentru titlurile de coloane
+    newData.unshift(['Month', 'OECD-Total']);
+    const final_data = google.visualization.arrayToDataTable(newData);
+    console.log(final_data);
     var options = {
-        title: 'CCI between December-March 2023',
+        title: title,
         titleTextStyle: {
             color: 'black',
             fontName: 'Oxygen',
@@ -83,7 +145,7 @@ function drawCoreChart() {
 
     var chart = new google.visualization.ComboChart(chartElement);
 
-    chart.draw(data, options);
+    chart.draw(final_data, options);
 
 
 }

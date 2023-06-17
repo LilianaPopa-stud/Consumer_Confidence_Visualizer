@@ -61,6 +61,7 @@ module.exports = class cciService{
         }
 
     }
+
     static async findAllCountriesByYearAndMonth(year, month) {
         try {
             return await CCI.findAll({
@@ -76,6 +77,7 @@ module.exports = class cciService{
             throw new Error("Error querying database");
         }
     }
+
     static async findByCountryAndYear(country, year) {
         try {
             return await CCI.findAll({
@@ -170,6 +172,36 @@ module.exports = class cciService{
 
     }
 
+
+    static async findByCountryYearAndMonthRange(country, year, startMonth, endMonth) {
+        try {
+            return await CCI.findAll({
+                where: {
+                    location: {
+                        [Op.like]: `${country}`,
+                    },
+                    time: {
+
+                        [Op.like]: `%${year}`,
+                        [Op.between]: [`${year}-${startMonth}`, `${year}-${endMonth}`],
+                    },
+                },
+                attributes: {
+
+                    exclude: ['id', 'location', 'measure', 'indicator', 'frequency', 'subject', 'flag_codes']
+                }
+            }).then((function (list) {
+                console.log(list);
+                return list;
+            }));
+
+        } catch (error) {
+            console.error("findByCountryYearAndMonthRange error: ", error);
+            throw new Error("Error querying database");
+        }
+    }
+
+
     /**
      * Creating and inserting new CCI instance
      **/
@@ -192,6 +224,7 @@ module.exports = class cciService{
 
         } catch (error) {
             console.log(error);
+
         }
     }
 

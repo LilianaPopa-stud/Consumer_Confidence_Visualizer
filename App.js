@@ -26,6 +26,8 @@ const server = http.createServer(async (req, res) => {
         directHTML('./HTML/SelectChart.html', res)}
     else if(path === '/BarChart.html'){
         directHTML('./HTML/BarChart.html', res)
+    } else if (path === '/ComboChart.html'){
+        directHTML('./HTML/ComboChart.html', res)
     } else if (path === '/Table.html') {
         directHTML('./HTML/Table.html', res)
     } else if (path === '/Contact.html') {
@@ -34,8 +36,6 @@ const server = http.createServer(async (req, res) => {
         directHTML('./HTML/AdminLogIn.html', res)
     } else if (path === '/AdminPanel.html') {
         directHTML('./HTML/AdminPanel.html', res)
-    } else if (path === '/GeoChart.html') {
-        directHTML('./HTML/GeoChart.html', res)
     } else if (path === '/CSS/admin.css') {
         directCSS('./CSS/admin.css', res)
     } else if (path === '/CSS/adminPanel.css') {
@@ -62,6 +62,7 @@ const server = http.createServer(async (req, res) => {
         directJS('./SCRIPTS/LineChart.js', res)
     } else if (path === '/SCRIPTS/GeoChart.js') {
         directJS('./SCRIPTS/GeoChart.js', res)
+
     } else if (path === '/SCRIPTS/Table.js') {
         directJS('./SCRIPTS/Table.js', res)
     } else if (path === '/SCRIPTS/functions.js') {
@@ -188,6 +189,8 @@ function routing(path, res, req) {
             return CCIController.apiGetCCIByCountryYearRangeAndMonth(res, req);
         case '/api/getByCountryAndYearRange':
             return CCIController.apiGetCCIByCountryAndYearRange(res, req);
+        case '/api/GetByCountryYearAndMonthRange':
+            return CCIController.apiGetCCIByCountryYearAndMonthRange(res, req);
         case '/api/getCCIForAllCountriesByYearAndMonth':
             return CCIController.apiGetCCIForAllCountriesByYearAndMonth(res, req);
         case '/api/add':
@@ -198,6 +201,8 @@ function routing(path, res, req) {
             return CCIController.apiUpdateCCI(res, req);
     }
 }
+
 server.listen(port, hostname, () => {
     console.log(`Serverul rulează la adresa http://${hostname}:${port}/`);
 });
+

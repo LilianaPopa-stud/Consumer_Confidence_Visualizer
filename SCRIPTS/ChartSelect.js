@@ -24,6 +24,8 @@ function drawChart() {
             console.error("Invalid chart type selected.");
     }
 }
+
+
 function selectChart() {
     var chartContainer = document.querySelector('.chart-container');
     chartContainer.innerHTML = "";
@@ -32,10 +34,10 @@ function selectChart() {
 
     switch(chartType) {
         case "geochart":
-            window.location.href="GeoChart.html";
+            drawGeoChart();
             break;
         case "corechart":
-            drawCoreChart();
+            window.location.href="ComboChart.html";
             break;
         case "barchart":
             window.location.href="BarChart.html";
@@ -49,4 +51,5 @@ function selectChart() {
         default:
             console.error("Invalid chart type selected.");
     }
+
 }
