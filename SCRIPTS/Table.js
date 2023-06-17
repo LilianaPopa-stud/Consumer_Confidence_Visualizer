@@ -1,51 +1,71 @@
+
 google.charts.load('current', {'packages':['table']});
 
-function drawTable() {
-    var chartContainer = document.querySelector('.chart-container');
-    var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Location');
-    data.addColumn('number', 'Apr-2020');
-    data.addColumn('number', 'May-2020');
-    data.addColumn('number', 'Jun-2020');
-    data.addColumn('number', 'Apr-2021');
-    data.addColumn('number', 'May-2021');
-    data.addColumn('number', 'Jun-2021');
-    data.addColumn('number', 'Apr-2022');
-    data.addColumn('number', 'May-2022');
-    data.addColumn('number', 'Jun-2022');
 
-    data.addRows([
-        ['Italy',	100.5, 99, 98.4,
-        100.5, 97, 98.1,
-        98.5, 95, 96.8,],
-        ['Ireland',	95, 103, 96, 
-        95.3, 96, 95,
-        96.8, 98, 95.5],
-        ['France',	98.4, 97, 93,
-        97.8, 94, 95.9,
-        96.5, 97, 97.9],
-        ['Spain',97, 101.6, 101.4, 
-        100, 102, 102,
-        101, 100, 99.5],
-        ['Finland',	94, 98.4, 99.3,
-        95, 96, 102.8,
-        101.2, 102.6, 100.5],
-        ['Belgium',	102.4, 101, 102,
-        102, 100.4, 99.9,
-        99.5, 97, 96.5],
-        ['Austria',97, 101.6, 101.4,
-        100, 102, 102,
-        101, 100, 99.5],
-        ['Portugal',	100.5, 99, 98.4,
-        100.5, 97, 98.1,
-        98.5, 95.3, 95.2,],
-        ['Sweden',	95, 103, 96,
-        95.3, 96, 95,
-        96.8, 98.9, 100.3],
-        ['Norway',	98.4, 97, 93,
-        97.8, 94, 95.9,
-        96.5, 97.1, 101.5]      
-    ]);
+function drawTableChart() {
+
+    var startYear = parseInt(document.getElementById("start-year").value);
+    var endYear = startYear;
+    var selectElement=document.getElementById("countries");
+    const endpoint = 'http://127.0.0.1:3000/api/getByCountryAndYearRange';
+    const dataPromises = [];
+    const selectedCountries = Array.from(selectElement.selectedOptions).map(option => option.value);
+    for (let country of selectedCountries) {
+        const url = `${endpoint}?data&country=${country}&startYear=${startYear}&endYear=${endYear}`;
+        const promise = fetch(url)
+            .then(response => response.json());
+
+        dataPromises.push(promise);
+    }
+    Promise.all(dataPromises)
+        .then(results => {
+
+            const combinedData = results.reduce((acc, data) => {
+                return acc.concat(data);
+            }, []);
+
+            // Desenează graficul
+            drawTable(startYear, combinedData);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+
+}
+function drawTable(startYear, combinedData) {
+    var chartContainer = document.querySelector('.chart-container');
+    chartContainer.innerHTML = "";
+    document.getElementById("myChart").scrollIntoView({ behavior: "smooth" });
+    var data = new google.visualization.DataTable();
+
+    const columns = ['Country'];
+    const timePeriods = Array.from(new Set(combinedData.map(item => item.time)));
+
+    timePeriods.sort();
+    timePeriods.forEach(time => {
+        const [year, month] = time.split('-');
+        const shortMonth = new Date(`${year}-${month}`).toLocaleString('default', { month: 'short' });
+        const columnName = `${shortMonth}-${year}`;
+        columns.push(columnName);
+    })
+
+    columns.forEach(column => {
+        data.addColumn('string', column)
+    });
+    const countries = Array.from(new Set(combinedData.map(item => item.location)));
+
+    countries.forEach(country => {
+        const rowData = [mapCountry(country)];
+        timePeriods.forEach(time => {
+            const matchingData = combinedData.find(item => item.location === country && item.time === time);
+            const value = matchingData.value || 'N/A';
+            rowData.push(value);
+        });
+        data.addRow(rowData);
+    });
+
+
     var cssClassNames = {
         'headerRow': 'cssHeaderRow',
         'tableRow': 'cssTableRow',
@@ -68,5 +88,55 @@ function drawTable() {
     var chart = new google.visualization.Table(chartElement);
 
     chart.draw(data, options);
+
+}
+
+function mapCountry(country) {
+    const countryMapping = {
+        USA: 'United States',
+        NLD: 'Netherlands',
+        CHE: 'Switzerland',
+        FRA: 'France',
+        POL: 'Poland',
+        CZE: 'Czech Republic',
+        JPN: 'Japan',
+        OECDE: 'OECD Europe',
+        AUS: 'Australia',
+        OECD: 'OECD',
+        SWE: 'Sweden',
+        MEX: 'Mexico',
+        GBR: 'United Kingdom',
+        ZAF: 'South Africa',
+        HUN: 'Hungary',
+        PRT: 'Portugal',
+        DNK: 'Denmark',
+        ESP: 'Spain',
+        LUX: 'Luxembourg',
+        GRC: 'Greece',
+        BRA: 'Brazil',
+        SVK: 'Slovak Republic',
+        CHN: 'China',
+        BEL: 'Belgium',
+        FIN: 'Finland',
+        NZL: 'New Zealand',
+        IDN: 'Indonesia',
+        TUR: 'Turkey',
+        AUT: 'Austria',
+        ITA: 'Italy',
+        IRL: 'Ireland',
+        SVN: 'Slovenia',
+        DEU: 'Germany',
+        KOR: 'Korea',
+        EST: 'Estonia',
+        ISR: "Israel",
+        RUS: "Russia",
+        LVA: "Latvia",
+        LTU: "Lithuania",
+        COL: "Colombia",
+        CHL: "Chile",
+        CRI: "Costa Rica",
+        IND: "India",
+    };
+     return countryMapping[country];
 
 }

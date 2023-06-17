@@ -11,15 +11,16 @@ function drawBarChart() {
     const month = "01";
     const url = `${endpoint}?data&country=${country}&startYear=${startYear}&endYear=${endYear}&month=${month}`;
     console.log(url);
+    const title = `CCI between ${startYear} and ${endYear}`;
     fetch(url)
         .then((response) => response.json())
         .then((data) => {
-            drawChart(data);
+            drawChart(data,title);
         });
 
 
 }
-function drawChart(input_data) {
+function drawChart(input_data,title){
 
     var chartContainer = document.querySelector('.chart-container');
     chartContainer.innerHTML = "";
@@ -42,7 +43,7 @@ function drawChart(input_data) {
     console.log(final_data);
 
     var options = {
-        title: 'CCI between 2018-2023',
+        title: title,
         titleTextStyle: {
             color: 'black',
             fontSize: '25',

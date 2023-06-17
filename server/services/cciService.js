@@ -89,6 +89,7 @@ module.exports = class cciService{
                         [Op.between]: [`${startYear}-01`, `${endYear}-12`],
                     },
                 },
+                attributes: ['location', 'time', 'value'],
             });
         } catch (error) {
            console.error("findByCountryAndYearRange error: ", error);

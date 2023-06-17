@@ -44,7 +44,7 @@ function selectChart() {
             drawLineChart();
             break;
         case "table":
-            drawTable();
+            window.location.href="Table.html";
             break;
         default:
             console.error("Invalid chart type selected.");

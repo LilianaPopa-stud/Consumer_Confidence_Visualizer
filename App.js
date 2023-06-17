@@ -26,6 +26,8 @@ const server = http.createServer(async (req, res) => {
         directHTML('./HTML/SelectChart.html', res)}
     else if(path === '/BarChart.html'){
         directHTML('./HTML/BarChart.html', res)
+    } else if (path === '/Table.html') {
+        directHTML('./HTML/Table.html', res)
     } else if (path === '/Contact.html') {
         directHTML('./HTML/Contact.html', res)
     } else if (path === '/AdminLogIn.html') {
@@ -174,6 +176,8 @@ function routing(path, res, req) {
             return AdminController.apiLoginAdmin(res, req);
         case '/api/getByCountryYearRangeAndMonth':
             return CCIController.apiGetCCIByCountryYearRangeAndMonth(res, req);
+        case '/api/getByCountryAndYearRange':
+            return CCIController.apiGetCCIByCountryAndYearRange(res, req);
 
     }
 }
