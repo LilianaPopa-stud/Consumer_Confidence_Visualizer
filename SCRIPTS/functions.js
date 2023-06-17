@@ -48,8 +48,7 @@ function generateMonthOptions() {
         select.appendChild(option);
     }
 }
-<<<<<<< Updated upstream
-=======
+
 function generateStartMonthOptions() {
     const monthMapping = {
         "01": "January",
@@ -77,25 +76,10 @@ function generateStartMonthOptions() {
         select.appendChild(option);
     });
 }
->>>>>>> Stashed changes
-
 
 function generateEndMonthOptions() {
     const monthMapping = {
-<<<<<<< Updated upstream
-        1: "January",
-        2: "February",
-        3: "March",
-        4: "April",
-        5: "May",
-        6: "June",
-        7: "July",
-        8: "August",
-        9: "September",
-        10: "October",
-        11: "November",
-        12: "December"
-=======
+
         "01": "January",
         "02": "February",
         "03": "March",
@@ -109,23 +93,9 @@ function generateEndMonthOptions() {
         "11": "November",
         "12": "December"
 
->>>>>>> Stashed changes
-    };
-
+    }
     const select = document.getElementById("end-month");
 
-<<<<<<< Updated upstream
-    for (let month = 12; month >= 1; month--) {
-        const option = document.createElement("option");
-        option.value = month.toString();
-        option.text = monthMapping[month]; // Adaugă textul corespunzător luni
-        select.appendChild(option);
-    }
-}
-
-
-
-=======
     const monthCodes = Object.keys(monthMapping).sort();
     console.log(monthCodes);
     monthCodes.forEach(monthCode => {
@@ -136,7 +106,7 @@ function generateEndMonthOptions() {
         select.appendChild(option);
     });
 }
->>>>>>> Stashed changes
+
 function generateCountryOptions() {
     const countryMapping = {
         USA: 'United States',

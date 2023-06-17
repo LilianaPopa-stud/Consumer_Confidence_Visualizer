@@ -21,10 +21,8 @@ const server = http.createServer((req, res) => {
         directManifest('./Favicon/site.webmanifest', res);
     } else if (path === '/Report.html'){
         directHTML('./HTML/Report.html', res)
-<<<<<<< Updated upstream
     } else if (path === '/Charts.html') {
         directHTML('./HTML/Charts.html', res)
-=======
     } else if (path === '/SelectChart.html') {
         directHTML('./HTML/SelectChart.html', res)}
     else if(path === '/BarChart.html'){
@@ -33,14 +31,13 @@ const server = http.createServer((req, res) => {
         directHTML('./HTML/ComboChart.html', res)
     } else if (path === '/Table.html') {
         directHTML('./HTML/Table.html', res)
->>>>>>> Stashed changes
     } else if (path === '/Contact.html') {
         directHTML('./HTML/Contact.html', res)
     } else if (path === '/AdminLogIn.html') {
         directHTML('./HTML/AdminLogIn.html', res)
     } else if (path === '/AdminPanel.html') {
         directHTML('./HTML/AdminPanel.html', res)
-<<<<<<< Updated upstream
+
     } else if(path === '/CSS/admin.css'){
         directCSS('./CSS/admin.css',res)
     } else if(path === '/CSS/adminPanel.css'){
@@ -69,7 +66,7 @@ const server = http.createServer((req, res) => {
         directJS('./SCRIPTS/Table.js',res)
     }
     else if(path === '/Favicon/favicon-16x16.png'){
-=======
+        directImage('./Favicon/favicon-16x16.png',res);
     } else if (path === '/ComboChart.html') {
         directHTML('./HTML/ComboChart.html', res)
     } else if (path === '/CSS/admin.css') {
@@ -105,7 +102,6 @@ const server = http.createServer((req, res) => {
     } else if (path === '/SCRIPTS/admin_utils.js') {
         directJS('./SCRIPTS/admin_utils.js', res)
     } else if (path === '/Favicon/favicon-16x16.png') {
->>>>>>> Stashed changes
         directImage('./Favicon/favicon-16x16.png', res);
     }
     else if (path === '/Favicon/favicon-32x32.png') {
@@ -224,35 +220,30 @@ function directManifest(path, res) {
 /**
  * Routes for API
  */
-/*
+
 function routing(path, res, req) {
     switch (path) {
         case '/api/login':
             return AdminController.apiLoginAdmin(res, req);
-<<<<<<< Updated upstream
-=======
         case '/api/getByCountryYearRangeAndMonth':
             return CCIController.apiGetCCIByCountryYearRangeAndMonth(res, req);
         case '/api/getByCountryAndYearRange':
             return CCIController.apiGetCCIByCountryAndYearRange(res, req);
-<<<<<<< Updated upstream
         case '/api/GetByCountryYearAndMonthRange':
             return CCIController.apiGetCCIByCountryYearAndMonthRange(res, req);
-=======
         case '/api/getCCIForAllCountriesByYearAndMonth':
             return CCIController.apiGetCCIForAllCountriesByYearAndMonth(res, req);
         case '/api/getByCountryYearAndMonthRange':
-                return CCIController.apiGetCCIByCountryYearAndMonthRange(res,req);
->>>>>>> Stashed changes
+            return CCIController.apiGetCCIByCountryYearAndMonthRange(res, req);
         case '/api/add':
             return CCIController.apiCreateCCI(res, req);
         case '/api/delete':
             return CCIController.apiDeleteCCI(res, req);
         case '/api/update':
             return CCIController.apiUpdateCCI(res, req);
->>>>>>> Stashed changes
     }
-} */
-server.listen(port, hostname, () => {
-    console.log(`Serverul rulează la adresa http://${hostname}:${port}/`);
-});
+}
+
+    server.listen(port, hostname, () => {
+        console.log(`Serverul rulează la adresa http://${hostname}:${port}/`);
+    });

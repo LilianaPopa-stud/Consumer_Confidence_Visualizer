@@ -24,8 +24,7 @@ function drawChart() {
             console.error("Invalid chart type selected.");
     }
 }
-<<<<<<< Updated upstream
-=======
+
 function selectChart() {
     var chartContainer = document.querySelector('.chart-container');
     chartContainer.innerHTML = "";
@@ -52,4 +51,4 @@ function selectChart() {
             console.error("Invalid chart type selected.");
     }
 }
->>>>>>> Stashed changes
+
