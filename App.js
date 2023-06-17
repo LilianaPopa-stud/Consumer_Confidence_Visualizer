@@ -29,6 +29,7 @@ const server = http.createServer((req, res) => {
         directHTML('./HTML/AdminLogIn.html', res)
     } else if (path === '/AdminPanel.html') {
         directHTML('./HTML/AdminPanel.html', res)
+<<<<<<< Updated upstream
     } else if(path === '/CSS/admin.css'){
         directCSS('./CSS/admin.css',res)
     } else if(path === '/CSS/adminPanel.css'){
@@ -57,6 +58,43 @@ const server = http.createServer((req, res) => {
         directJS('./SCRIPTS/Table.js',res)
     }
     else if(path === '/Favicon/favicon-16x16.png'){
+=======
+    } else if (path === '/ComboChart.html') {
+        directHTML('./HTML/ComboChart.html', res)
+    } else if (path === '/CSS/admin.css') {
+        directCSS('./CSS/admin.css', res)
+    } else if (path === '/CSS/adminPanel.css') {
+        directCSS('./CSS/adminPanel.css', res)
+    } else if (path === '/CSS/charts.css') {
+        directCSS('./CSS/charts.css', res)
+    } else if (path === '/CSS/map.css') {
+        directCSS('./CSS/map.css', res)
+    } else if (path === '/CSS/report.css') {
+        directCSS('./CSS/report.css', res)
+    } else if (path === '/CSS/style.css') {
+        directCSS('./CSS/style.css', res)
+    } else if (path === '/CSS/table.css') {
+        directCSS('./CSS/table.css', res)
+    } else if (path === '/SCRIPTS/BarChart.js') {
+        directJS('./SCRIPTS/BarChart.js', res)
+    } else if (path === '/SCRIPTS/ChartSelect.js') {
+        directJS('./SCRIPTS/ChartSelect.js', res)
+    } else if (path === '/SCRIPTS/CoreChart.js') {
+        directJS('./SCRIPTS/CoreChart.js', res)
+    } else if (path === '/SCRIPTS/GeoChart.js') {
+        directJS('./SCRIPTS/GeoChart.js', res)
+    } else if (path === '/SCRIPTS/LineChart.js') {
+        directJS('./SCRIPTS/LineChart.js', res)
+    } else if (path === '/SCRIPTS/Table.js') {
+        directJS('./SCRIPTS/Table.js', res)
+    } else if (path === '/SCRIPTS/functions.js') {
+        directJS('./SCRIPTS/functions.js', res)
+    } else if (path === '/views/loginAdminView.js') {
+        directJS('./views/loginAdminView.js', res)
+    } else if (path === '/SCRIPTS/admin_utils.js') {
+        directJS('./SCRIPTS/admin_utils.js', res)
+    } else if (path === '/Favicon/favicon-16x16.png') {
+>>>>>>> Stashed changes
         directImage('./Favicon/favicon-16x16.png', res);
     }
     else if (path === '/Favicon/favicon-32x32.png') {
@@ -180,6 +218,21 @@ function routing(path, res, req) {
     switch (path) {
         case '/api/login':
             return AdminController.apiLoginAdmin(res, req);
+<<<<<<< Updated upstream
+=======
+        case '/api/getByCountryYearRangeAndMonth':
+            return CCIController.apiGetCCIByCountryYearRangeAndMonth(res, req);
+        case '/api/getByCountryAndYearRange':
+            return CCIController.apiGetCCIByCountryAndYearRange(res, req);
+        case '/api/GetByCountryYearAndMonthRange':
+            return CCIController.apiGetCCIByCountryYearAndMonthRange(res, req);
+        case '/api/add':
+            return CCIController.apiCreateCCI(res, req);
+        case '/api/delete':
+            return CCIController.apiDeleteCCI(res, req);
+        case '/api/update':
+            return CCIController.apiUpdateCCI(res, req);
+>>>>>>> Stashed changes
     }
 } */
 server.listen(port, hostname, () => {
