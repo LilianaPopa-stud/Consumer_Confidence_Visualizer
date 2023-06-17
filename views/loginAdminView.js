@@ -4,8 +4,8 @@
  * */
 
 function sendCredentials(form){
-    let username = form.userid.value;
-    let password = form.pswrd.value;
+    let username = form.username.value;
+    let password = form.password.value;
     console.log(username, password);
     let object = {
         "username" : username,
@@ -21,7 +21,7 @@ function sendCredentials(form){
             alert(request.response);
             if(request.response === "Logged in successfully!") {
                 //redirect
-                window.location.replace("http://127.0.0.1:3000/api/adminPanel");
+                window.location.replace("http://127.0.0.1:3000/AdminPanel.html");
             }else{
             }
         }

@@ -62,6 +62,8 @@ const server = http.createServer(async (req, res) => {
         directJS('./SCRIPTS/Table.js', res)
     } else if (path === '/SCRIPTS/functions.js') {
         directJS('./SCRIPTS/functions.js', res)
+    } else if (path === '/views/loginAdminView.js') {
+        directJS('./views/loginAdminView.js', res)
     } else if (path === '/Favicon/favicon-16x16.png') {
         directImage('./Favicon/favicon-16x16.png', res);
     } else if (path === '/Favicon/favicon-32x32.png') {
