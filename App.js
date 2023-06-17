@@ -36,6 +36,8 @@ const server = http.createServer(async (req, res) => {
         directHTML('./HTML/AdminPanel.html', res)
     } else if (path === '/GeoChart.html') {
         directHTML('./HTML/GeoChart.html', res)
+    } else if (path === '/LineChart.html') {
+        directHTML('./HTML/LineChart.html', res)
     } else if (path === '/CSS/admin.css') {
         directCSS('./CSS/admin.css', res)
     } else if (path === '/CSS/adminPanel.css') {

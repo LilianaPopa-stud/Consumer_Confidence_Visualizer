@@ -41,7 +41,7 @@ function selectChart() {
             window.location.href="BarChart.html";
             break;
         case "linechart":
-            drawLineChart();
+            window.location.href="LineChart.html";
             break;
         case "table":
             window.location.href="Table.html";
