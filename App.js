@@ -76,6 +76,8 @@ const server = http.createServer(async (req, res) => {
         directImage('./Favicon/android-chrome-512x512.png', res);
     } else if (path === '/Favicon/apple-touch-icon.png') {
         directImage('./Favicon/apple-touch-icon.png', res);
+    } else if (path === '/img/waving-hand.png') {
+        directImage('./img/waving-hand.png', res);
     } else if (path === '/Favicon/favicon.ico') {
         fs.readFile('./Favicon/favicon.ico', function (err, data) {
             if (err) {

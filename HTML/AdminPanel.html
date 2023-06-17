@@ -14,45 +14,61 @@
 </head>
 <body>
 <div class="container">
-    <div class="menu">
-        <h1>Admin Panel</h1>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
         <ul>
-            <li><a href="#">Add CCI</a></li>
-            <li><a href="#">Delete CCI</a></li>
-            <li><a href="#">Update CCI</a></li>
+            <li><a href="#" onclick="showAddCCI()">Add CCI</a></li>
+            <li><a href="#" onclick="showDeleteCCI()">Delete CCI</a></li>
+            <li><a href="#" onclick="showUpdateCCI()">Update CCI</a></li>
         </ul>
     </div>
     <div class="content">
-        <!--        ADD-->
-        <div id="add-CCI"><h3>Add-CCI</h3>
-            <textarea name="add-CCI" rows="50" cols="150" align="center">type..</textarea>
-        </div>
-        <button class="button" type="submit" id="add-button" onclick="admin_add_CCI();">submit</button>
+            <div class="welcome">
+                <img src="../img/waving-hand.png" alt="Welcome Image">
+                <h2>Welcome to the Admin Panel!</h2>
+            </div>
+            <p>Please select an option to start.</p>
 
-        <!--        UPDATE-->
-        <div id="update-CCI"><h3>Update-CCI</h3>
-            <textarea name="update-CCI" rows="50" cols="150" align="center">type..</textarea>
-        </div>
-        <button class="button" type="submit" id="update-button" onclick="admin_update_CCI();">submit</button>
 
-        <!--        DELETE-->
-        <div id="delete-CCI"><h3>Delete-CCI</h3>
-            <textarea name="delete-CCI" rows="50" cols="150" align="center">type..</textarea>
+        <div id="add-CCI" class="option-content">
+            <h3>Add CCI</h3>
+            <textarea name="add-CCI" rows="10" cols="50" placeholder="Enter CCI details..."></textarea>
+            <button class="button" type="submit" onclick="admin_add_CCI();">Submit</button>
         </div>
-        <button class="button" type="submit" id="delete-button" onclick="admin_delete_CCI();">submit</button>
+        <div id="delete-CCI" class="option-content">
+            <h3>Delete CCI</h3>
+            <textarea name="delete-CCI" rows="10" cols="50" placeholder="Enter CCI details..."></textarea>
+            <button class="button" type="submit" onclick="admin_delete_CCI();">Submit</button>
+        </div>
+        <div id="update-CCI" class="option-content">
+            <h3>Update CCI</h3>
+            <textarea name="update-CCI" rows="10" cols="50" placeholder="Enter CCI details..."></textarea>
+            <button class="button" type="submit" onclick="admin_update_CCI();">Submit</button>
+        </div>
     </div>
-
 </div>
 <script>
-    window.onload = function() {
-        // Verificați dacă utilizatorul este autentificat
-        var isLoggedIn = sessionStorage.getItem('isLoggedIn');
-        if (!isLoggedIn) {
-            // Dacă nu este autentificat, redirecționați către pagina de login
-            window.location.replace("http://127.0.0.1:3000/AdminLogIn.html");
-        }
+    function showAddCCI() {
+        document.querySelector(".welcome").style.display = "none";
+        document.getElementById("add-CCI").style.display = "block";
+        document.getElementById("delete-CCI").style.display = "none";
+        document.getElementById("update-CCI").style.display = "none";
     }
-</script>
 
+    function showDeleteCCI() {
+        document.querySelector(".welcome").style.display = "none";
+        document.getElementById("add-CCI").style.display = "none";
+        document.getElementById("delete-CCI").style.display = "block";
+        document.getElementById("update-CCI").style.display = "none";
+    }
+
+    function showUpdateCCI() {
+        document.querySelector(".welcome").style.display = "none";
+        document.getElementById("add-CCI").style.display = "none";
+        document.getElementById("delete-CCI").style.display = "none";
+        document.getElementById("update-CCI").style.display = "block";
+    }
+
+</script>
 </body>
 </html>

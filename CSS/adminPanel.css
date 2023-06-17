@@ -1,172 +1,133 @@
-@media (min-width: 769px)  {
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 .container {
     display: flex;
-    flex-direction: row;
+}
+
+.sidebar {
+    flex: 0 0 20%;
+    background-color: #333;
+    padding: 20px;
     height: 100vh;
 }
 
-.menu {
-    background-color: #333;
+.sidebar h2 {
     color: white;
-    padding: 20px;
-    flex: 0 0 20%;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
-.menu ul {
+.sidebar ul {
     list-style-type: none;
-    margin: 0;
     padding: 0;
 }
 
-.menu li {
-    margin: 10px 0;
+.sidebar li {
+    margin-bottom: 10px;
 }
 
-.menu a {
-    color: white;
+.sidebar a {
     text-decoration: none;
+    color: white;
 }
 
 .content {
+    flex: 0 0 80%;
     padding: 20px;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-form {
+.option-content {
+    display: none;
+}
+
+.option-content h3 {
+    font-size: 18px;
+}
+
+.option-content textarea {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #45a049;
+}
+
+.content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
 }
 
-label {
-    margin-bottom: 10px;
+.welcome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    font-size: 100px;
 }
 
-input[type="text"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.welcome img {
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
+}
+
+.welcome h2 {
+    font-size: 60px;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #4c2a85;
+
+}
+
+p {
     font-size: 16px;
 }
 
-select {
-    padding: 10px;
-    font-size: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: white;
-    appearance: none;
-    margin-right: 10px;
-    margin-left: 10px;
-}
-
-option {
-    background-color: white;
-    color: black;
-}
-
-label {
-    margin-bottom: 10px;
-    font-size: 20px;
-}
-}
-
-@media (max-width: 768px) {
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
+/* Reguli de media query pentru a face pagină responsive */
+@media screen and (max-width: 768px) {
     .container {
-        display: flex;
         flex-direction: column;
-        height: 100vh;
     }
 
-    .menu {
-        background-color: #333;
-        color: white;
-        padding: 20px;
-        flex: 0 0 20%;
-    }
-
-    .menu ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .menu li {
-        margin: 10px 0;
-    }
-
-    .menu a {
-        color: white;
-        text-decoration: none;
+    .sidebar {
+        flex: 0 0 auto;
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
     }
 
     .content {
-        padding: 20px;
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
+        flex: 0 0 auto;
+        width: 100%;
     }
 
-    form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .welcome {
+        font-size: 60px;
+        margin-bottom: 20px;
     }
 
-    label {
-        margin-bottom: 10px;
-    }
-
-    input[type="text"] {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 20px;
-    }
-
-    select {
-        padding: 10px;
-        font-size: 15px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background-color: white;
-        appearance: none;
+    .welcome img {
+        width: 50px;
+        height: 50px;
         margin-right: 10px;
-        margin-left: 10px;
-
     }
 
-    option {
-        background-color: white;
-        color: black;
+    .welcome h2 {
+        font-size: 40px;
     }
 
-    label {
-        margin-bottom: 10px;
-        font-size: 18px;
+    p {
+        font-size: 14px;
     }
-
-    .content select {
-        display: block;
-        margin-bottom: 10px;
-    }
-
-
 }
