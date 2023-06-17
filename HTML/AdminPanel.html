@@ -20,6 +20,7 @@
             <li><a href="#" onclick="showAddCCI()">Add CCI</a></li>
             <li><a href="#" onclick="showDeleteCCI()">Delete CCI</a></li>
             <li><a href="#" onclick="showUpdateCCI()">Update CCI</a></li>
+            <li><a href="#" onclick="showExportDatabase()">Export Database</a></li>
         </ul>
     </div>
     <div class="content">
@@ -27,7 +28,7 @@
                 <img src="../img/waving-hand.png" alt="Welcome Image">
                 <h2>Welcome to the Admin Panel!</h2>
             </div>
-            <p>Please select an option to start.</p>
+
 
 
         <div id="add-CCI" class="option-content">
@@ -45,6 +46,14 @@
             <textarea name="update-CCI" rows="10" cols="50" placeholder="Enter CCI details..."></textarea>
             <button class="button" type="submit" onclick="admin_update_CCI();">Submit</button>
         </div>
+        <div id="export-database" class="option-content">
+            <h3>Export Database</h3>
+            <button class="button" type="submit" id="export-db"><a href="../consumer_confidence.db" download="database.db">SQLITE
+                DB</a></button>
+            <button class="button" type="submit" id="export-csv"><a href="../database.csv"
+                                                                    download="database.csv">CSV</a></button>
+
+        </div>
     </div>
 </div>
 <script>
@@ -53,6 +62,7 @@
         document.getElementById("add-CCI").style.display = "block";
         document.getElementById("delete-CCI").style.display = "none";
         document.getElementById("update-CCI").style.display = "none";
+        document.getElementById("export-database").style.display = "none";
     }
 
     function showDeleteCCI() {
@@ -60,6 +70,7 @@
         document.getElementById("add-CCI").style.display = "none";
         document.getElementById("delete-CCI").style.display = "block";
         document.getElementById("update-CCI").style.display = "none";
+        document.getElementById("export-database").style.display = "none";
     }
 
     function showUpdateCCI() {
@@ -67,6 +78,16 @@
         document.getElementById("add-CCI").style.display = "none";
         document.getElementById("delete-CCI").style.display = "none";
         document.getElementById("update-CCI").style.display = "block";
+        document.getElementById("export-database").style.display = "none";
+    }
+
+    function showExportDatabase() {
+        document.querySelector(".welcome").style.display = "none";
+        document.getElementById("add-CCI").style.display = "none";
+        document.getElementById("delete-CCI").style.display = "none";
+        document.getElementById("update-CCI").style.display = "none";
+        document.getElementById("export-database").style.display = "block";
+
     }
 
 </script>
