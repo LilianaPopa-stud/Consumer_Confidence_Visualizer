@@ -21,8 +21,19 @@ const server = http.createServer((req, res) => {
         directManifest('./Favicon/site.webmanifest', res);
     } else if (path === '/Report.html'){
         directHTML('./HTML/Report.html', res)
+<<<<<<< Updated upstream
     } else if (path === '/Charts.html') {
         directHTML('./HTML/Charts.html', res)
+=======
+    } else if (path === '/SelectChart.html') {
+        directHTML('./HTML/SelectChart.html', res)}
+    else if(path === '/BarChart.html'){
+        directHTML('./HTML/BarChart.html', res)
+    } else if (path === '/ComboChart.html'){
+        directHTML('./HTML/ComboChart.html', res)
+    } else if (path === '/Table.html') {
+        directHTML('./HTML/Table.html', res)
+>>>>>>> Stashed changes
     } else if (path === '/Contact.html') {
         directHTML('./HTML/Contact.html', res)
     } else if (path === '/AdminLogIn.html') {
@@ -224,8 +235,15 @@ function routing(path, res, req) {
             return CCIController.apiGetCCIByCountryYearRangeAndMonth(res, req);
         case '/api/getByCountryAndYearRange':
             return CCIController.apiGetCCIByCountryAndYearRange(res, req);
+<<<<<<< Updated upstream
         case '/api/GetByCountryYearAndMonthRange':
             return CCIController.apiGetCCIByCountryYearAndMonthRange(res, req);
+=======
+        case '/api/getCCIForAllCountriesByYearAndMonth':
+            return CCIController.apiGetCCIForAllCountriesByYearAndMonth(res, req);
+        case '/api/getByCountryYearAndMonthRange':
+                return CCIController.apiGetCCIByCountryYearAndMonthRange(res,req);
+>>>>>>> Stashed changes
         case '/api/add':
             return CCIController.apiCreateCCI(res, req);
         case '/api/delete':

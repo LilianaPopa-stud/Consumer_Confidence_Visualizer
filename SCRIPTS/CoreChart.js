@@ -5,6 +5,7 @@ google.charts.load('current', {
 function drawCoreChart() {
     console.log("drawComboChart");
     const endpoint = 'http://127.0.0.1:3000/api/getByCountryYearAndMonthRange';
+<<<<<<< Updated upstream
     const country = 'OECD';
     const startMonth = parseInt(document.getElementById("start-month").value);
     const endMonth = parseInt(document.getElementById("end-month").value);
@@ -22,6 +23,42 @@ function drawComboChart(input_data, title) {
     var chartContainer = document.querySelector('.chart-container');
     chartContainer.innerHTML = "";
 
+=======
+    const year = parseInt(document.getElementById("start-year").value);
+    const startMonth = document.getElementById("start-month").value;
+    const endMonth = document.getElementById("end-month").value;
+    var selectElement=document.getElementById("countries");
+    const title = `CCI between ${startMonth} and ${endMonth} ${year}`;
+    const dataPromises = [];
+    const selectedCountries = Array.from(selectElement.selectedOptions).map(option => option.value);
+    for (let country of selectedCountries) {
+        const url = `${endpoint}?data&country=${country}&startMonth=${startMonth}&endMonth=${endMonth}&year=${year}`;
+        const promise = fetch(url)
+            .then(response => response.json());
+
+        dataPromises.push(promise);
+    }
+    Promise.all(dataPromises)
+        .then(results => {
+
+            const combinedData = results.reduce((acc, data) => {
+                return acc.concat(data);
+            }, []);
+            
+            drawComboChart(combinedData, title);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
+
+
+
+function drawComboChart(input_data, title) {
+    var chartContainer = document.querySelector('.chart-container');
+    chartContainer.innerHTML = "";
+
+>>>>>>> Stashed changes
     document.getElementById("myChart").scrollIntoView({ behavior: "smooth" });
 
     const newData = input_data.map(obj => {
@@ -109,7 +146,7 @@ function drawComboChart(input_data, title) {
 
     var chart = new google.visualization.ComboChart(chartElement);
 
-    chart.draw(data, options);
+    chart.draw(final_data, options);
 
 
 }

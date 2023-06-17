@@ -166,22 +166,38 @@ module.exports = class cciService{
                         [Op.like]: `${country}`,
                     },
                     time: {
+<<<<<<< Updated upstream
                         [Op.like]: `%${year}`,
+=======
+                        [Op.like]: `${year}%`,
+>>>>>>> Stashed changes
                         [Op.between]: [`${year}-${startMonth}`, `${year}-${endMonth}`],
                     },
                 },
                 attributes: {
+<<<<<<< Updated upstream
                     exclude: ['id', 'location', 'measure', 'indicator','frequency', 'subject','flag_codes']
                 }
             }).then((function (list){
                 console.log(list);
                 return list;}));
+=======
+                    exclude: ['id', 'location', 'measure', 'indicator', 'frequency', 'subject', 'flag_codes']
+                }
+            });
+>>>>>>> Stashed changes
         } catch (error) {
             console.error("findByCountryYearAndMonthRange error: ", error);
             throw new Error("Error querying database");
         }
+<<<<<<< Updated upstream
 
     }
+=======
+    }
+
+
+>>>>>>> Stashed changes
     /**
      * Creating and inserting new CCI instance
      **/
