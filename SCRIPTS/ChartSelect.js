@@ -32,7 +32,7 @@ function selectChart() {
 
     switch(chartType) {
         case "geochart":
-            drawGeoChart();
+            window.location.href="GeoChart.html";
             break;
         case "corechart":
             drawCoreChart();

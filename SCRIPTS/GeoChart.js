@@ -2,54 +2,87 @@
         'packages': ['geochart'],
     })
 ;
+function fetchApiAndDrawGeoChart() {
+
+    const startYear = parseInt(document.getElementById("start-year").value);
+    const month = document.getElementById("month").value;
+    const endpoint = 'http://127.0.0.1:3000/api/getCCIForAllCountriesByYearAndMonth';
+    const url = `${endpoint}?data&startYear=${startYear}&month=${month}`;
+    fetch(url).then((response) => response.json()).then((data) => {
+        drawGeoChart(data);
+    });
 
 
-function drawGeoChart() {
+}
+
+
+function drawGeoChart(input_data) {
     var chartContainer = document.querySelector('.chart-container');
-
-
-    // Distrugeți harta existentă dacă există deja
+    chartContainer.innerHTML = "";
     if (chartElement) {
         chartElement.parentNode.removeChild(chartElement);
     }
 
-    var data = google.visualization.arrayToDataTable([
-        ['Country', 'Index'],
-        ['Australia', 97.6],
-        ['Austria', 97.0],
-        ['Belgium', 99.1],
-        ['Brazil', 99.8],
-        ['Chile', 95.1],
-        ['Colombia', 94.7],
-        ['Costa Rica', 102.5],
-        ['Czech Republic', 98.1],
-        ['Denmark', 97.4],
-        ['Estonia', 94.4],
-        ['European Union', 96.2],
-        ['Finland', 96.6],
-        ['France', 96.6],
-        ['Germany', 98.5],
-        ['Greece', 98.7],
-        ['Hungary', 98.6],
-        ['Italy', 100.0],
-        ['Korea', 98.7],
-        ['Latvia', 95.1],
-        ['Lithuania', 95.1],
-        ['Luxembourg', 97.4],
-        ['Netherlands', 98.1],
-        ['New Zealand', 97.4],
-        ['Poland', 98.1],
-        ['Portugal', 98.1],
-        ['Russia', 95.1],
-        ['Slovakia', 98.1],
-        ['Slovenia', 98.1],
-        ['South Africa', 95.1],
-        ['Spain', 98.1],
-        ['Sweden', 97.4],
-        ['Turkey', 95.1],
-        ['United Kingdom', 98.1],
-        ['United States', 98.1]
-    ]);
+    const countryMapping = {
+        USA: 'United States',
+        NLD: 'Netherlands',
+        CHE: 'Switzerland',
+        FRA: 'France',
+        POL: 'Poland',
+        CZE: 'Czech Republic',
+        JPN: 'Japan',
+        OECDE: 'OECD Europe',
+        AUS: 'Australia',
+        OECD: 'OECD',
+        SWE: 'Sweden',
+        MEX: 'Mexico',
+        GBR: 'United Kingdom',
+        ZAF: 'South Africa',
+        HUN: 'Hungary',
+        PRT: 'Portugal',
+        DNK: 'Denmark',
+        ESP: 'Spain',
+        LUX: 'Luxembourg',
+        GRC: 'Greece',
+        BRA: 'Brazil',
+        SVK: 'Slovak Republic',
+        CHN: 'China',
+        BEL: 'Belgium',
+        FIN: 'Finland',
+        NZL: 'New Zealand',
+        IDN: 'Indonesia',
+        TUR: 'Turkey',
+        AUT: 'Austria',
+        ITA: 'Italy',
+        IRL: 'Ireland',
+        SVN: 'Slovenia',
+        DEU: 'Germany',
+        KOR: 'Korea',
+        EST: 'Estonia',
+        ISR: "Israel",
+        RUS: "Russia",
+        LVA: "Latvia",
+        LTU: "Lithuania",
+        COL: "Colombia",
+        CHL: "Chile",
+        CRI: "Costa Rica",
+        IND: "India"
+    };
+
+
+    const new_data = input_data.map((obj)=>{
+        return [countryMapping[obj.location], obj.value];
+    })
+    // eliminate undefined values
+    const filtered_data = new_data.filter((obj)=>{
+        return obj[0] !== undefined;});
+    const formattedData = [['Country', 'Index']]; // Initialize the formatted data array
+
+    for (const [country, index] of filtered_data) {
+        formattedData.push([country, parseFloat(index)]);
+    }
+
+    var data = google.visualization.arrayToDataTable(formattedData);
 
     var options = {
         backgroundColor: 'transparent',
@@ -68,4 +101,5 @@ function drawGeoChart() {
     var chart = new google.visualization.GeoChart(chartElement);
 
     chart.draw(data, options);
+
 }
