@@ -180,4 +180,39 @@ module.exports = class cciService{
         }
     }
 
+    /**
+     * Updating CCI
+     * */
+    static async updateCCI(fields){
+        try{
+            const { location, time, value } = fields;
+            const result = await CCI.update({ value }, {
+                where: { location, time }
+            });
+                console.log("success");
+                return result;
+        }catch (error){
+            console.log(`Error updating object ${error}`);
+        }
+    }
+
+    /**
+     * Deleting CCI
+     * */
+    static async deleteCCI(options) {
+        const { location, time, value } = options;
+        try {
+            return await CCI.destroy({
+                where : {
+                    "location" : options.location,
+                    "time" : options.time,
+                    "value" : options.value
+                }
+            });
+        } catch (error) {
+            console.log(`Could not delete CCI ${error}`);
+        }
+
+    }
+
 }

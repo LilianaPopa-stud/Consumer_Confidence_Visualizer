@@ -53,4 +53,37 @@ module.exports = class CCI {
             res.statusCode(500);
         }
     }
+
+    /**
+     * Updating  CCI
+     * */
+    static async apiUpdateCCI(res, req, next){
+        const data = await req.on('data',function (data){
+            options = JSON.parse(data);
+        });
+
+        try {
+            const updatedCCI = await CCIService.updateCCI(options);
+            return "success";
+        } catch (error) {
+            res.statusCode(500);
+            return "fail";
+        }
+    }
+
+    /**
+     * Deleting  CCI
+     * */
+    static async apiDeleteCCI(res, req, next) {
+        const data = await req.on('data',function (data){
+            options = JSON.parse(data);
+        });
+        console.log(options);
+        try {
+            const deleteResponse = await CCIService.deleteCCI(options);
+            res.write(JSON.stringify(deleteResponse));
+        } catch (error) {
+            res.statusCode = 500;
+        }
+    }
 }
