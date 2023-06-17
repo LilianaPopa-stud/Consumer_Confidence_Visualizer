@@ -1,3 +1,7 @@
+// Verificați autentificarea înainte de încărcarea paginii
+window.onload = function() {
+    checkAuthentication();
+};
 /**
  * Method takes the username and password provided by the user
  * and checks the validity by requesting the API
@@ -22,10 +26,19 @@ function sendCredentials(form){
             if(request.response === "Logged in successfully!") {
                 //redirect
                 sessionStorage.setItem('isLoggedIn', 'true');
-                window.location.replace("http://127.0.0.1:3000/AdminPanel.html");
+               // window.location.replace("http://127.0.0.1:3000/AdminPanel.html");
+                checkAuthentication();
             }else{
             }
         }
     };
     request.send(JSON.stringify(object));
+}
+// Verifică dacă utilizatorul este deja autentificat
+function checkAuthentication() {
+    let token = sessionStorage.getItem("isLoggedIn");
+    if (token) {
+        // Utilizatorul este deja autentificat, redirecționează către pagina de Admin Panel
+        window.location.replace("http://127.0.0.1:3000/AdminPanel.html");
+    }
 }
