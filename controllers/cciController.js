@@ -1,5 +1,6 @@
 const CCIService = require('../server/services/cciService');
 const {findByCountryAndYearRange} = require("../server/services/cciService");
+let options;
 module.exports = class CCI {
 
     static async apiGetCCIByCountryYearRangeAndMonth(res, req, next) {
@@ -36,5 +37,20 @@ module.exports = class CCI {
             return false;
         }
 
+    }
+
+    /**
+     * Creating and inserting into db new CCI instance
+     * */
+    static async apiCreateCCI(res, req, next) {
+        const data = await req.on('data',function (data){
+            options = JSON.parse(data);
+        });
+        try {
+            const createdCCI = await CCIService.createCCI(options);
+            res.write('Success');
+        } catch (error) {
+            res.statusCode(500);
+        }
     }
 }

@@ -155,4 +155,29 @@ module.exports = class cciService{
 
     }
 
+    /**
+     * Creating and inserting new CCI instance
+     **/
+    static async createCCI(data) {
+        try {
+            const newCCI = {
+               "location": data.location,
+                "indicator": "CCI",
+                "subject": "AMPLITUD",
+                "measure": "LTRENDIDX",
+                "frequency": "M",
+                "time": data.time,
+                "value": data.value,
+                "flag_codes": ""
+
+            }
+            await CCI.create(newCCI);
+            console.log("success!");
+            return "success";
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
 }

@@ -64,6 +64,8 @@ const server = http.createServer(async (req, res) => {
         directJS('./SCRIPTS/functions.js', res)
     } else if (path === '/views/loginAdminView.js') {
         directJS('./views/loginAdminView.js', res)
+    } else if (path === '/SCRIPTS/admin_utils.js') {
+        directJS('./SCRIPTS/admin_utils.js', res)
     } else if (path === '/Favicon/favicon-16x16.png') {
         directImage('./Favicon/favicon-16x16.png', res);
     } else if (path === '/Favicon/favicon-32x32.png') {
@@ -180,7 +182,12 @@ function routing(path, res, req) {
             return CCIController.apiGetCCIByCountryYearRangeAndMonth(res, req);
         case '/api/getByCountryAndYearRange':
             return CCIController.apiGetCCIByCountryAndYearRange(res, req);
-
+        case '/api/add':
+            return CCIController.apiCreateCCI(res, req);
+        case '/api/delete':
+            return CCIController.apiDeleteCCI(res, req);
+        case '/api/update':
+            return CCIController.apiUpdateCCI(res, req);
     }
 }
 server.listen(port, hostname, () => {
