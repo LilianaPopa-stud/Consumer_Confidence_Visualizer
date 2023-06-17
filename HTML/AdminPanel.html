@@ -9,56 +9,87 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../Favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../Favicon/favicon-16x16.png">
     <link rel="manifest" href="../Favicon/site.webmanifest">
+    <script type="text/javascript" src="../views/loginAdminView.js"></script>
+    <script type="text/javascript" src="../SCRIPTS/admin_utils.js"></script>
 </head>
 <body>
 <div class="container">
-    <div class="menu">
-        <h1>Admin Panel</h1>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
         <ul>
-            <li><a href="#">Add CCI</a></li>
-            <li><a href="#">Delete CCI</a></li>
-            <li><a href="#">Update CCI</a></li>
+            <li><a href="#" onclick="showAddCCI()">Add CCI</a></li>
+            <li><a href="#" onclick="showDeleteCCI()">Delete CCI</a></li>
+            <li><a href="#" onclick="showUpdateCCI()">Update CCI</a></li>
+            <li><a href="#" onclick="showExportDatabase()">Export Database</a></li>
         </ul>
     </div>
     <div class="content">
-        <label for="chart-type">Chart:</label>
-        <select name="chart-type" id="chart-type" class="dropdown">
-            <option value="geochart">Geochart</option>
-            <option value="corechart">Combo chart</option>
-            <option value="barchart">Bar chart</option>
-            <option value="linechart">Line chart</option>
-            <option value="table">Table</option>
-        </select>
-        <label for="chart-type">Country:</label>
-        <select name="country" id="country" class="dropdown">
-            <option value="AT">Austria</option>
-            <option value="BE">Belgium</option>
-            <option value="BG">Bulgaria</option>
-            <option value="HR">Croatia</option>
-        </select>
-        <label for="chart-type">Year:</label>
-        <select name="year" id="year" class="dropdown">
-            <option value="2019">2019</option>
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>
-        </select>
-        <label for="chart-type">Month:</label>
-        <select name="month" id="month" class="dropdown">
-            <option value="01">January</option>
-            <option value="02">February</option>
-            <option value="03">March</option>
-            <option value="04">April</option>
-            <option value="05">May</option>
-            <option value="06">June</option>
-            <option value="07">July</option>
-            <option value="08">August</option>
-            <option value="09">September</option>
-            <option value="10">October</option>
-            <option value="11">November</option>
-            <option value="12">December</option>
-        </select>
+            <div class="welcome">
+                <img src="../img/waving-hand.png" alt="Welcome Image">
+                <h2>Welcome to the Admin Panel!</h2>
+            </div>
+
+
+
+        <div id="add-CCI" class="option-content">
+            <h3>Add CCI</h3>
+            <textarea name="add-CCI" rows="10" cols="50" placeholder="Enter CCI details..."></textarea>
+            <button class="button" type="submit" onclick="admin_add_CCI();">Submit</button>
+        </div>
+        <div id="delete-CCI" class="option-content">
+            <h3>Delete CCI</h3>
+            <textarea name="delete-CCI" rows="10" cols="50" placeholder="Enter CCI details..."></textarea>
+            <button class="button" type="submit" onclick="admin_delete_CCI();">Submit</button>
+        </div>
+        <div id="update-CCI" class="option-content">
+            <h3>Update CCI</h3>
+            <textarea name="update-CCI" rows="10" cols="50" placeholder="Enter CCI details..."></textarea>
+            <button class="button" type="submit" onclick="admin_update_CCI();">Submit</button>
+        </div>
+        <div id="export-database" class="option-content">
+            <h3>Export Database</h3>
+            <button class="button" type="submit" id="export-db"><a href="../consumer_confidence.db" download="database.db">SQLITE
+                DB</a></button>
+            <button class="button" type="submit" id="export-csv"><a href="../database.csv"
+                                                                    download="database.csv">CSV</a></button>
+
+        </div>
     </div>
 </div>
+<script>
+    function showAddCCI() {
+        document.querySelector(".welcome").style.display = "none";
+        document.getElementById("add-CCI").style.display = "block";
+        document.getElementById("delete-CCI").style.display = "none";
+        document.getElementById("update-CCI").style.display = "none";
+        document.getElementById("export-database").style.display = "none";
+    }
+
+    function showDeleteCCI() {
+        document.querySelector(".welcome").style.display = "none";
+        document.getElementById("add-CCI").style.display = "none";
+        document.getElementById("delete-CCI").style.display = "block";
+        document.getElementById("update-CCI").style.display = "none";
+        document.getElementById("export-database").style.display = "none";
+    }
+
+    function showUpdateCCI() {
+        document.querySelector(".welcome").style.display = "none";
+        document.getElementById("add-CCI").style.display = "none";
+        document.getElementById("delete-CCI").style.display = "none";
+        document.getElementById("update-CCI").style.display = "block";
+        document.getElementById("export-database").style.display = "none";
+    }
+
+    function showExportDatabase() {
+        document.querySelector(".welcome").style.display = "none";
+        document.getElementById("add-CCI").style.display = "none";
+        document.getElementById("delete-CCI").style.display = "none";
+        document.getElementById("update-CCI").style.display = "none";
+        document.getElementById("export-database").style.display = "block";
+
+    }
+
+</script>
 </body>
 </html>

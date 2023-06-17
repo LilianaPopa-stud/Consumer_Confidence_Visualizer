@@ -25,6 +25,7 @@ function drawChart() {
     }
 }
 
+
 function selectChart() {
     var chartContainer = document.querySelector('.chart-container');
     chartContainer.innerHTML = "";
@@ -50,5 +51,5 @@ function selectChart() {
         default:
             console.error("Invalid chart type selected.");
     }
-}
 
+}

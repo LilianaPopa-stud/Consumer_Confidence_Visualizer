@@ -1,6 +1,5 @@
 function generateYearOptions() {
     const startYear = 1963;
-    const currentYear = new Date().getFullYear()-3;
     const select = document.getElementById("start-year");
     for (let year = currentYear; year >= startYear; year--) {
         const option = document.createElement("option");
@@ -24,32 +23,8 @@ function generateEndYearOptions() {
 }
 
 function generateMonthOptions() {
-    const monthMapping = {
-        1: "January",
-        2: "February",
-        3: "March",
-        4: "April",
-        5: "May",
-        6: "June",
-        7: "July",
-        8: "August",
-        9: "September",
-        10: "October",
-        11: "November",
-        12: "December"
-    };
+    const select = document.getElementById("month");
 
-    const select = document.getElementById("start-month");
-
-    for (let month = 12; month >= 1; month--) {
-        const option = document.createElement("option");
-        option.value = month.toString();
-        option.text = monthMapping[month]; // Adaugă textul corespunzător luni
-        select.appendChild(option);
-    }
-}
-
-function generateStartMonthOptions() {
     const monthMapping = {
         "01": "January",
         "02": "February",
@@ -95,7 +70,6 @@ function generateEndMonthOptions() {
 
     }
     const select = document.getElementById("end-month");
-
     const monthCodes = Object.keys(monthMapping).sort();
     console.log(monthCodes);
     monthCodes.forEach(monthCode => {
@@ -158,7 +132,6 @@ function generateCountryOptions() {
     const selectElement = document.getElementById("countries");
     const countryCodes = Object.keys(countryMapping).sort();
 
-    // Generate options for each country code
     countryCodes.forEach(countryCode => {
         const countryName = countryMapping[countryCode];
         const option = document.createElement("option");

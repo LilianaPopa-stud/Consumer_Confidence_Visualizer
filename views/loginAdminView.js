@@ -1,11 +1,15 @@
+// Verificați autentificarea înainte de încărcarea paginii
+window.onload = function() {
+    checkAuthentication();
+};
 /**
  * Method takes the username and password provided by the user
  * and checks the validity by requesting the API
  * */
 
 function sendCredentials(form){
-    let username = form.userid.value;
-    let password = form.pswrd.value;
+    let username = form.username.value;
+    let password = form.password.value;
     console.log(username, password);
     let object = {
         "username" : username,
@@ -21,10 +25,20 @@ function sendCredentials(form){
             alert(request.response);
             if(request.response === "Logged in successfully!") {
                 //redirect
-                window.location.replace("http://127.0.0.1:3000/api/adminPanel");
+                sessionStorage.setItem('isLoggedIn', 'true');
+               // window.location.replace("http://127.0.0.1:3000/AdminPanel.html");
+                checkAuthentication();
             }else{
             }
         }
     };
     request.send(JSON.stringify(object));
+}
+// Verifică dacă utilizatorul este deja autentificat
+function checkAuthentication() {
+    let token = sessionStorage.getItem("isLoggedIn");
+    if (token) {
+        // Utilizatorul este deja autentificat, redirecționează către pagina de Admin Panel
+        window.location.replace("http://127.0.0.1:3000/AdminPanel.html");
+    }
 }

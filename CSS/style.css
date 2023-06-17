@@ -208,6 +208,25 @@ footer p {
     line-height: 1.5;
     color: #666;
 }
+#chart-info {
+    background-color: transparent;
+    padding: 20px;
+    margin-bottom: 40px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#chart-info h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#chart-info p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666;
+}
 
 
 
@@ -307,7 +326,7 @@ footer p {
    
     header {
         flex-direction: column;
-        padding: auto;
+        padding: 30px;
         font-size: 10px;
     }
 
@@ -320,7 +339,7 @@ footer p {
     }
 
     header h1 {
-        font-size: 20px;
+        font-size: 10px;
     }
 }
 
@@ -358,7 +377,7 @@ footer p {
 
     header {
         flex-direction: column;
-        padding: auto;
+        padding: 10px;
         font-size: 10px;
     }
 

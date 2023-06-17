@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CoCo - Consumer Confidence Visualizer - Charts</title>
+    <link rel="stylesheet" href="../CSS/map.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/charts.css">
+    <link rel="stylesheet" href="../CSS/table.css">
+    <script src="https://www.google.com/jsapi"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="../Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../Favicon/favicon-16x16.png">
+    <link rel="manifest" href="../Favicon/site.webmanifest">
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <h1>CoCo - Consumer Confidence Visualizer</h1>
+        <nav>
+            <ul>
+                <li><a href="INDEX.html">Home</a></li>
+                <li class="active"><a href="SelectChart.html">Charts</a></li>
+                <li><a href="#">Export</a>
+                    <ul>
+                        <li><a href="#">CSV</a></li>
+                        <li><a href="#">WebP</a></li>
+                        <li><a href="#">SVG</a></li>
+                    </ul>
+                </li>
+                <li><a href="Report.html">Report</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="AdminLogIn.html">Admin Panel</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="cci-description">
+        <h2>Consumer Confidence Index (CCI)</h2>
+        <p>This Consumer Confidence indicator provides an indication of future developments of households’ consumption and saving, based upon answers
+            regarding their expected financial situation, their sentiment about the general economic situation, unemployment and capability of savings. An indicator above 100 signals a boost in the
+            consumers’ confidence towards the future economic situation, as a consequence of which they are less prone to save, and more inclined to spend money on major purchases in the next 12 months.
+            Values below 100 indicate a pessimistic attitude towards future developments in the economy, possibly resulting in a tendency to save more and consume less.</p>
+    </div>
+    <div id="chart-select">
+        <label for="chart-type">Chart:</label>
+        <select name="chart-type" id="chart-type">
+            <option value="geochart">Geochart</option>
+            <option value="corechart">Combo chart</option>
+            <option value="barchart">Bar chart</option>
+            <option value="linechart">Line chart</option>
+            <option value="table">Table</option>
+        </select>
+        <button onclick="selectChart()">Customize Chart</button>
+    </div>
+    <div class="chart-container" id="myChart"></div>
+</div>
+<script  src="../SCRIPTS/GeoChart.js"></script>
+<script  src="../SCRIPTS/CoreChart.js"></script>
+<script  src="../SCRIPTS/BarChart.js"></script>
+<script  src="../SCRIPTS/LineChart.js"></script>
+<script  src="../SCRIPTS/Table.js"></script>
+<script  src="../SCRIPTS/ChartSelect.js"></script>
+<footer>
+    <p>&copy; 2023 CoCo - Consumer Confidence Visualizer</p>
+</footer>
+</body>
+</html>

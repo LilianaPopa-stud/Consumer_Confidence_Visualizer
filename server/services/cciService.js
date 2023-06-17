@@ -2,10 +2,11 @@
  * CCI SERVICE -> interacts directly with the database, via the Sequelize operations (findAll, count, create, etc...)
  * */
 const  CciModel = require("../models/cciModel");
-const Sequelizer = require('sequelize');
-const Op = Sequelizer.Op;
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 const db = require('../connectionDatabase.config');
-const CCI = CciModel(db, Sequelizer);
+const CCI = CciModel(db, Sequelize);
+
 
 module.exports = class cciService{
     static async getAll(){
@@ -60,6 +61,23 @@ module.exports = class cciService{
         }
 
     }
+
+    static async findAllCountriesByYearAndMonth(year, month) {
+        try {
+            return await CCI.findAll({
+                where: {
+                    time: {
+                        [Op.like]: `${year}-${month}`,
+                    },
+                },
+                attributes: ['location','value'],
+            });
+        } catch (error) {
+            console.error("findAllCountriesByYearAndMonth error: ", error);
+            throw new Error("Error querying database");
+        }
+    }
+
     static async findByCountryAndYear(country, year) {
         try {
             return await CCI.findAll({
@@ -154,6 +172,7 @@ module.exports = class cciService{
 
     }
 
+
     static async findByCountryYearAndMonthRange(country, year, startMonth, endMonth) {
         try {
             return await CCI.findAll({
@@ -183,7 +202,6 @@ module.exports = class cciService{
     }
 
 
-
     /**
      * Creating and inserting new CCI instance
      **/
@@ -208,6 +226,41 @@ module.exports = class cciService{
             console.log(error);
 
         }
+    }
+
+    /**
+     * Updating CCI
+     * */
+    static async updateCCI(fields){
+        try{
+            const { location, time, value } = fields;
+            const result = await CCI.update({ value }, {
+                where: { location, time }
+            });
+                console.log("success");
+                return result;
+        }catch (error){
+            console.log(`Error updating object ${error}`);
+        }
+    }
+
+    /**
+     * Deleting CCI
+     * */
+    static async deleteCCI(options) {
+        const { location, time, value } = options;
+        try {
+            return await CCI.destroy({
+                where : {
+                    "location" : options.location,
+                    "time" : options.time,
+                    "value" : options.value
+                }
+            });
+        } catch (error) {
+            console.log(`Could not delete CCI ${error}`);
+        }
+
     }
 
 }
