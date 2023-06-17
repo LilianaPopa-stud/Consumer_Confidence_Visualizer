@@ -21,6 +21,7 @@ function sendCredentials(form){
             alert(request.response);
             if(request.response === "Logged in successfully!") {
                 //redirect
+                sessionStorage.setItem('isLoggedIn', 'true');
                 window.location.replace("http://127.0.0.1:3000/AdminPanel.html");
             }else{
             }

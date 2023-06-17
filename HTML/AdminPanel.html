@@ -9,6 +9,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../Favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../Favicon/favicon-16x16.png">
     <link rel="manifest" href="../Favicon/site.webmanifest">
+    <script type="text/javascript" src="../views/loginAdminView.js"></script>
 </head>
 <body>
 <div class="container">
@@ -60,5 +61,16 @@
         </select>
     </div>
 </div>
+<script>
+    window.onload = function() {
+        // Verificați dacă utilizatorul este autentificat
+        var isLoggedIn = sessionStorage.getItem('isLoggedIn');
+        if (!isLoggedIn) {
+            // Dacă nu este autentificat, redirecționați către pagina de login
+            window.location.replace("http://127.0.0.1:3000/AdminLogIn.html");
+        }
+    }
+</script>
+
 </body>
 </html>
