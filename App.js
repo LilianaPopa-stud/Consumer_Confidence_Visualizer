@@ -67,6 +67,8 @@ const server = http.createServer(async (req, res) => {
         directJS('./SCRIPTS/exportSVG.js', res)
     } else if (path === '/SCRIPTS/exportWebP.js') {
         directJS('./SCRIPTS/exportWebP.js', res)
+    } else if (path === '/SCRIPTS/exportCSV.js') {
+        directJS('./SCRIPTS/exportCSV.js', res)
     } else if (path === '/SCRIPTS/GeoChart.js') {
         directJS('./SCRIPTS/GeoChart.js', res)
     } else if (path === '/SCRIPTS/Table.js') {
