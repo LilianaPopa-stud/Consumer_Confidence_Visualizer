@@ -1,6 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
 const http = require('http');
-const hostname = '127.0.0.1';
 const port = process.env.PORT || 3000;
 const AdminController = require("./controllers/adminController");
 const CCIController = require("./controllers/cciController");
@@ -224,6 +223,6 @@ function routing(path, res, req) {
     }
 }
 
-server.listen(port, hostname, () => {
-    console.log(`Serverul rulează la adresa http://${hostname}:${port}/`);
+server.listen(port,  () => {
+    console.log(`Serverul rulează la adresa http://:${port}/`);
 });
