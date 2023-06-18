@@ -16,7 +16,7 @@ function admin_add_CCI() {
         "value": parseFloat(data[2].trim())
     };
     let request = new XMLHttpRequest();
-    let url = "http://127.0.0.1:3000/api/add";
+    let url = "https://test-coco-proj.onrender.com/api/add";
     request.open("POST", url, true);
     request.setRequestHeader("Content-Type", "application/json");
     request.onreadystatechange = function () {
@@ -40,7 +40,7 @@ function admin_update_CCI() {
         "value": parseFloat(data[2].trim())
     };
     let request = new XMLHttpRequest();
-    let url = "http://127.0.0.1:3000/api/update";
+    let url = "https://test-coco-proj.onrender.com/api/update";
     request.open("POST", url, true);
     request.setRequestHeader("Content-Type", "application/json");
     request.onreadystatechange = function () {
@@ -64,7 +64,7 @@ function admin_delete_CCI() {
         "value": parseFloat(data[2].trim())
     };
     let request = new XMLHttpRequest();
-    let url = "http://127.0.0.1:3000/api/delete";
+    let url = "https://test-coco-proj.onrender.com/api/delete";
     request.open("POST", url, true);
     request.setRequestHeader("Content-Type", "application/json");
     request.onreadystatechange = function () {

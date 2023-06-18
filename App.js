@@ -1,6 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
 const http = require('http');
-const hostname = '127.0.0.1';
 const port = process.env.PORT || 3000;
 const AdminController = require("./controllers/adminController");
 const CCIController = require("./controllers/cciController");
@@ -14,6 +13,9 @@ const server = http.createServer(async (req, res) => {
     res.statusCode = 200;
 
     const reqUrl = url.parse(req.url);
+    if (reqUrl.host === "https://test-coco-proj.onrender.com/") {
+        console.log("redirecting");
+    }
     const path = reqUrl.pathname;
     if (path === '/' || path === '/INDEX.html') {
         directHTML('./HTML/INDEX.html', res);
@@ -226,6 +228,6 @@ function routing(path, res, req) {
     }
 }
 
-server.listen(port, hostname, () => {
-    console.log(`Serverul rulează la adresa http://${hostname}:${port}/`);
+server.listen(port,  () => {
+    console.log(`Serverul rulează la adresa http://:${port}/`);
 });

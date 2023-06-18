@@ -4,7 +4,7 @@ google.charts.load('current', {
 
 function drawBarChart() {
     console.log("drawBarChart");
-    const endpoint = 'http://127.0.0.1:3000/api/getByCountryYearRangeAndMonth';
+    const endpoint = 'https://test-coco-proj.onrender.com/api/getByCountryYearRangeAndMonth';
     const country = 'OECD';
     const startYear = parseInt(document.getElementById("start-year").value);
     const endYear = parseInt(document.getElementById("end-year").value);

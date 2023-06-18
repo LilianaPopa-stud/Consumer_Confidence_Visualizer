@@ -6,7 +6,7 @@ function fetchApiAndDrawGeoChart() {
 
     const startYear = parseInt(document.getElementById("start-year").value);
     const month = document.getElementById("month").value;
-    const endpoint = 'http://127.0.0.1:3000/api/getCCIForAllCountriesByYearAndMonth';
+    const endpoint = 'https://test-coco-proj.onrender.com/api/getCCIForAllCountriesByYearAndMonth';
     const url = `${endpoint}?data&startYear=${startYear}&month=${month}`;
 
     var request = new XMLHttpRequest();
