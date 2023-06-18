@@ -16,7 +16,8 @@
     <link rel="manifest" href="../Favicon/site.webmanifest">
     <script src="../SCRIPTS/functions.js"></script>
     <script src="../SCRIPTS/ChartSelect.js"></script>
-    <script  src="../SCRIPTS/GeoChart.js"></script>
+    <script src="../SCRIPTS/LineChart.js"></script>
+    <script type="module" src="../SCRIPTS/GeoChart.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -40,29 +41,23 @@
         </nav>
     </header>
     <div id="chart-info">
-        <h2>Selected Chart Type: Geochart</h2>
-        <p>A Geochart is a type of chart that displays data on a map, representing different regions or countries. In this specific case, the Geochart shows the Consumer Confidence Index for a specific year across all countries.</p>
-        <p>By visualizing the Consumer Confidence Index on a Geochart, you can easily identify countries with high or low consumer confidence levels, allowing for comparisons and analysis of consumer sentiment worldwide.</p>
-    </div>
-
-
+        <h2>Selected Chart Type: Line Chart</h2>
     </div>
 
     <div id="chart-select">
-
+        <label for="countries">Countries: </label>
+        <select name="countries" id="countries" multiple>
+            <script>
+                generateCountryOptions();
+            </script>
+        </select>
         <label for="start-year">Year: </label>
         <select name="start-year" id="start-year">
             <script>
                 generateYearOptions();
             </script>
         </select>
-        <label for="month">Month: </label>
-        <select name="month" id="month">
-            <script>
-                generateMonthOptions();
-            </script>
-        </select>
-        <button onclick="fetchApiAndDrawGeoChart()">Display Chart</button>
+        <button onclick="drawLineChart()">Display Chart</button>
         <button onclick="window.location.href='SelectChart.html'">Choose Different Chart</button>
     </div>
     <div class="chart-container" id="myChart"></div>

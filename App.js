@@ -36,6 +36,11 @@ const server = http.createServer(async (req, res) => {
         directHTML('./HTML/AdminPanel.html', res)
     } else if (path === '/GeoChart.html') {
         directHTML('./HTML/GeoChart.html', res)
+    }
+    else if (path === '/ComboChart.html') {
+        directHTML('./HTML/ComboChart.html', res)
+    } else if (path === '/LineChart.html') {
+        directHTML('./HTML/LineChart.html', res)
     } else if (path === '/CSS/admin.css') {
         directCSS('./CSS/admin.css', res)
     } else if (path === '/CSS/adminPanel.css') {
@@ -186,6 +191,8 @@ function routing(path, res, req) {
             return AdminController.apiLoginAdmin(res, req);
         case '/api/getByCountryYearRangeAndMonth':
             return CCIController.apiGetCCIByCountryYearRangeAndMonth(res, req);
+        case '/api/getByCountryYearAndMonthRange':
+            return CCIController.apiGetCCIByCountryYearAndMonthRange(res, req);
         case '/api/getByCountryAndYearRange':
             return CCIController.apiGetCCIByCountryAndYearRange(res, req);
         case '/api/getCCIForAllCountriesByYearAndMonth':

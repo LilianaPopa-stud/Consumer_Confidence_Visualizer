@@ -2,18 +2,83 @@ google.charts.load('current', {
     'packages': ['corechart']
 });
 
-function drawCoreChart() {
-    var chartContainer = document.querySelector('.chart-container');
-    var data = google.visualization.arrayToDataTable([
-        ['Month', 'Brazil', 'United States', 'Germany', 'Austria', 'Belgium','Greece','Average'],
-        ['December', 102.02, 96.97, 97.27, 96.38, 98.22, 97.82,98.11],
-        ['January', 99.90, 97.26, 97.82, 96.74, 98.76, 98.23,98.11],
-        ['February', 99.84, 97.40, 98.24, 97.00, 99.14,98.40,98.33],
-        ['March', 99.91, 97.31, 98.47, 97.17, 99.33,98.68,98.47],
-    ]);
+function drawCombo_Chart(input_data, title) {
+    const endpoint = 'http://127.0.0.1:3000/api/getByCountryYearAndMonthRange';
+    const year = parseInt(document.getElementById("start-year").value);
+    const startMonth = document.getElementById("start-month").value;
+    const endMonth = document.getElementById("end-month").value;
+    var selectElement=document.getElementById("countries");
+    const dataPromises = [];
+    const selectedCountries = Array.from(selectElement.selectedOptions).map(option => option.value);
+    console.log(selectedCountries);
+    for (let country of selectedCountries) {
+        const url = `${endpoint}?data&country=${country}&startMonth=${startMonth}&endMonth=${endMonth}&year=${year}`;
+        console.log(url);
+        const promise = fetch(url)
+            .then(response => response.json());
 
+        dataPromises.push(promise);
+    }
+    Promise.all(dataPromises)
+        .then(results => {
+
+            const combinedData = results.reduce((acc, data) => {
+                return acc.concat(data);
+            }, []);
+
+            drawComboChart(combinedData, title);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
+
+
+
+function drawComboChart(rawData, title) {
+    var chartContainer = document.querySelector('.chart-container');
+    chartContainer.innerHTML = "";
+
+
+    document.getElementById("myChart").scrollIntoView({ behavior: "smooth" });
+    // Extract unique locations from the data
+    const locations = [...new Set(rawData.map(data => data.location))];
+
+
+// Initialize the formatted data array with headers
+    const formattedData = [['Month', ...locations, 'Average']];
+
+// Create an object to store the monthly averages for each location
+    const averages = {};
+
+// Iterate over the data to calculate the averages
+    for (const data of rawData) {
+        const { time, location, value } = data;
+        if (!averages[time]) {
+            averages[time] = { count: 0, sum: 0 };
+        }
+        averages[time].count++;
+        averages[time].sum += parseFloat(value);
+    }
+
+
+// Iterate over the averages to create the rows of formatted data
+    for (const [time, averageData] of Object.entries(averages)) {
+        const rowData = [time];
+        for (const location of locations) {
+            const locationData = rawData.find(data => data.location === location && data.time === time);
+            rowData.push(locationData ? parseFloat(locationData.value) : null);
+        }
+        rowData.push(averageData.sum / averageData.count);
+        formattedData.push(rowData);
+    }
+
+console.log(formattedData);
+
+    const final_data = google.visualization.arrayToDataTable(formattedData);
+    console.log(final_data);
     var options = {
-        title: 'CCI between December-March 2023',
+        title: title,
         titleTextStyle: {
             color: 'black',
             fontName: 'Oxygen',
@@ -49,9 +114,6 @@ function drawCoreChart() {
         },
         seriesType: 'bars',
         series: {
-            6: {
-                type: 'line'
-            },
             0: {
 
                 color: "#a80874"
@@ -71,6 +133,11 @@ function drawCoreChart() {
             5: {
                 color: "#e5ae7d"
             },
+            [locations.length]: {
+                type: 'line'
+            }
+
+
         },
         legend: { position: 'bottom'},
         height : 400,
@@ -83,7 +150,7 @@ function drawCoreChart() {
 
     var chart = new google.visualization.ComboChart(chartElement);
 
-    chart.draw(data, options);
+    chart.draw(final_data, options);
 
 
 }
