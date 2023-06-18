@@ -1,10 +1,9 @@
 
-function generateCSVTable(table) {
+function generateCSVTable_table(table) {
     let csvTable = ""
     const tableString = table.innerText 
     const tableString_array = tableString.split("\n") 
-    if (table == document.getElementById("myChart1")){ // pt tabel
-        for (let i = 0;i<tableString_array.length;i++)
+    for (let i = 0;i<tableString_array.length;i++)
         {
             const row_split = tableString_array[i].split("\t")
                 for(let index_element = 0; index_element<row_split.length;index_element++)
@@ -17,22 +16,25 @@ function generateCSVTable(table) {
         }
         return csvTable;
     }
-    else{ // pt restul 
+    
+function generateCSVTable_charts(table) {
+        let csvTable = ""
+        const tableString = table.innerText 
+        const tableString_array = tableString.split("\n") 
         for (let i = 1;i<tableString_array.length;i++)
-        {
-            const row_split = tableString_array[i].split("\t")
-                for(let index_element = 0; index_element<row_split.length;index_element++)
-                {
-                    csvTable += `${row_split[index_element]},`
-                }
-                csvTable = csvTable.slice(0,-1)
-    
-            csvTable += '\n'
+            {
+                const row_split = tableString_array[i].split("\t")
+                    for(let index_element = 0; index_element<row_split.length;index_element++)
+                    {
+                        csvTable += `${row_split[index_element]},`
+                    }
+                    csvTable = csvTable.slice(0,-1)
+        
+                csvTable += '\n'
+            }
+            return csvTable;
         }
-        return csvTable;
-    }
-
-}
+        
 
 function downloadCSV(filename, csvStringContent) {
     let element = document.createElement('a');
@@ -45,8 +47,12 @@ function downloadCSV(filename, csvStringContent) {
 }
 
 
-function get_export_csv(classId) {
+function get_export_csv_table(classId) {
     let table = document.getElementById(classId)
-    downloadCSV("export.csv",generateCSVTable(table))
+    downloadCSV("export.csv",generateCSVTable_table(table))
 }
 
+function get_export_csv_charts(classId) {
+    let table = document.getElementById(classId)
+    downloadCSV("export.csv",generateCSVTable_charts(table))
+}

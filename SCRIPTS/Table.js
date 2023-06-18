@@ -50,7 +50,7 @@ function drawTableChart() {
 function drawTable(startYear, combinedData) {
     var chartContainer = document.querySelector('.chart-container');
     chartContainer.innerHTML = "";
-    document.getElementById("myChart1").scrollIntoView({behavior: "smooth"});
+    document.getElementById("myChart").scrollIntoView({behavior: "smooth"});
     var data = new google.visualization.DataTable();
 
     const columns = ['Country'];
