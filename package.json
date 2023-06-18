@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "axios": "^1.4.0",
+    "cheerio": "^1.0.0-rc.12",
+    "node-fetch": "^3.3.1",
+    "puppeteer": "^20.7.2",
+    "sequelize": "^6.32.0",
+    "sqlite3": "^5.1.6"
+  },
+  "scripts": {
+    "start": "node App.js",
+    "dev": "nodemon App.js"
+  },
+  "name": "proiect_tw",
+  "description": "<!DOCTYPE html> <html lang=\"ro\" xmlns=\"http://www.w3.org/1999/html\"> <head>   <meta charset=\"utf-8\">",
+  "version": "1.0.0",
+  "main": "App.js",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
