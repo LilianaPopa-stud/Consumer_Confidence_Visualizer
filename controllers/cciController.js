@@ -66,6 +66,8 @@ module.exports = class CCI {
             const month = urlParams.get('month');
             let ccis = await CCIService.findAllCountriesByYearAndMonth(year, month);
             const dataValuesArray = ccis.map(cci => cci.dataValues);
+            res.setHeader('Content-Type', 'application/json'); // Set the response content type as JSON
+            res.statusCode = 200; // Set the status code to 200 (OK)
             res.write(JSON.stringify(dataValuesArray));
         } catch (error) {
             console.log(`ERROR : ${error.message}`);

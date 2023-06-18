@@ -1,42 +1,56 @@
-
-google.charts.load('current', {'packages':['table']});
+google.charts.load('current', {'packages': ['table']});
 
 
 function drawTableChart() {
 
     var startYear = parseInt(document.getElementById("start-year").value);
     var endYear = startYear;
-    var selectElement=document.getElementById("countries");
+    var selectElement = document.getElementById("countries");
     const endpoint = 'http://127.0.0.1:3000/api/getByCountryAndYearRange';
     const dataPromises = [];
     const selectedCountries = Array.from(selectElement.selectedOptions).map(option => option.value);
+
     for (let country of selectedCountries) {
         const url = `${endpoint}?data&country=${country}&startYear=${startYear}&endYear=${endYear}`;
-        const promise = fetch(url)
-            .then(response => response.json());
+        console.log(url);
+        const xhr = new XMLHttpRequest();
 
-        dataPromises.push(promise);
+        xhr.open('GET', url, true);
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                const data = JSON.parse(xhr.responseText);
+                console.log(data);
+                dataPromises.push(data);
+                if (dataPromises.length === selectedCountries.length) {
+                    // When all data promises are resolved, proceed to draw the chart
+                    Promise.all(dataPromises)
+                        .then(results => {
+                            const combinedData = results.reduce((acc, data) => {
+                                return acc.concat(data);
+                            }, []);
+
+                            drawTable(startYear, combinedData);
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                }
+            } else if (xhr.readyState === 4) {
+                console.error('Eroare la efectuarea cererii:', xhr.status);
+            }
+        };
+
+        xhr.send();
     }
-    Promise.all(dataPromises)
-        .then(results => {
-
-            const combinedData = results.reduce((acc, data) => {
-                return acc.concat(data);
-            }, []);
-
-            // Desenează graficul
-            drawTable(startYear, combinedData);
-        })
-        .catch(error => {
-            console.error(error);
-        });
 
 
 }
+
 function drawTable(startYear, combinedData) {
     var chartContainer = document.querySelector('.chart-container');
     chartContainer.innerHTML = "";
-    document.getElementById("myChart").scrollIntoView({ behavior: "smooth" });
+    document.getElementById("myChart").scrollIntoView({behavior: "smooth"});
     var data = new google.visualization.DataTable();
 
     const columns = ['Country'];
@@ -45,7 +59,7 @@ function drawTable(startYear, combinedData) {
     timePeriods.sort();
     timePeriods.forEach(time => {
         const [year, month] = time.split('-');
-        const shortMonth = new Date(`${year}-${month}`).toLocaleString('default', { month: 'short' });
+        const shortMonth = new Date(`${year}-${month}`).toLocaleString('default', {month: 'short'});
         const columnName = `${shortMonth}-${year}`;
         columns.push(columnName);
     })
@@ -136,6 +150,6 @@ function mapCountry(country) {
         CHL: "Chile",
         CRI: "Costa Rica",
     };
-     return countryMapping[country];
+    return countryMapping[country];
 
 }

@@ -1,36 +1,45 @@
-
 google.charts.load('current', {
     'packages': ['corechart'],
 });
+
 function drawBarChart() {
     console.log("drawBarChart");
     const endpoint = 'http://127.0.0.1:3000/api/getByCountryYearRangeAndMonth';
-    const country ='OECD';
-    const startYear =parseInt(document.getElementById("start-year").value);
+    const country = 'OECD';
+    const startYear = parseInt(document.getElementById("start-year").value);
     const endYear = parseInt(document.getElementById("end-year").value);
     const month = "01";
     const url = `${endpoint}?data&country=${country}&startYear=${startYear}&endYear=${endYear}&month=${month}`;
     console.log(url);
     const title = `CCI between ${startYear} and ${endYear}`;
-    fetch(url)
-        .then((response) => response.json())
-        .then((data) => {
-            drawChart(data,title);
-        });
+    var request = new XMLHttpRequest();
+    request.open('GET', url, true);
+
+    request.onload = function () {
+        if (request.status >= 200 && request.status < 400) {
+            var data = JSON.parse(request.responseText);
+            drawChart(data, title);
+        } else {
+            console.log('Eroare la efectuarea cererii:', request.status);
+        }
+    };
+
+    request.send();
 
 
 }
-function drawChart(input_data,title){
+
+function drawChart(input_data, title) {
 
     var chartContainer = document.querySelector('.chart-container');
     chartContainer.innerHTML = "";
 
-    document.getElementById("myChart").scrollIntoView({ behavior: "smooth" });
+    document.getElementById("myChart").scrollIntoView({behavior: "smooth"});
 
     const newData = input_data.map(obj => {
         const date = new Date(obj.time); // Convertim stringul timp în obiect de tip Date
         const year = date.getFullYear(); // Obținem anul
-        const month = date.toLocaleString('default', { month: 'short' }); // Obținem scurtă reprezentare textuală a lunii
+        const month = date.toLocaleString('default', {month: 'short'}); // Obținem scurtă reprezentare textuală a lunii
         const formattedDate = `${month}-${year}`; // Formatăm data în formatul dorit
         const value = parseFloat(obj.value); // Convertim valoarea într-un număr cu zecimale
         return [formattedDate, value];
@@ -83,7 +92,7 @@ function drawChart(input_data,title){
         color: "#C490D1",
         backgroundColor: 'transparent',
         legendTextStyle: {color: 'black', fontSize: 12, fontName: 'Oxygen'},
-        legend : {position: 'bottom'},
+        legend: {position: 'bottom'},
         height: 400,
     };
     var chartElement = document.createElement('div');
