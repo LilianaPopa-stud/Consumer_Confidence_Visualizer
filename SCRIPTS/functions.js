@@ -40,7 +40,7 @@ function generateMonthOptions() {
 
     };
     const monthCodes = Object.keys(monthMapping).sort();
-    console.log(monthCodes);
+
     monthCodes.forEach(monthCode => {
         const monthName = monthMapping[monthCode];
         const option = document.createElement("option");
@@ -68,7 +68,7 @@ function generateStartMonthOptions() {
 
         };
         const monthCodes = Object.keys(monthMapping).sort();
-        console.log(monthCodes);
+
         monthCodes.forEach(monthCode => {
             const monthName = monthMapping[monthCode];
             const option = document.createElement("option");
@@ -97,7 +97,7 @@ function generateEndMonthOptions() {
     }
     const select = document.getElementById("end-month");
     const monthCodes = Object.keys(monthMapping).sort();
-    console.log(monthCodes);
+
     monthCodes.forEach(monthCode => {
         const monthName = monthMapping[monthCode];
         const option = document.createElement("option");
@@ -151,7 +151,6 @@ function generateCountryOptions() {
         COL: "Colombia",
         CHL: "Chile",
         CRI: "Costa Rica",
-        IND: "India"
     };
 
 

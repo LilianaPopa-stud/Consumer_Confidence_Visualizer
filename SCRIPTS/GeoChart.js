@@ -8,9 +8,21 @@ function fetchApiAndDrawGeoChart() {
     const month = document.getElementById("month").value;
     const endpoint = 'http://127.0.0.1:3000/api/getCCIForAllCountriesByYearAndMonth';
     const url = `${endpoint}?data&startYear=${startYear}&month=${month}`;
-    fetch(url).then((response) => response.json()).then((data) => {
-        drawGeoChart(data);
-    });
+
+    var request = new XMLHttpRequest();
+    request.open('GET', url, true);
+
+    request.onload = function() {
+        if (request.status >= 200 && request.status < 400) {
+            var data = JSON.parse(request.responseText);
+            drawGeoChart(data);
+        }
+        else {
+            console.log('Eroare la efectuarea cererii:', request.status);
+        }
+    };
+
+    request.send();
 
 
 }
