@@ -10,27 +10,41 @@ function drawCombo_Chart(input_data, title) {
     var selectElement=document.getElementById("countries");
     const dataPromises = [];
     const selectedCountries = Array.from(selectElement.selectedOptions).map(option => option.value);
-    console.log(selectedCountries);
+
     for (let country of selectedCountries) {
         const url = `${endpoint}?data&country=${country}&startMonth=${startMonth}&endMonth=${endMonth}&year=${year}`;
         console.log(url);
-        const promise = fetch(url)
-            .then(response => response.json());
+        const xhr = new XMLHttpRequest();
 
-        dataPromises.push(promise);
+        xhr.open('GET', url, true);
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                const data = JSON.parse(xhr.responseText);
+                console.log(data);
+                dataPromises.push(data);
+                if (dataPromises.length === selectedCountries.length) {
+                    // When all data promises are resolved, proceed to draw the chart
+                    Promise.all(dataPromises)
+                        .then(results => {
+                            const combinedData = results.reduce((acc, data) => {
+                                return acc.concat(data);
+                            }, []);
+
+                            drawComboChart(combinedData, title);
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                }
+            } else if (xhr.readyState === 4) {
+                console.error('Eroare la efectuarea cererii:', xhr.status);
+            }
+        };
+
+        xhr.send();
     }
-    Promise.all(dataPromises)
-        .then(results => {
 
-            const combinedData = results.reduce((acc, data) => {
-                return acc.concat(data);
-            }, []);
-
-            drawComboChart(combinedData, title);
-        })
-        .catch(error => {
-            console.error(error);
-        });
 }
 
 

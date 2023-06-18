@@ -39,7 +39,7 @@ module.exports = class CCI {
 
     }
 
-    static async apiGetCCIByCountryYearAndMonthRange(res, req, next){
+    static async apiGetCCIByCountryYearAndMonthRange(res, req, next) {
         try {
             const urlParams = new URLSearchParams(req.url);
             const country = urlParams.get('country');
@@ -48,16 +48,16 @@ module.exports = class CCI {
             const endMonth = urlParams.get('endMonth');
             let ccis = await CCIService.findByCountryYearAndMonthRange(country, year, startMonth, endMonth);
             const dataValuesArray = ccis.map(cci => cci.dataValues);
-            console.log(dataValuesArray);
-            res.write(JSON.stringify(dataValuesArray));
-            res.end();
+            res.setHeader('Content-Type', 'application/json'); // Setează tipul de conținut al răspunsului ca JSON
+            res.statusCode = 200; // Setează codul de stare 200 (OK)
+            res.write(JSON.stringify(dataValuesArray)); // Converteste array-ul în format JSON și trimite răspunsul
+            res.end(); // Încheie răspunsul
         } catch (error) {
             console.log(`ERROR : ${error.message}`);
-            res.statusCode = 500;
-            return false;
+            res.statusCode = 500; // Setează codul de stare 500 (Eroare server)
+            res.end(); // Încheie răspunsul
         }
     }
-
 
     static async apiGetCCIForAllCountriesByYearAndMonth(res, req, next) {
         try {
