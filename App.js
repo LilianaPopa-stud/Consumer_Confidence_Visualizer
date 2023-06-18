@@ -1,4 +1,4 @@
-const sqlite3= require('sqlite3').verbose();
+const sqlite3 = require('sqlite3').verbose();
 const http = require('http');
 const hostname = '127.0.0.1';
 const port = process.env.PORT || 3000;
@@ -7,7 +7,6 @@ const CCIController = require("./controllers/cciController");
 const url = require('url');
 const fs = require('fs');
 const {findByCountryAndYearRange} = require("./server/services/cciService");
-
 
 
 const server = http.createServer(async (req, res) => {
@@ -23,8 +22,8 @@ const server = http.createServer(async (req, res) => {
     } else if (path === '/Report.html') {
         directHTML('./HTML/Report.html', res)
     } else if (path === '/SelectChart.html') {
-        directHTML('./HTML/SelectChart.html', res)}
-    else if(path === '/BarChart.html'){
+        directHTML('./HTML/SelectChart.html', res)
+    } else if (path === '/BarChart.html') {
         directHTML('./HTML/BarChart.html', res)
     } else if (path === '/Table.html') {
         directHTML('./HTML/Table.html', res)
@@ -36,8 +35,7 @@ const server = http.createServer(async (req, res) => {
         directHTML('./HTML/AdminPanel.html', res)
     } else if (path === '/GeoChart.html') {
         directHTML('./HTML/GeoChart.html', res)
-    }
-    else if (path === '/ComboChart.html') {
+    } else if (path === '/ComboChart.html') {
         directHTML('./HTML/ComboChart.html', res)
     } else if (path === '/LineChart.html') {
         directHTML('./HTML/LineChart.html', res)
@@ -65,6 +63,8 @@ const server = http.createServer(async (req, res) => {
         directJS('./SCRIPTS/GeoChart.js', res)
     } else if (path === '/SCRIPTS/LineChart.js') {
         directJS('./SCRIPTS/LineChart.js', res)
+    } else if (path === '/SCRIPTS/exportSVG.js') {
+        directJS('./SCRIPTS/exportSVG.js', res)
     } else if (path === '/SCRIPTS/GeoChart.js') {
         directJS('./SCRIPTS/GeoChart.js', res)
     } else if (path === '/SCRIPTS/Table.js') {
@@ -107,8 +107,7 @@ const server = http.createServer(async (req, res) => {
                 res.end();
             }
         });
-    }
-    else if (path === '/img/scholarly-html.svg') {
+    } else if (path === '/img/scholarly-html.svg') {
         fs.readFile('./img/scholarly-html.svg', function (err, data) {
             if (err) {
                 throw err;
@@ -120,14 +119,14 @@ const server = http.createServer(async (req, res) => {
         });
     } else if (path === '/database.csv') {
         fs.readFile('./database.csv', function (err, data) {
-            if (err) {
-                throw err;
-            } else {
-                res.writeHead(200, {'Content-Type': 'text/csv'});
-                res.write(data);
-                res.end();
+                if (err) {
+                    throw err;
+                } else {
+                    res.writeHead(200, {'Content-Type': 'text/csv'});
+                    res.write(data);
+                    res.end();
+                }
             }
-        }
         );
     } else {
         await routing(path, res, req)
@@ -137,22 +136,24 @@ const server = http.createServer(async (req, res) => {
 
 
 });
+
 function directImage(path, res) {
     fs.readFile(path, function (err, data) {
-        if(err){
+        if (err) {
             throw err;
-        } else{
+        } else {
             res.writeHead(200, {'Content-Type': 'image/png'});
             res.write(data);
             res.end();
         }
     });
 }
-function directHTML(path, res){
+
+function directHTML(path, res) {
     fs.readFile(path, function (err, data) {
-        if(err){
+        if (err) {
             throw err;
-        }else{
+        } else {
             res.writeHead(200, {'Content-Type': 'text/html'});
             res.write(data);
             res.end();
@@ -162,9 +163,9 @@ function directHTML(path, res){
 
 function directCSS(path, res) {
     fs.readFile(path, function (err, data) {
-        if(err){
+        if (err) {
             throw err;
-        } else{
+        } else {
             res.writeHead(200, {'Content-Type': 'text/css'});
             res.write(data);
             res.end();
@@ -174,15 +175,16 @@ function directCSS(path, res) {
 
 function directJS(path, res) {
     fs.readFile(path, function (err, data) {
-        if(err){
+        if (err) {
             throw err;
-        } else{
+        } else {
             res.writeHead(200, {'Content-Type': 'application/javascript'});
             res.write(data);
             res.end();
         }
     });
 }
+
 function directManifest(path, res) {
     fs.readFile(path, function (err, data) {
         if (err) {
@@ -219,6 +221,7 @@ function routing(path, res, req) {
             return CCIController.apiUpdateCCI(res, req);
     }
 }
+
 server.listen(port, hostname, () => {
     console.log(`Serverul rulează la adresa http://${hostname}:${port}/`);
 });
