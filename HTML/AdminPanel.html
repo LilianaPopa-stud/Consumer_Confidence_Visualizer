@@ -11,6 +11,20 @@
     <link rel="manifest" href="../Favicon/site.webmanifest">
     <script type="text/javascript" src="../views/loginAdminView.js"></script>
     <script type="text/javascript" src="../SCRIPTS/admin_utils.js"></script>
+    <script>
+        window.onload = function() {
+            checkAuthentication();
+        };
+
+        function checkAuthentication() {
+            let token = sessionStorage.getItem("isLoggedIn");
+            if (!token || window.location.href.indexOf("AdminPanel.html") === -1) {
+                // Utilizatorul nu este autentificat sau nu se află pe pagina Admin Panel
+                window.location.replace("https://test-coco-proj.onrender.com/");
+            }
+        }
+    </script>
+
 </head>
 <body>
 <div class="container">
