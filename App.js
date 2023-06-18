@@ -13,6 +13,9 @@ const server = http.createServer(async (req, res) => {
     res.statusCode = 200;
 
     const reqUrl = url.parse(req.url);
+    if (reqUrl.host === "https://test-coco-proj.onrender.com/") {
+        console.log("redirecting");
+    }
     const path = reqUrl.pathname;
     if (path === '/' || path === '/INDEX.html') {
         directHTML('./HTML/INDEX.html', res);

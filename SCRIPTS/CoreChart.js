@@ -3,7 +3,7 @@ google.charts.load('current', {
 });
 
 function drawCombo_Chart(input_data, title) {
-    const endpoint = 'http://127.0.0.1:3000/api/getByCountryYearAndMonthRange';
+    const endpoint = 'https://test-coco-proj.onrender.com/api/getByCountryYearAndMonthRange';
     const year = parseInt(document.getElementById("start-year").value);
     const startMonth = document.getElementById("start-month").value;
     const endMonth = document.getElementById("end-month").value;

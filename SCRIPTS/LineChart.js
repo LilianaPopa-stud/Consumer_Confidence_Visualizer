@@ -6,7 +6,7 @@ function drawLineChart() {
     var startYear = parseInt(document.getElementById("start-year").value);
     var endYear = startYear;
     var selectElement = document.getElementById("countries");
-    const endpoint = 'http://127.0.0.1:3000/api/getByCountryAndYearRange';
+    const endpoint = 'https://test-coco-proj.onrender.com/api/getByCountryAndYearRange';
     const dataPromises = [];
     const selectedCountries = Array.from(selectElement.selectedOptions).map(option => option.value);
 
