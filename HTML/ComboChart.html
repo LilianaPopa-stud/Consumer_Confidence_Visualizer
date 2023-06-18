@@ -16,7 +16,7 @@
     <link rel="manifest" href="../Favicon/site.webmanifest">
     <script src="../SCRIPTS/functions.js"></script>
     <script src="../SCRIPTS/ChartSelect.js"></script>
-    <script  src="../SCRIPTS/GeoChart.js"></script>
+    <script src="../SCRIPTS/CoreChart.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -40,29 +40,39 @@
         </nav>
     </header>
     <div id="chart-info">
-        <h2>Selected Chart Type: Geochart</h2>
-        <p>A Geochart is a type of chart that displays data on a map, representing different regions or countries. In this specific case, the Geochart shows the Consumer Confidence Index for a specific year across all countries.</p>
-        <p>By visualizing the Consumer Confidence Index on a Geochart, you can easily identify countries with high or low consumer confidence levels, allowing for comparisons and analysis of consumer sentiment worldwide.</p>
-    </div>
-
-
+        <h2>Selected Chart Type: Combo Chart</h2>
+      <p> <p>The Combo Chart visualization provides a comprehensive view of
+        the consumer confidence index across multiple countries over a specific time period. It combines line charts and bar charts to present
+        a clear and insightful representation of consumer sentiment.</p></p>
     </div>
 
     <div id="chart-select">
-
         <label for="start-year">Year: </label>
         <select name="start-year" id="start-year">
             <script>
                 generateYearOptions();
             </script>
         </select>
-        <label for="month">Month: </label>
-        <select name="month" id="month">
+        <label for="start-month">Start Month: </label>
+        <select name="start-month" id="start-month">
             <script>
-                generateMonthOptions();
+                generateStartMonthOptions();
             </script>
         </select>
-        <button onclick="fetchApiAndDrawGeoChart()">Display Chart</button>
+        <label for="end-month">End Month: </label>
+        <select name="end-month" id="end-month">
+            <script>
+                generateEndMonthOptions();
+            </script>
+        </select>
+        <label for="countries">Countries</label>
+        <select name="countries" id="countries" multiple>
+            <script>
+                    generateCountryOptions();
+                </script>
+            </select>
+
+            <button onclick="drawCombo_Chart()">Display Chart</button>
         <button onclick="window.location.href='SelectChart.html'">Choose Different Chart</button>
     </div>
     <div class="chart-container" id="myChart"></div>

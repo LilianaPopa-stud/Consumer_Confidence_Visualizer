@@ -35,7 +35,7 @@ function selectChart() {
             window.location.href="GeoChart.html";
             break;
         case "corechart":
-            drawCoreChart();
+            window.location.href="ComboChart.html";
             break;
         case "barchart":
             window.location.href="BarChart.html";

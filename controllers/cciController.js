@@ -39,6 +39,26 @@ module.exports = class CCI {
 
     }
 
+    static async apiGetCCIByCountryYearAndMonthRange(res, req, next){
+        try {
+            const urlParams = new URLSearchParams(req.url);
+            const country = urlParams.get('country');
+            const year = urlParams.get('year');
+            const startMonth = urlParams.get('startMonth');
+            const endMonth = urlParams.get('endMonth');
+            let ccis = await CCIService.findByCountryYearAndMonthRange(country, year, startMonth, endMonth);
+            const dataValuesArray = ccis.map(cci => cci.dataValues);
+            console.log(dataValuesArray);
+            res.write(JSON.stringify(dataValuesArray));
+            res.end();
+        } catch (error) {
+            console.log(`ERROR : ${error.message}`);
+            res.statusCode = 500;
+            return false;
+        }
+    }
+
+
     static async apiGetCCIForAllCountriesByYearAndMonth(res, req, next) {
         try {
             const urlParams = new URLSearchParams(req.url);

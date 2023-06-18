@@ -194,7 +194,31 @@ module.exports = class cciService{
             console.log(error);
         }
     }
+    static async findByCountryYearAndMonthRange(country, year, startMonth, endMonth) {
+        try {
+            return await CCI.findAll({
+                where: {
+                    location: {
+                        [Op.like]: `${country}`,
+                    },
+                    time: {
+                        [Op.between]: [`${year}-${startMonth}`, `${year}-${endMonth}`],
+                    },
+                },
+                attributes: {
 
+                    exclude: ['id', 'measure', 'indicator', 'frequency', 'subject', 'flag_codes']
+                }
+            }).then((function (list) {
+                console.log(list);
+                return list;
+            }));
+
+        } catch (error) {
+            console.error("findByCountryYearAndMonthRange error: ", error);
+            throw new Error("Error querying database");
+        }
+    }
     /**
      * Updating CCI
      * */
