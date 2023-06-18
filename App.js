@@ -229,5 +229,5 @@ function routing(path, res, req) {
 }
 
 server.listen(port,  () => {
-    console.log(`Serverul rulează la adresa http://:${port}/`);
+    console.log(`Port: ${port}/`);
 });
