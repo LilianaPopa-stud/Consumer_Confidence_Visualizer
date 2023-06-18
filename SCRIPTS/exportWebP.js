@@ -13,8 +13,8 @@ function get_export_webp() {
         canvas.height = img.height;
         context.drawImage(img, 0, 0);
 
-        var webpData = canvas.toDataURL('image/webp');
-        var link = document.createElement('a');
+        const webpData = canvas.toDataURL('image/webp');
+        const link = document.createElement('a');
         link.href = webpData;
         link.download = 'chart.webp';
         link.click();

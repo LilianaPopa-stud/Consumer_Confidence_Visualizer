@@ -3,7 +3,6 @@
  *
  * */
 const AdminService = require("../server/services/adminService");
-//const utils = require("../utils");
 let credentials;
 module.exports = class Admin {
     /**

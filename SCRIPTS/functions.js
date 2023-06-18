@@ -1,6 +1,6 @@
 function generateYearOptions() {
     const startYear = 1963;
-    const currentYear = new Date().getFullYear()-1;
+    const currentYear = new Date().getFullYear();
     const select = document.getElementById("start-year");
     for (let year = currentYear; year >= startYear; year--) {
         const option = document.createElement("option");
