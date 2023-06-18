@@ -135,7 +135,6 @@ function mapCountry(country) {
         COL: "Colombia",
         CHL: "Chile",
         CRI: "Costa Rica",
-        IND: "India",
     };
      return countryMapping[country];
 
