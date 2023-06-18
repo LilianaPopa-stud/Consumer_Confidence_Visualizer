@@ -19,6 +19,7 @@
     <script src="../SCRIPTS/LineChart.js"></script>
     <script  src="../SCRIPTS/GeoChart.js"></script>
     <script  src="../SCRIPTS/exportSVG.js"></script>
+    <script src="../SCRIPTS/exportWebP.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -59,7 +60,7 @@
         </select>
         <button onclick="drawLineChart()">Display Chart</button>
         <button onclick="get_export_svg('myChart');">Export SVG</button>
-        <button onclick="">Export CSV</button>
+        <button onclick="get_export_webp();">Export CSV</button>
         <button onclick="">Export WebP</button>
         <button onclick="window.location.href='SelectChart.html'">Choose Different Chart</button>
     </div>
