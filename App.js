@@ -93,6 +93,10 @@ const server = http.createServer(async (req, res) => {
         directImage('./Favicon/apple-touch-icon.png', res);
     } else if (path === '/img/waving-hand.png') {
         directImage('./img/waving-hand.png', res);
+    } else if (path === '/img/diagram1.png') {
+        directImage('./img/diagram1.png', res);
+    } else if (path === '/img/diagram2.png') {
+        directImage('./img/diagram2.png', res);
     } else if (path === '/Favicon/favicon.ico') {
         fs.readFile('./Favicon/favicon.ico', function (err, data) {
             if (err) {
