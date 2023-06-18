@@ -17,7 +17,7 @@ function sendCredentials(form){
     };
 
     let request = new XMLHttpRequest();
-    let url = "http://127.0.0.1:3000/api/login";
+    let url = "https://test-coco-proj.onrender.com/api/login";
     request.open("POST",url,true);
     request.setRequestHeader("Content-Type","application/json");
     request.onreadystatechange = function(){
