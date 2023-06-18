@@ -17,7 +17,7 @@
   <script src="../SCRIPTS/functions.js"></script>
   <script src="../SCRIPTS/ChartSelect.js"></script>
   <script src="../SCRIPTS/Table.js"></script>
-  <script type="module" src="../SCRIPTS/GeoChart.js"></script>
+  <script  src="../SCRIPTS/exportSVG.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -27,13 +27,6 @@
       <ul>
         <li><a href="INDEX.html">Home</a></li>
         <li><a href="SelectChart.html">Charts</a></li>
-        <li><a href="#">Export</a>
-          <ul>
-            <li><a href="#">CSV</a></li>
-            <li><a href="#">WebP</a></li>
-            <li><a href="#">SVG</a></li>
-          </ul>
-        </li>
         <li><a href="Report.html">Report</a></li>
         <li><a href="Contact.html">Contact</a></li>
         <li><a href="AdminLogIn.html">Admin Panel</a></li>
@@ -59,6 +52,9 @@
       </script>
     </select>
     <button onclick="drawTableChart()">Display Chart</button>
+    <button onclick="get_export_svg('myChart');">Export SVG</button>
+    <button onclick="">Export CSV</button>
+    <button onclick="">Export WebP</button>
     <button onclick="window.location.href='SelectChart.html'">Choose Different Chart</button>
   </div>
   <div class="chart-container" id="myChart"></div>
