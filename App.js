@@ -97,7 +97,18 @@ const server = http.createServer(async (req, res) => {
                 res.end();
             }
         });
-    } else if (path === '/img/scholarly-html.svg') {
+    } else if (path === '/consumer_confidence.db') {
+        fs.readFile('./consumer_confidence.db', function (err, data) {
+            if (err) {
+                throw err;
+            } else {
+                res.writeHead(200, {'Content-Type': 'application/octet-stream'});
+                res.write(data);
+                res.end();
+            }
+        });
+    }
+    else if (path === '/img/scholarly-html.svg') {
         fs.readFile('./img/scholarly-html.svg', function (err, data) {
             if (err) {
                 throw err;
@@ -107,14 +118,17 @@ const server = http.createServer(async (req, res) => {
                 res.end();
             }
         });
-    } else if (path === '/test') {
-        const startYear = 2018;
-        const endYear = 2021;
-
-        const data = await findByCountryAndYearRange('US', startYear, endYear);
-        console.log(data);
-        res.statusCode = 404;
-        res.end('Data displayed in console');
+    } else if (path === '/database.csv') {
+        fs.readFile('./database.csv', function (err, data) {
+            if (err) {
+                throw err;
+            } else {
+                res.writeHead(200, {'Content-Type': 'text/csv'});
+                res.write(data);
+                res.end();
+            }
+        }
+        );
     } else {
         await routing(path, res, req)
         res.statusCode = 200;

@@ -26,7 +26,6 @@ function sendCredentials(form){
             if(request.response === "Logged in successfully!") {
                 //redirect
                 sessionStorage.setItem('isLoggedIn', 'true');
-               // window.location.replace("http://127.0.0.1:3000/AdminPanel.html");
                 checkAuthentication();
             }else{
             }
@@ -37,8 +36,8 @@ function sendCredentials(form){
 // Verifică dacă utilizatorul este deja autentificat
 function checkAuthentication() {
     let token = sessionStorage.getItem("isLoggedIn");
-    if (token) {
-        // Utilizatorul este deja autentificat, redirecționează către pagina de Admin Panel
+    if (token && window.location.href.indexOf("AdminPanel.html") === -1) {
+        // User is already authenticated and not on the Admin Panel page
         window.location.replace("http://127.0.0.1:3000/AdminPanel.html");
     }
 }
