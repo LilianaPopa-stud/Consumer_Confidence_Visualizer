@@ -22,6 +22,8 @@
             <li><a href="#" onclick="showUpdateCCI()">Update CCI</a></li>
             <li><a href="#" onclick="showExportDatabase()">Export Database</a></li>
         </ul>
+        <button class="button" onclick="redirectToCharts()">Back to Charts</button>
+
     </div>
     <div class="content">
             <div class="welcome">
@@ -89,6 +91,10 @@
         document.getElementById("export-database").style.display = "block";
 
     }
+    function redirectToCharts() {
+        window.location.href = "SelectChart.html";
+    }
+
 
 </script>
 </body>
