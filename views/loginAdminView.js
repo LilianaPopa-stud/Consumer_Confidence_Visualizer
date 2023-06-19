@@ -39,7 +39,5 @@ function checkAuthentication() {
     if (token && window.location.href.indexOf("AdminPanel.html") === -1) {
         // User is already authenticated and not on the Admin Panel page
         window.location.replace("https://test-coco-proj.onrender.com/AdminPanel.html");
-    } else {
-        window.location.replace("https://test-coco-proj.onrender.com/AdminLogIn.html")
-    }
+    } 
 }
