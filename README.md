@@ -13,23 +13,23 @@
 </header>
 
 <div role="contentinfo"><ol role="directory">
-  <li><a href="#abstract"><span>1. </span>Descrierea proiectului</a></li>
-  <li><a href="#introduction"><span>2. </span>Introducere</a></li>
-  <li><a href="#structure"><span>3. </span>Structura</a><ol role="directory">
+  <li><a href="#abstract">Descrierea proiectului</a></li>
+  <li><a href="#introduction">Introducere</a></li>
+  <li><a href="#structure">Structura</a><ol role="directory">
     <li><a href="#TehnologiiUtilizate"><span>3.1 </span>Tehnologii utilizate</a></li>
     <li><a href="#Pagini"><span>3.2 </span>Pagini</a></li>
-  </ol></li><li><a href="#functionalitate"><span>4. </span>Funcționalitate</a></li>
-  <li><a href="#arhitectura"><span>5. </span>Arhitectura și procesul de construire al aplicației</a><ol role="directory">
+  </ol></li><li><a href="#functionalitate">Funcționalitate</a></li>
+  <li><a href="#arhitectura">Arhitectura și procesul de construire al aplicației</a><ol role="directory">
     <li><a href="#Backend"><span>5.1 </span> Backend - API & Admin Panel</a></li>
     <li><a href="#Charts"><span>5.2 </span>Charts</a></li>
     <li><a href="#Manipularea"><span>5.2 </span>Manipularea inputului de la user</a></li>
     <li><a href="#Frontend"><span>5.2 </span>Frontend și design</a></li>
   </ol>
-  <li><a href="#user"><span>6. </span>Experiența utilizatorului</a></li>
-  <li><a href="#diagrame"><span>7. </span>Diagrame</a></li>
-  <li><a href="#autori"><span>8. </span>Autori</a></li>
-  <li><a href="#github"><span>9. </span>Link GitHub</a></li>
-  <li><a href="#resurse"><span>10. </span>Resurse</a></li>
+  <li><a href="#user">Experiența utilizatorului</a></li>
+  <li><a href="#diagrame">Diagrame</a></li>
+  <li><a href="#autori">Autori</a></li>
+  <li><a href="#github">Link-uri</a></li>
+  <li><a href="#resurse">Resurse</a></li>
 </ol>
 </div>
 <section id="abstract">
@@ -200,8 +200,10 @@
   </ul>
 </section>
 <section id="github">
-  <h2><span>9. </span>GitHub Repository</h2>
-  <a href="https://github.com/LilianaPopa-stud/Proiect_TW">Click</a>
+  <h2><span>9. </span>Link-uri</h2>
+  <a href="https://github.com/LilianaPopa-stud/Proiect_TW">GitHub</a>
+<a href="https://www.youtube.com/watch?v=F1NQ4DpubkM">YouTube</a>
+<a href="https://test-coco-proj.onrender.com/">CoCo</a>
 </section>
 <section id="resurse">
   <h2><span>10. </span>Resurse</h2>
