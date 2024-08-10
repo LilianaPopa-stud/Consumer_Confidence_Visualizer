@@ -1,3 +1,7 @@
+<img width="1786" alt="Screenshot 2024-08-10 at 21 08 52" src="https://github.com/user-attachments/assets/e84f1061-5a08-4bb3-a524-ee4bf48f206b">
+<img width="1786" alt="Screenshot 2024-08-10 at 21 09 16" src="https://github.com/user-attachments/assets/339c9b70-f603-4380-8ad3-d396f6e9a18b">
+<img width="1786" alt="Screenshot 2024-08-10 at 21 09 40" src="https://github.com/user-attachments/assets/b8b0ad0e-875f-49c1-b041-a8840709223f">
+<img width="1786" alt="Screenshot 2024-08-10 at 21 10 01" src="https://github.com/user-attachments/assets/75f29405-d37c-435c-a355-aada2ba0ff78">
 <!DOCTYPE html>
 <html lang="ro" xmlns="http://www.w3.org/1999/html">
 <head>
